@@ -33,6 +33,7 @@ class Pistache(CMakePackage):
 
     maintainers = ['brettviren']
 
-    version('master', branch='master')
+#    version('master', branch='master')
+    version('2020-10-07', commit='a54a4fab00252a9bcc42a38b62abf102f7de7cf6')
     depends_on('openssl')
     depends_on('libpthread-stubs')
