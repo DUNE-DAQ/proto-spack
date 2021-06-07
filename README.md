@@ -28,7 +28,7 @@ if [ -e "${BASE}/lib" ]; then
     export LD_LIBRARY_PATH="$BASE/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 fi
 
-# Export package specific environmental variables
+
 
 gcc_home=/home/pmendez/workspace/DUNE-Spack/spack/opt/spack/linux-centos7-haswell/gcc-4.8.5/gcc-8.2.0-zfho7gkmt5payd36q7nwlk6n6xv4eum3/
 
