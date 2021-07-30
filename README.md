@@ -1,7 +1,8 @@
 # proto-spack
-Warning: None of the external packages (besides cmake) will work with a vanilla installation of the gcc8.2.0. It is mandatory that this compiler is built linkig it against a binutils installation first
+Warning: None of the external packages (besides cmake) will work with a vanilla installation of the gcc8.2.0. It is mandatory that this compiler is built linking it against a binutils installation first
 NOTE: The packages provided by spack (builtin) are included in this repository in the so called builtin-spack-packages
-
+## Download the Spack software version 0.16
+git clone https://github.com/spack/spack.git
 ## Setup of the build machine
 The build machine has been set via puppet as a Centos7 base machine. The set of packages pre-installed in the system are the following (puppet repository: it-puppet-hostgroup-detector_interface. Specific spackdune.pp available at: code/manifest)
 
