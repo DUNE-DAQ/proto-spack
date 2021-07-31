@@ -14,9 +14,8 @@ $pkgs_pip_base = [ 'python34-setuptools_scm', 'python34-pip', 'python3-apipkg', 
 ## Building `gcc@8.2.0`
 The following instructions are applicable to a Centos7 node which has a default compiler `gcc4.8.5`
 ### Ensure gcc will be built against binutils
-Edit the `packages.yaml` file of gcc and enables to True the binutils flag
-At this point no particular requirements are needed, you can launch the `spack install gcc@8.2.0` order. The binutils package will be installed as dependency.  
-The new compiler can be chosen to build the rest of packages. Ensure the compiler defined in default in the machine points to this new package. for this reason, reconfigure the `compilers.yaml` file of spack just pointing to the proper positions of the executables: `gcc`, `gfortran` and `g++` which have to be included into the env variables:
+spack install 'gcc@8.2.8+binutils' is enogh to ensure the installation of the gcc8.2.0 compiler using binutils.   
+The new compiler can be chosen to build the rest of packages. Ensure the compiler defined in default in the machine points to this new package. For this reason, reconfigure the `compilers.yaml` file of spack just pointing to the proper positions of the executables: `gcc`, `gfortran` and `g++` which have to be included into the env variables:
 ```
 cc
 cxx
