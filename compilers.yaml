@@ -1,0 +1,13 @@
+compilers:
+- compiler:
+    environment: {}
+    extra_rpaths: []
+    modules: []
+    operating_system: centos7
+    paths:
+      cc: /home/spacknp/spack/opt/spack/linux-centos7-haswell/gcc-4.8.5/gcc-8.2.0-tx65tffz7hcukcoyy35msh7e2rdnsmpk/bin/gcc
+      cxx: /home/spacknp/spack/opt/spack/linux-centos7-haswell/gcc-4.8.5/gcc-8.2.0-tx65tffz7hcukcoyy35msh7e2rdnsmpk/bin/g++
+      f77: /home/spacknp/spack/opt/spack/linux-centos7-haswell/gcc-4.8.5/gcc-8.2.0-tx65tffz7hcukcoyy35msh7e2rdnsmpk/bin/gfortran
+      fc: /home/spacknp/spack/opt/spack/linux-centos7-haswell/gcc-4.8.5/gcc-8.2.0-tx65tffz7hcukcoyy35msh7e2rdnsmpk/bin/gfortran
+    spec: gcc@8.2.0
+    target: x86_64
