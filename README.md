@@ -51,23 +51,23 @@ trace 3.16.02 -- Provided by SCISOFT
 
 folly 2021.05.24.00 -- SPACK builtin 
 
-nlohmann_json 3.9.1 -- Provided by the dunedaq-spack repository
+nlohmann_json 3.9.1 -- SPACK builtin
 
-pistache 2020.10.07 (master) -- Provided by the dunedaq-spack repository
+pistache 2020.10.07 (master) -- Provided by the proto-spack repository
 
 highfive 2.2.2 -- SPACK builtin
 
-zmq 4.3.4 -- SCISOFT
+libzmq 4.3.4 -- SPACK builtin
 
 cppzmq 4.3.0 -- SPACK builtin
 
 msgpack-c 3.3.0 -- SPACK builtin
 
-Felix (master) -- Provided by dunedaq-spack repository together with all dependencies
+Felix (master) -- Provided by proto-spack repository together with all dependencies
 
 py-pybind11 2.6.2 -- SPACK bultin
 
-uhal 2.8.0 -- Prodived by dunedaq-spack repository with all dependencies
+uhal 2.8.0 -- Provided by proto-spack repository with all dependencies
 
 ## Built example
 
