@@ -29,3 +29,4 @@ spack install -y cppzmq@4.3.0
 spack install -y msgpack-c@3.3.0
 spack install -y py-pybind11@2.6.2
 spack install -y ipbus-software@2.8.0
+spack install -y libzmq@4.3.4
