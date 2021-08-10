@@ -1,7 +1,9 @@
 from spack import *
 import os
 import sys
+
 from shutil import copytree
+import spack.util.environment as envutil
 
 class FelixSoftware(Package):
 
@@ -20,22 +22,40 @@ class FelixSoftware(Package):
     depends_on('zeromq@4.1.8', type='build')
 
     def install(self, spec, prefix):
-        install('*',prefix)
-        with working_dir(prefix):
+#        install('*',prefix)
+        copytree('.', prefix.software)
+
+        with working_dir(prefix.software):
 
             bash = which('bash')
-            bash(join_path('clone_all.sh'), prefix)
-            bash(join_path('setup.sh'), prefix)
+
+            my_path=os.environ['PATH']
+            
+            os.chdir(prefix.software)
+            to_reverse = envutil.EnvironmentModifications()
+
+            os.system('git clone https://gitlab.cern.ch/atlas-tdaq-felix/cmake_tdaq.git')
+            os.system('sed -i \'2 i set(NOLCG TRUE)\' cmake_tdaq/cmake/modules/FELIX.cmake')
+ 
+            os.system('git clone https://gitlab.cern.ch/atlas-tdaq-felix/drivers_rcc.git')
+            os.system('git clone https://gitlab.cern.ch/atlas-tdaq-felix/flxcard.git')            
+
+            os.system('sed -i \'s/REG_PCIE_ENDPOINTS/REG_PCIE_ENDPOINT/g\' flxcard/src/FlxCard.cpp')
+            os.system('sed -i \'s/BF_PCIE_ENDPOINTS/BF_PCIE_ENDPOINT/g\' flxcard/src/flx-info.cpp')
+            os.system('git clone https://gitlab.cern.ch/atlas-tdaq-felix/regmap.git')
 
 
-#        os.chdir(prefix)
-#        mkdir(prefix.toto)
-#        copytree('software', prefix.software)
-#        mkdir(prefix.toto)
-        #        with working_dir(self.build_directory):
-#        bash = which('bash')
-#        bash('./clone_all.sh https')
+            os.system('git clone https://gitlab.cern.ch/atlas-tdaq-felix/ftools.git')
+            os.system('git clone https://gitlab.cern.ch/atlas-tdaq-felix/external-catch.git external/catch')
+            os.system('git clone ssh://git@gitlab.cern.ch:7999/atlas-tdaq-felix/client-template.git')
 
-#        configure('--prefix=%s' % prefix)
-#        make()
-#        make('install')
+            new_path = prefix+'/software/cmake_tdaq/bin:'
+            os.environ['PATH'] = new_path + my_path
+
+
+
+            os.system('cmake_config x86_64-centos7-gcc8-opt') 
+
+            os.chdir("x86_64-centos7-gcc8-opt")
+
+            make()
