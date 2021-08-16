@@ -13,15 +13,16 @@ class Cetmodules(CMakePackage):
 
 
     homepage = 'https://github.com/FNALssi/cetmodules'
-    url = 'https://github.com/FNALssi/cetmodules/archive/refs/tags/2.24.02.tar.gz'
+    url = 'https://github.com/FNALssi/cetmodules/archive/refs/tags/2.16.02.tar.gz'
 
-    version('2.24.02', sha256='e2744fd2edaa82c5acd42c369a49217758e90b005a77864eb1a994244811c896')
+    version('2.16.02', sha256='43082380b23b3367303368b6ec698d7a3624b19a8a99842752bd13bcb474625e')
 
     depends_on('cmake@3.20.5', type='build')
     depends_on('py-sphinx@4.1.2', type='build')
     depends_on('py-sphinxcontrib-moderncmakedomain@3.19', type='build')
+    depends_on('py-sphinx-rtd-theme@0.5.2', type='build')
     depends_on('catch2@2.13.4', type='build')
-#    depends_on('cmake@3.12:', type='build', when='@1.02.00:')
+
 
     def cmake_args(self):
 
