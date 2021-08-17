@@ -20,12 +20,3 @@ class Cetpkgsupport(CMakePackage):
 
     depends_on('cmake@3.20.5')
 
-
-    def url_for_version(self, version):
-        if str(version)[0] in "0123456789":
-            url = 'https://cdcvs.fnal.gov/cgi-bin/git_archive.cgi/cvs/projects/{0}.v{1}.tbz2'
-            return url.format(self.name, version.underscored)
-        else:
-            url = 'https://cdcvs.fnal.gov/cgi-bin/git_archive.cgi/cvs/projects/{0}.{1}.tbz2'
-            return url.format(self.name, version)
-
