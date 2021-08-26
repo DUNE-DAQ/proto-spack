@@ -13,9 +13,9 @@ class Cetmodules(CMakePackage):
 
 
     homepage = 'https://github.com/FNALssi/cetmodules'
-    url = 'https://github.com/FNALssi/cetmodules/archive/refs/tags/2.16.02.tar.gz'
+    url = 'https://github.com/FNALssi/cetmodules/archive/refs/tags/2.25.04.tar.gz'
 
-    version('2.16.02', sha256='43082380b23b3367303368b6ec698d7a3624b19a8a99842752bd13bcb474625e')
+    version('2.25.04', sha256='c2a8d3496dfd2c0dd4194652e87416f2ad4ff65250976070519e8f8ea33252d8')
 
     depends_on('cmake@3.20.5', type='build')
     depends_on('py-sphinx@4.1.2', type='build')
@@ -23,6 +23,10 @@ class Cetmodules(CMakePackage):
     depends_on('py-sphinx-rtd-theme@0.5.2', type='build')
     depends_on('catch2@2.13.4', type='build')
 
+
+    @run_before('cmake')
+    def fix_fix_man(self):
+        filter_file('exit \$status', 'exit 0', '%s/libexec/fix-man-dirs' % self.stage.source_path)
 
     def cmake_args(self):
 
@@ -33,6 +37,10 @@ class Cetmodules(CMakePackage):
         ]
 
         return cmake_args
+
+
+#    def url_for_version(self, version):
+#         if str(version)[0] in "01"    
 
 #    def url_for_version(self, version):
 #        url = 'http://cdcvs.fnal.gov/cgi-bin/git_archive.cgi/cvs/projects/{0}.v{1}.tbz2'
