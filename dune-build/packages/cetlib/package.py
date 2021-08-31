@@ -47,9 +47,9 @@ class Cetlib(CMakePackage):
             description='Use the specified C++ standard when building.')
 
     # Build-only dependencies.
-    depends_on('cmake@3.11:', type='build')
-    depends_on('cetmodules', type='build')
-    depends_on('catch2@2.3.0:', type=('build', 'link'))
+    depends_on('cmake@3.20.5', type='build')
+    depends_on('cetmodules@2.25.05', type='build')
+    depends_on('catch2@2.13.4:', type=('build', 'link'))
     depends_on('intel-tbb@2020.3', type=('build', 'link'))
 
     # Build / link dependencies.

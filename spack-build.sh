@@ -31,3 +31,7 @@ spack install -y py-pybind11@2.6.2
 spack install -y ipbus-software@2.8.0
 spack install -y libzmq@4.3.4
 spack install -y felix-software
+spack install -y cetmodules@2.25.05
+spack install -y hep-concurrency
+spack install -y cetlib-except
+spack install -y cetlib
