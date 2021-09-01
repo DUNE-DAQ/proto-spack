@@ -16,7 +16,7 @@ spack install gcc@8.2.0+binutils
 spack load gcc@8.2.0
 spack compiler find
 spack compiler remove gcc@4.8.5
-cp binutils-setup.sh /home/spacknp/spack/opt/spack/linux-centos7-haswell/gcc-4.8.5/binutils-2.36.1-wozob7j2dmpqe2swmdnsltwiht2plxqe/
+cp binutils-setup.sh /home/spacknp/spack/opt/spack/linux-centos7-haswell/gcc-4.8.5/binutils-2.36.1-*/
 
 source compiler-setup.sh
 which gcc
