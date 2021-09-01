@@ -41,9 +41,15 @@ and execute it. This script is intended to install locally all externals and dep
 
 # List of external DUNE packages
 
-cetlib 3.11.01 -- Provided by SCISOFT
+cetlib 3.11.01 -- Provided by the proto-spack repository
 
-trace 3.16.02 -- Provided by SCISOFT
+cetmodules 2.25.05 -- Provided by the proto-spack repository
+
+trace (master) -- Provided by the proto-spack repository
+
+cetlib-except 1.07.04 -- Provided by the proto-spack repository
+
+hep-concurrency 1.07.04 -- Provided by the proto-spack repository
 
 folly 2021.05.24.00 -- SPACK builtin 
 
