@@ -13,9 +13,9 @@ class Cetmodules(CMakePackage):
 
 
     homepage = 'https://github.com/FNALssi/cetmodules'
-    url = 'https://github.com/FNALssi/cetmodules/archive/refs/tags/2.25.04.tar.gz'
+    url = 'https://github.com/FNALssi/cetmodules/archive/refs/tags/2.25.05.tar.gz'
 
-    version('2.25.04', sha256='c2a8d3496dfd2c0dd4194652e87416f2ad4ff65250976070519e8f8ea33252d8')
+    version('2.25.05', sha256='62a97e99233754ef4a6754d3a467dd2ee40f8cc993905d257e73f0abb0457bc2')
 
     depends_on('cmake@3.20.5', type='build')
     depends_on('py-sphinx@4.1.2', type='build')

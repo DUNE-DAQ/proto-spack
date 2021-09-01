@@ -42,7 +42,7 @@ class CetlibExcept(CMakePackage):
             description='Use the specified C++ standard when building.')
 
     depends_on('cmake@3.20.5:', type='build')
-    depends_on('cetmodules@2.25.04', type='build')
+    depends_on('cetmodules@2.25.05', type='build')
     depends_on('cetpkgsupport', type=('build','run'))
     depends_on('catch2@2.13.4', type=('build','run'))
 

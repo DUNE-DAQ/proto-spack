@@ -42,7 +42,7 @@ class HepConcurrency(CMakePackage):
 
     # Build-only dependencies.
     depends_on('cmake@3.20.5', type='build')
-    depends_on('cetmodules@2.25.04', type='build')
+    depends_on('cetmodules@2.25.05', type='build')
     depends_on('cetlib-except@1.07.04', type=('build','run'))
 
     # Build / link dependencies.
