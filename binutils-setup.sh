@@ -1,4 +1,4 @@
-BASE=/home/spacknp/spack/opt/spack/linux-centos7-haswell/gcc-4.8.5/binutils-2.36.1-wozob7j2dmpqe2swmdnsltwiht2plxqe/
+BASE=$HOME/spack/opt/spack/linux-centos7-haswell/gcc-4.8.5/binutils-2.37-rlnsydsnert6nt4icx6jytx6kqfiel75/
 
 export PATH=$BASE/bin:$PATH
 export MANPATH=$BASE/share/man:$MANPATH

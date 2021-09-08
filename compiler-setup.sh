@@ -1,5 +1,5 @@
-source  /home/spacknp/spack/opt/spack/linux-centos7-haswell/gcc-4.8.5/binutils-2.36.1-wozob7j2dmpqe2swmdnsltwiht2plxqe/binutils-setup.sh
-BASE=/home/spacknp/spack/opt/spack/linux-centos7-haswell/gcc-4.8.5/gcc-8.2.0-tx65tffz7hcukcoyy35msh7e2rdnsmpk/ 
+source  $HOME/spack/opt/spack/linux-centos7-haswell/gcc-4.8.5/binutils-2.37-rlnsydsnert6nt4icx6jytx6kqfiel75/binutils-setup.sh
+BASE=$HOME/spack/opt/spack/linux-centos7-haswell/gcc-4.8.5/gcc-8.2.0-gruolqa3jc23wu7a5zh6a4kylcbmcj76/
 
 export PATH=$BASE/bin:$PATH
 export MANPATH=$BASE/share/man:$MANPATH
@@ -14,7 +14,7 @@ fi
 
 
 
-gcc_home=/home/spacknp/spack/opt/spack/linux-centos7-haswell/gcc-4.8.5/gcc-8.2.0-tx65tffz7hcukcoyy35msh7e2rdnsmpk/
+gcc_home=$BASE
 
 export FC=`which gfortran`
 export CC=`which gcc`
