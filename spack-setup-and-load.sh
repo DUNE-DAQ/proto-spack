@@ -28,9 +28,11 @@ spack load /lrrb52w  # py-pybind11@2.6.2
 spack load ipbus-software@2.8.0
 spack load libzmq@4.3.4
 spack load felix-software
-spack load cetmodules@2.25.05
+echo "Skipping load of cetmodules, it ruins the creation of TRACEConfig.cmake"
+#spack load cetmodules@2.25.05
 spack load hep-concurrency
 spack load cetlib-except
 spack load cetlib
 spack load ers
-#spack load trace
+spack load trace@v3_16_02
+
