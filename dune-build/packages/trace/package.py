@@ -3,22 +3,6 @@
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
-# ----------------------------------------------------------------------------
-# If you submit this package back to Spack as a pull request,
-# please first remove this boilerplate and all FIXME comments.
-#
-# This is a template package file for Spack.  We've put "FIXME"
-# next to all the things you'll want to change. Once you've handled
-# them, you can save this file and test your package like this:
-#
-#     spack install trace
-#
-# You can edit this file again by typing:
-#
-#     spack edit trace
-#
-# See the Spack documentation for more information on packaging.
-# ----------------------------------------------------------------------------
 
 from spack import *
 import os
@@ -35,7 +19,9 @@ class Trace(CMakePackage):
     version('v3_16_02', commit='570d91139f7277966ae5259b0a11d85f8574e5dc')   # JCF, Sep-9-2021: v3_16_02 is used in the dunedaq-v2.8.0 suite
 #    version('3.15.09', commit='f429a6a8b52925c31678cab5643f67df16f06fd5')
 
+    patch('disable_cetmodules.diff')
     patch('install-exec.diff', when='3.15.09')
     patch('install-scripts.diff', when='stable')
+
 
 #    depends_on('cetmodules@1.01.01:', when='3.15.09', type='build')

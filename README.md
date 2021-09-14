@@ -79,7 +79,31 @@ spack install <package_name>@<version_number>
 
 for example: spack py-pybind11@2.6.2
 
+## John's work notes
 
+Doing the following, you can set up a work area and build cmdlib using Spack and not ups. Upon logging in to epdtdi-spack-build03:
+```
+. home/spacknp/jcfree/source_me
+cd ~
+```
+Probably on top of the externals, the dunedaq-v2.8.0 versions of ers
+and logging will also be installed. If not, then you can install them
+using their `package.py`'s which have been added to
+`dune-build/packages`. Also note I've created a `trace@v3_16_02`; this
+is the same TRACE version as used in the dunedaq-v2.8.0 release but
+with a patch which removes the dependency on cetmodules - a dependency
+that ruins the `TRACEConfig.cmake` file which gets produced when TRACE
+is built.
 
+Assuming trace@v3_16_02, ers@dunedaq-v2.8.0 and logging@dunedaq-v2.8.0
+are installed, you can load all the Spack packages you need via:
+```
+. proto-spack/spack-setup-and-load.sh
+```
+...which is essentially a modified fork of `/home/spacknp/spack-build.sh`. 
 
-`
+Now set up the daq-buildtools environment using
+`daq-buildtools/env.sh` and `dbt-create.sh`. When you `cd` into the
+new workarea, run `dbt-workarea-env-spack`. You'll now be able to
+clone the dunedaq-v2.8.0 tag of cmdlib and build it...entirely against
+Spack packages, _not_ ups packages.
