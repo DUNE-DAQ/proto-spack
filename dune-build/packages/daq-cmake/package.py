@@ -32,6 +32,7 @@ class DaqCmake(CMakePackage):
     maintainers = ['jcfreeman2']
 
     version('master', branch='master', git=homepage)
+    version('issue161', branch='johnfreeman/daq-buildtools_issue161', git=homepage)
 
     #generator = 'Ninja'
 
