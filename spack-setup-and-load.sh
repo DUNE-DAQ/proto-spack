@@ -28,11 +28,12 @@ spack load /lrrb52w  # py-pybind11@2.6.2
 spack load ipbus-software@2.8.0
 spack load libzmq@4.3.4
 spack load felix-software
-#spack load cetmodules@2.25.05
 spack load hep-concurrency
 spack load cetlib-except
 spack load cetlib
-spack load ers@dunedaq-v2.8.0
 spack load trace@v3_16_02
+spack load ers@dunedaq-v2.8.0
 spack load logging@dunedaq-v2.8.0
-
+spack load cmdlib@dunedaq-v2.8.0
+spack load opmonlib@dunedaq-v2.8.0
+spack load rcif@dunedaq-v2.8.0
