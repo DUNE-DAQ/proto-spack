@@ -86,7 +86,7 @@ Doing the following, you can set up a work area and build cmdlib using Spack and
 . home/spacknp/jcfree/source_me
 cd ~
 ```
-Probably on top of the externals, the dunedaq-v2.8.0 versions of ers
+Probably on top of the externals, a special cetlib-friendly version of daq-cmake (from the `johnfreeman/daq-buildtools_issue161` branch) and the dunedaq-v2.8.0 versions of ers
 and logging will also be installed. If not, then you can install them
 using their `package.py`'s which have been added to
 `dune-build/packages`. Also note I've created a `trace@v3_16_02`; this
@@ -95,7 +95,7 @@ with a patch which removes the dependency on cetmodules - a dependency
 that ruins the `TRACEConfig.cmake` file which gets produced when TRACE
 is built.
 
-Assuming trace@v3_16_02, ers@dunedaq-v2.8.0 and logging@dunedaq-v2.8.0
+Assuming **daq-cmake@issue161**, **trace@v3_16_02**, **ers@dunedaq-v2.8.0** and **logging@dunedaq-v2.8.0**
 are installed, you can load all the Spack packages you need via:
 ```
 . proto-spack/spack-setup-and-load.sh
@@ -106,4 +106,4 @@ Now set up the daq-buildtools environment using
 `daq-buildtools/env.sh` and `dbt-create.sh`. When you `cd` into the
 new workarea, run `dbt-workarea-env-spack`. You'll now be able to
 clone the dunedaq-v2.8.0 tag of cmdlib and build it...entirely against
-Spack packages, _not_ ups packages.
+Spack packages, _not_ ups packages. For that matter, there's also a Spack version of cmdlib, **cmdlib@dunedaq-v2.8.0**. The logical next step is to build appfwk on top of this Spack stack but there are currently Boost incompatibilies which appear to be related to folly using Boost 1.77 and appfwk using an older version of Boost. 
