@@ -21,6 +21,8 @@ cp binutils-setup.sh $PWD/spack/opt/spack/linux-centos7-haswell/gcc-4.8.5/binuti
 source compiler-setup.sh
 which gcc
 spack compilers
+spack install -y trace
+spack install -y cetpkgsupport
 spack install -y folly@2021.05.24.00
 spack install -y nlohmann-json@3.9.1
 spack install -y pistache
