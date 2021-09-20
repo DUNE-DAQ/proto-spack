@@ -47,9 +47,7 @@ Individual packages will just need the setup of the spack configuration as follo
 
 source $HOME/spack/share/spack/setup-env.sh
 
-Then any package can be rebuilt doing:
-
-spack install <name_of_the_package>
+Then any package can be rebuilt following the esample available at the section: "Buold example"  below. 
 
 # List of external DUNE packages
 
