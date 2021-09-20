@@ -33,11 +33,23 @@ The following machines have been created to test the builds:
 
 epdtdi-spack-build01, epdtdi-spack-build02 and epdtdi-spack-build03 reachable through the account: spacknp
 
-# Testing: Steps using any of the epdtdi-spack-build0X machines:
+# First build: Steps using any of the epdtdi-spack-build0X machines:
 
 Download the script: https://github.com/DUNE-DAQ/proto-spack/blob/98318b8e6f38a2717d8aaee9817f20356f828603/spack-build.sh
 
 and execute it. This script is intended to install locally all externals and dependencies. It will also install the gcc8.2.0 compiler already interfaced with binutils.
+
+NOTE: This procedure is needed only once. It will automatically install the compiler and all packages. For future developments and builds of individual packages, this script should not be used and procedures are decribed at the next section
+
+# Development: Steps using any of the epdtdi-spack-build0X machines:
+
+Individual packages will just need the setup of the spack configuration as follows:
+
+source $HOME/spack/share/spack/setup-env.sh
+
+Then any package can be rebuilt doing:
+
+spack install <name_of_the_package>
 
 # List of external DUNE packages
 
