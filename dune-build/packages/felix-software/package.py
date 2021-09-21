@@ -19,7 +19,8 @@ class FelixSoftware(Package):
     depends_on('qt@5.15.2', type='build')
     depends_on('intel-tbb@2020.3', type='build')
     depends_on('yaml-cpp@0.7.0', type='build')
-    depends_on('zeromq@4.1.8', type='build')
+    depends_on('czmq@4.1.1', type='build')
+    depends_on('cppzmq@4.3.0', type='build')
 
     def install(self, spec, prefix):
 #        install('*',prefix)
