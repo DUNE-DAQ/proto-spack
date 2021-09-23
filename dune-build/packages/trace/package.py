@@ -32,9 +32,12 @@ class Trace(CMakePackage):
 
     version('stable', branch='stable')
     version('master', branch='master')
-#    version('3.15.09', commit='f429a6a8b52925c31678cab5643f67df16f06fd5')
+
 
     patch('install-exec.diff', when='3.15.09')
     patch('install-scripts.diff', when='stable')
 
-#    depends_on('cetmodules@1.01.01:', when='3.15.09', type='build')
+   variant('build_type', default='RelWithDebInfo',
+            description='The build type to build',
+            values=('Debug', 'Release', 'RelWithDebInfo'))
+

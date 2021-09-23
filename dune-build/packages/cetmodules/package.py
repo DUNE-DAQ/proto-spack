@@ -23,6 +23,10 @@ class Cetmodules(CMakePackage):
     depends_on('py-sphinx-rtd-theme@0.5.2', type='build')
     depends_on('catch2@2.13.4', type='build')
 
+    variant('build_type', default='RelWithDebInfo',
+            description='The build type to build',
+            values=('Debug', 'Release', 'RelWithDebInfo'))
+
 
     @run_before('cmake')
     def fix_fix_man(self):

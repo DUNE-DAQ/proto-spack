@@ -38,6 +38,11 @@ class HepConcurrency(CMakePackage):
             multi=False,
             description='Use the specified C++ standard when building.')
 
+    variant('build_type', default='RelWithDebInfo',
+            description='The build type to build',
+            values=('Debug', 'Release', 'RelWithDebInfo'))
+
+
     patch('hep_concurrency.1.04.01.patch', when='@1.04.01')
 
     # Build-only dependencies.

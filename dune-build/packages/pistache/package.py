@@ -36,3 +36,7 @@ class Pistache(CMakePackage):
     version('master', branch='master')
     depends_on('openssl')
     depends_on('libpthread-stubs')
+
+    variant('build_type', default='RelWithDebInfo',
+            description='The build type to build',
+            values=('Debug', 'Release', 'RelWithDebInfo'))

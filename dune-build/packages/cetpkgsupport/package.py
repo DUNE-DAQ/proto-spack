@@ -20,3 +20,6 @@ class Cetpkgsupport(CMakePackage):
 
     depends_on('cmake@3.20.5')
 
+    variant('build_type', default='RelWithDebInfo',
+            description='The build type to build',
+            values=('Debug', 'Release', 'RelWithDebInfo'))
