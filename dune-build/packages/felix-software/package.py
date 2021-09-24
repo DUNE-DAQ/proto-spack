@@ -22,6 +22,12 @@ class FelixSoftware(Package):
     depends_on('czmq@4.1.1', type='build')
     depends_on('cppzmq@4.3.0', type='build')
 
+    config_args = [
+            '-{0}'.format('debug' if '+debug' in spec else 'release'),
+        ]
+
+
+
     def install(self, spec, prefix):
 #        install('*',prefix)
         copytree('.', prefix.software)
