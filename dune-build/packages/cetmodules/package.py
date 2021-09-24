@@ -17,7 +17,7 @@ class Cetmodules(CMakePackage):
 
     version('2.25.05', sha256='62a97e99233754ef4a6754d3a467dd2ee40f8cc993905d257e73f0abb0457bc2')
 
-    depends_on('cmake@3.20.5', type='build')
+    depends_on('cmake@3.20.5 build_type=Debug', when='build_type=Debug', type='build')
     depends_on('py-sphinx@4.1.2', type='build')
     depends_on('py-sphinxcontrib-moderncmakedomain@3.19', type='build')
     depends_on('py-sphinx-rtd-theme@0.5.2', type='build')

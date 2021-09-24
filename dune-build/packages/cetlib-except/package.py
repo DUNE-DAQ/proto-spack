@@ -46,9 +46,9 @@ class CetlibExcept(CMakePackage):
             values=('Debug', 'Release', 'RelWithDebInfo'))
 
 
-    depends_on('cmake@3.20.5:', type='build')
-    depends_on('cetmodules@2.25.05', type='build')
-    depends_on('cetpkgsupport', type=('build','run'))
+    depends_on('cmake@3.20.5 build_type=Debug', when='build_type=Debug', type='build')
+    depends_on('cetmodules@2.25.05 build_type=Debug', when='build_type=Debug', type='build')
+    depends_on('cetpkgsupport build_type=Debug', when='build_type=Debug', type=('build','run'))
     depends_on('catch2@2.13.4', type=('build','run'))
 
     if 'SPACKDEV_GENERATOR' in os.environ:

@@ -10,7 +10,7 @@ class IpbusSoftware(Package):
 
     version('2.8.0', sha256='c452d4763fd8badd00cb7aa39174b4c53a2b5ac645245e553deaad882dff3c10')
 
-    depends_on('boost@1.75.0', type='build')
+    depends_on('boost@1.75.0 build_type=Debug', when='build_type=Debug', type='build')
     depends_on('pugixml@1.11.4', type='build')
     depends_on('gettext@0.21', type=('build', 'link', 'run'))
     depends_on('py-pybind11@2.6.2', type=('build', 'link', 'run'))
