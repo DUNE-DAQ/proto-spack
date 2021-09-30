@@ -52,13 +52,13 @@ class Cetlib(CMakePackage):
 
 
     # Build-only dependencies.
-    depends_on('cmake@3.20.5 build_type=Debug', when='build_type=Debug', type='build')
+    depends_on('cmake@3.20.5', type='build')
     depends_on('cetmodules@2.25.05', type='build')
     depends_on('catch2@2.13.4:', type=('build', 'link'))
     depends_on('intel-tbb@2020.3', type=('build', 'link'))
 
     # Build / link dependencies.
-    depends_on('boost@1.75.0 build_type=Debug', when='build_type=Debug')
+    depends_on('boost@1.75.0+debug', when='build_type=Debug')
     depends_on('sqlite@3.35.5')
     depends_on('cetlib-except build_type=Debug', when='build_type=Debug')
     depends_on('hep-concurrency build_type=Debug', when='build_type=Debug')

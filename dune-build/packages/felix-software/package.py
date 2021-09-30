@@ -13,23 +13,18 @@ class FelixSoftware(Package):
     version('master', branch='master')
 
 
-    depends_on('boost@1.75.0 build_type=Debug', when='build_type=Debug', type='build')
-    depends_on('python@3.8.11 --with-pydebug', when='build_type=Debug', type='build')
-    depends_on('cmake@3.20.5 build_type=Debug', when='build_type=Debug', type='build')
-    depends_on('qt@5.15.2 build_type=Debug', when='build_type=Debug', type='build')
+    depends_on('boost@1.75.0', type='build')
+    depends_on('python@3.8.11', type='build')
+    depends_on('cmake@3.20.5', type='build')
+    depends_on('qt@5.15.2', type='build')
     depends_on('intel-tbb@2020.3', type='build')
     depends_on('yaml-cpp@0.7.0', type='build')
     depends_on('czmq@4.1.1', type='build')
     depends_on('cppzmq@4.3.0', type='build')
 
-    config_args = [
-            '-{0}'.format('debug' if '+debug' in spec else 'release'),
-        ]
-
-
 
     def install(self, spec, prefix):
-#        install('*',prefix)
+
         copytree('.', prefix.software)
 
         with working_dir(prefix.software):

@@ -37,7 +37,7 @@ class Trace(CMakePackage):
     patch('install-exec.diff', when='3.15.09')
     patch('install-scripts.diff', when='stable')
 
-   variant('build_type', default='RelWithDebInfo',
+    variant('build_type', default='RelWithDebInfo',
             description='The build type to build',
             values=('Debug', 'Release', 'RelWithDebInfo'))
 
