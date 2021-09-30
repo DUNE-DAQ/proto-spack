@@ -37,3 +37,5 @@ spack load logging@dunedaq-v2.8.0
 spack load cmdlib@dunedaq-v2.8.0
 spack load opmonlib@dunedaq-v2.8.0
 spack load rcif@dunedaq-v2.8.0
+spack load appfwk@dunedaq-v2.8.0
+spack load listrev@dunedaq-v2.8.0

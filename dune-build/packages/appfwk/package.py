@@ -28,3 +28,5 @@ class Appfwk(CMakePackage):
     depends_on('opmonlib')
     depends_on('nlohmann-json')
 
+    def setup_run_environment(self, env):
+        env.prepend_path('CET_PLUGIN_PATH', self.prefix.lib + "64")
