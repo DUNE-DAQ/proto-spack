@@ -21,5 +21,7 @@ class Rcif(CMakePackage):
     depends_on("cmdlib")
     depends_on("opmonlib")
 
+    depends_on("py-moo")
+
     def setup_run_environment(self, env):
         env.prepend_path('CET_PLUGIN_PATH', self.prefix.lib + "64")

@@ -23,5 +23,7 @@ class Listrev(CMakePackage):
     depends_on("appfwk")
     depends_on("opmonlib")
 
+    depends_on("py-moo")
+
     def setup_run_environment(self, env):
         env.prepend_path('CET_PLUGIN_PATH', self.prefix.lib + "64")

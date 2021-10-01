@@ -32,6 +32,7 @@ spack load hep-concurrency
 spack load cetlib-except
 spack load cetlib
 spack load trace@v3_16_02
+spack load py-moo
 spack load ers@dunedaq-v2.8.0
 spack load logging@dunedaq-v2.8.0
 spack load cmdlib@dunedaq-v2.8.0
