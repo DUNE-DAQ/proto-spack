@@ -13,6 +13,12 @@ export EDITOR=/usr/bin/emacs
 
 source spack/share/spack/setup-env.sh
 
+cd ~/proto-spack
+echo "JCF, Oct-4-2021: don't worry if you see \"Repository is already registered \" error message(s) below"
+spack repo add dune-build 
+spack repo add dune_daqpackages 
+cd -
+
 spack compiler find
 spack load gcc@8.2.0
 source proto-spack/compiler-setup.sh
@@ -24,7 +30,7 @@ spack load pistache
 spack load highfive@2.2.2
 spack load cppzmq@4.3.0
 spack load msgpack-c@3.3.0
-spack load /lrrb52w  # py-pybind11@2.6.2
+spack load py-pybind11@2.6.2
 spack load ipbus-software@2.8.0
 spack load libzmq@4.3.4
 spack load felix-software

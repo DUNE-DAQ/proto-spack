@@ -25,7 +25,7 @@ if [[ "$?" != 0 ]]; then
     return 3
 fi
 
-packagefile=dune-build/packages/$name/package.py
+packagefile=dune_daqpackages/packages/$name/package.py
 
 if ! [[ -e $packagefile ]]; then
     echo "The \"spack create $url\" command should have created $packagefile but didn't; returning..." >&2
