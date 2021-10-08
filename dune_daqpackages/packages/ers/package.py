@@ -18,7 +18,8 @@ class Ers(CMakePackage):
     version('dunedaq-v2.8.0', sha256='41679c231ffb6a7be83d4d9662c563ff1824e46bf0095e7fa93c5a86fcd3639a', extension='tar.gz')
 
     depends_on('daq-cmake')
-    depends_on('boost +context +container cxxstd=14')
+    depends_on('boost')
+    depends_on('py-pybind11')
 
     def setup_run_environment(self, env):
         env.prepend_path('CET_PLUGIN_PATH', self.prefix.lib + "64")
