@@ -39,6 +39,9 @@ class IpbusSoftware(Package):
     def install(self, spec, prefix):
 #        make('Set=uhal')
         dest=prefix+"/opt/cactus"
+        install('uhalConfig.cmake',dest)
+        install('uhalConfigVersion.cmake',dest)
+        install('uhalTargets.cmake',dest)
         make()
 #        make('install')
         make('prefix=' + dest, 'install') 
