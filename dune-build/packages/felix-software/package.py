@@ -57,6 +57,9 @@ class FelixSoftware(Package):
             os.system('pushd ftools && git checkout 0dc8aca && popd')
             ftools_dir=prefix+"/software/ftools/"
             install('CMakeLists.txt',ftools_dir)
+            install('felixConfig.cmake',prefix)
+            install('felixConfigVersion.cmake',prefix)
+            install('felixTargets.cmake',prefix)
             os.system('git clone https://gitlab.cern.ch/atlas-tdaq-felix/external-catch.git external/catch')
             os.system('pushd external/catch && git checkout 6a9aa08 && popd')
             os.system('git clone ssh://git@gitlab.cern.ch:7999/atlas-tdaq-felix/client-template.git')
