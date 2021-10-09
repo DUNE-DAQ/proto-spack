@@ -79,31 +79,57 @@ spack install <package_name>@<version_number>
 
 for example: spack py-pybind11@2.6.2
 
-## John's work notes
+## Setting up the DUNE-DAQ packages
 
-Doing the following, you can set up a work area and build cmdlib using Spack and not ups. Upon logging in to epdtdi-spack-build03:
+As of the most recent non-documentation commit (e3376157c989c, Oct-8-2021) it's possible to recreate the listrev demo found in the ["Running" section of the daq-buildtools documentation](https://dune-daq-sw.readthedocs.io/en/latest/packages/daq-buildtools/#running), except instead of using ups packages you'll be using spack packages. To see this (and to learn a bit more about the work done getting DUNE-DAQ packages spackified), log in to epdtdi-spack-build03 and do the following to start working in my (JCF) area:
 ```
-. home/spacknp/jcfree/source_me
+export HOME=/home/spacknp/jcfree
 cd ~
+source spack/share/spack/setup-env.sh
 ```
-Probably on top of the externals, a special cetlib-friendly version of daq-cmake (from the `johnfreeman/daq-buildtools_issue161` branch) and the dunedaq-v2.8.0 versions of ers
-and logging will also be installed. If not, then you can install them
-using their `package.py`'s which have been added to
-`dune-build/packages`. Also note I've created a `trace@v3_16_02`; this
-is the same TRACE version as used in the dunedaq-v2.8.0 release but
-with a patch which removes the dependency on cetmodules - a dependency
-that ruins the `TRACEConfig.cmake` file which gets produced when TRACE
-is built.
+Now set up an environment for yourself. Let's pretend you call it `MyArea`:
+```
+spack env list   # Optional, tells you if there's an existing environment which already uses your name
+spack env create MyArea
+spack env activate MyArea
+```
+In your environment, no packages are yet loaded (`spack find`). They (probably) _are_ installed, but the environment is ignoring them. However, you can still get info on them. E.g., 
+```
+spack info dune-daqpackages
+```
+...where `dune-daqpackages` is a "dummy" package whose job it is to pull in other packages (see [here](https://spack.readthedocs.io/en/latest/workflows.html#dummy-packages) for more on this approach). You can also directly look at the `package.py` file which defines `dune-daqpackages`:
+```
+spack edit dune-daqpackages
+```
+...though don't edit it without consulting me first. 
 
-Assuming **daq-cmake@issue161**, **trace@v3_16_02**, **ers@dunedaq-v2.8.0** and **logging@dunedaq-v2.8.0**
-are installed, you can load all the Spack packages you need via:
+Now let's load the package:
 ```
-. proto-spack/spack-setup-and-load.sh
+spack load dune-daqpackages@dunedaq-v2.8.0
 ```
-...which is essentially a modified fork of `/home/spacknp/spack-build.sh`. 
+It's possible that if I've been playing around with the packages that it's currently uninstalled, in which case you'll get a message like
+```
+==> Error: Spec 'dune-daqpackages@dunedaq-v2.8.0' matches no installed packages.
+```
+in this case, first install it, and then perform the load:
+```
+spack install dune-daqpackages@dunedaq-v2.8.0
+spack load dune-daqpackages@dunedaq-v2.8.0
+```
+Now if you run `spack find` you'll see DUNE DAQ packages up through listrev on the chain. We can also get `spack find` to be more informative. E.g., `spack find -N` will tell you which repo each package belongs to. `builtin` means it's outside our purview, `dune-build` corresponds to the DUNE external packages (folly, etc.) and `dune_daqpackages` corresponds to the DAQ packages (cmdlib, etc.). `spack repo list` will tell you which repos are available. `spack find -d dune-daqpackages@dunedaq-v2.8.0` will tell you how the dependencies for our dummy package work in spack. 
 
-Now set up the daq-buildtools environment using
-`daq-buildtools/env.sh` and `dbt-create.sh`. When you `cd` into the
-new workarea, run `dbt-workarea-env-spack`. You'll now be able to
-clone the dunedaq-v2.8.0 tag of cmdlib and build it...entirely against
-Spack packages, _not_ ups packages. For that matter, there's also a Spack version of cmdlib, **cmdlib@dunedaq-v2.8.0**. The logical next step is to build appfwk on top of this Spack stack but there are currently Boost incompatibilies which appear to be related to folly using Boost 1.77 and appfwk using an older version of Boost. 
+I should add that there are currently (Oct-9-2021) a couple of differences between the `package.py`'s I have for the externals vs. what Patricia did. E.g., for folly (`spack edit folly`) you'll see that I build folly as a shared library and also have a patch which Phil created last year which prevents a linking error related to gflags. Also note I've created a `trace@v3_16_02`; this is the same TRACE version as used in the dunedaq-v2.8.0 release but with a patch which removes the dependency on cetmodules - a dependency that ruins the `TRACEConfig.cmake` file which gets produced when TRACE is built.
+
+If you want to run listrev, you can now just do the following:
+```
+daq_application -n pippo -c stdin://$HOME/Documents/list-reversal-app.json
+```
+If you want to perform development, you can just set up a work area like so:
+```
+cd ~
+. daq-buildtools/env.sh
+dbt-create.sh dunedaq-v2.8.0 <name of work area>
+cd <name of work area>
+dbt-workarea-env-spack
+```
+and then develop normally. E.g., you can build `dataformats`. This won't, of course, currently (Oct-9-2021) work for all packages because some of the externals are lacking CMake config files. 
