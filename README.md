@@ -86,6 +86,9 @@ As of the most recent non-documentation commit (e3376157c989c, Oct-8-2021) it's 
 export HOME=/home/spacknp/jcfree
 cd ~
 source spack/share/spack/setup-env.sh
+spack compiler find
+spack load gcc@8.2.0
+source proto-spack/compiler-setup.sh
 ```
 Now set up an environment for yourself. Let's pretend you call it `MyArea`:
 ```
