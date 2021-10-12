@@ -16,6 +16,9 @@ class DuneDaqpackages(BundlePackage):
 
     # In general placing higher-level dependencies first to prevent clashes
     depends_on('listrev@dunedaq-v2.8.0', when='@dunedaq-v2.8.0')
+    depends_on('timinglibs@dunedaq-v2.8.0', when='@dunedaq-v2.8.0')
+    depends_on('timing@dunedaq-v2.8.0', when='@dunedaq-v2.8.0')
+    depends_on('dfmessages@dunedaq-v2.8.0', when='@dunedaq-v2.8.0')
     depends_on('appfwk@dunedaq-v2.8.0', when='@dunedaq-v2.8.0')
     depends_on('rcif@dunedaq-v2.8.0', when='@dunedaq-v2.8.0')
     depends_on('cmdlib@dunedaq-v2.8.0', when='@dunedaq-v2.8.0')
@@ -26,6 +29,6 @@ class DuneDaqpackages(BundlePackage):
     depends_on('trace@v3_16_02', when='@dunedaq-v2.8.0')
     depends_on('py-moo')
     depends_on('py-pexpect') # Needed for traditional workareas
-    depends_on('timing@dunedaq-v2.8.0', when='@dunedaq-v2.8.0')
+
 
     #depends_on('restcmd@dunedaq-v2.8.0', when='@dunedaq-v2.8.0')
