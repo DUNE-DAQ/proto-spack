@@ -1,6 +1,7 @@
 from spack import *
 from spack.util.environment import is_system_path
 import sys
+import os
 
 class IpbusSoftware(Package):
 
@@ -36,12 +37,21 @@ class IpbusSoftware(Package):
         env.set('EXTERN_PUGIXML_INCLUDE_PREFIX', spec['pugixml'].prefix.include)
         env.set('EXTERN_PUGIXML_LIB_PREFIX', spec['pugixml'].prefix.lib64)
 
+    def patch(self):
+        copy(join_path(os.path.dirname(__file__),
+             "uhalConfig.cmake"), "uhalConfig.cmake")
+        copy(join_path(os.path.dirname(__file__),
+             "uhalConfigVersion.cmake"), "uhalConfigVersion.cmake")
+        copy(join_path(os.path.dirname(__file__),
+             "uhalTargets.cmake"), "uhalTargets.cmake")
+        
     def install(self, spec, prefix):
 #        make('Set=uhal')
         dest=prefix+"/opt/cactus"
-        install('uhalConfig.cmake',dest)
-        install('uhalConfigVersion.cmake',dest)
-        install('uhalTargets.cmake',dest)
+        #install('uhalConfig.cmake',prefix)
+        #install('uhalConfigVersion.cmake',prefix)
+        #install('uhalTargets.cmake',prefix)
         make()
 #        make('install')
-        make('prefix=' + dest, 'install') 
+        make('prefix=' + dest, 'install')
+
