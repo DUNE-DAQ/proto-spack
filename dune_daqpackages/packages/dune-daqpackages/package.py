@@ -16,6 +16,7 @@ class DuneDaqpackages(BundlePackage):
 
     # In general placing higher-level dependencies first to prevent clashes
     depends_on('listrev@dunedaq-v2.8.0', when='@dunedaq-v2.8.0')
+    depends_on('trigger@dunedaq-v2.8.0', when='@dunedaq-v2.8.0')
     depends_on('timinglibs@dunedaq-v2.8.0', when='@dunedaq-v2.8.0')
     depends_on('timing@dunedaq-v2.8.0', when='@dunedaq-v2.8.0')
     depends_on('dfmessages@dunedaq-v2.8.0', when='@dunedaq-v2.8.0')
