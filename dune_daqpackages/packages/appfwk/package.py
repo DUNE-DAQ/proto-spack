@@ -18,20 +18,17 @@ class Appfwk(CMakePackage):
     version("dunedaq-v2.8.0", sha256='348e629b9fe86b48690a6895cef46a0c6d67ab5a587514ce128e6dca156cc1cc', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/appfwk/legacy.tar.gz/dunedaq-v2.8.0")
 
     depends_on('daq-cmake')
-#    depends_on('boost +context +container cxxstd=14')
     depends_on('logging')
     depends_on('cetlib')
-    depends_on('folly')
+    depends_on('folly cxxstd=17')
     depends_on('cmdlib')
     depends_on('rcif')
     depends_on('opmonlib')
     depends_on('nlohmann-json')
 
     depends_on('py-moo')
-    depends_on('boost +context +container cxxstd=14')
+    depends_on('boost +context +container cxxstd=17' )
     depends_on('trace')
-
-
 
     def setup_run_environment(self, env):
         env.prepend_path('CET_PLUGIN_PATH', self.prefix.lib + "64")

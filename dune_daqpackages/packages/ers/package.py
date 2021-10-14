@@ -10,12 +10,12 @@ from spack import *
 class Ers(CMakePackage):
     """A fork of the ATLAS Error Reporting System"""
 
-    homepage = "https://dune-daq-sw.readthedocs.io/en/latest/packages/ers/"
+    homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.0/packages/ers/"
     url      = "https://codeload.github.com/DUNE-DAQ/ers/legacy.tar.gz/dunedaq-v2.8.0"
 
-    maintainers = ['jcfreeman2']
+    maintainers = ["jcfreeman2"]
 
-    version('dunedaq-v2.8.0', sha256='41679c231ffb6a7be83d4d9662c563ff1824e46bf0095e7fa93c5a86fcd3639a', extension='tar.gz')
+    version("dunedaq-v2.8.0", sha256='41679c231ffb6a7be83d4d9662c563ff1824e46bf0095e7fa93c5a86fcd3639a', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/ers/legacy.tar.gz/dunedaq-v2.8.0")
 
     depends_on('daq-cmake')
     depends_on('boost')
