@@ -22,4 +22,5 @@ class Dataformats(CMakePackage):
     depends_on("logging")
 
     def setup_run_environment(self, env):
+        env.prepend_path("DUNEDAQ_SHARE_PATH", self.prefix + "/share")
         env.prepend_path('CET_PLUGIN_PATH', self.prefix.lib + "64")

@@ -16,3 +16,6 @@ class DaqCmake(CMakePackage):
     maintainers = ["jcfreeman2"]
 
     version('issue161', branch='johnfreeman/daq-buildtools_issue161', git=url)
+
+    def setup_run_environment(self, env):
+        env.prepend_path('PYTHONPATH', self.prefix.lib + "64/python")
