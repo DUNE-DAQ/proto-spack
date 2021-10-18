@@ -3,36 +3,35 @@
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
-# ----------------------------------------------------------------------------
-# If you submit this package back to Spack as a pull request,
-# please first remove this boilerplate and all FIXME comments.
-#
-# This is a template package file for Spack.  We've put "FIXME"
-# next to all the things you'll want to change. Once you've handled
-# them, you can save this file and test your package like this:
-#
-#     spack install pistache
-#
-# You can edit this file again by typing:
-#
-#     spack edit pistache
-#
-# See the Spack documentation for more information on packaging.
-# ----------------------------------------------------------------------------
 
 from spack import *
 
 
 class Pistache(CMakePackage):
-    """FIXME: Put a proper description of your package here."""
+    """An elegant C++ REST framework."""
 
-    # FIXME: Add a proper url for your package's homepage here.
-    homepage = "https://github.com/oktal/pistache"
+    homepage = "http://pistache.io"
     url      = "https://github.com/oktal/pistache/archive/v0.0.0.tar.gz"
     git      = "https://github.com/oktal/pistache.git"
 
-    maintainers = ['brettviren']
+    maintainers = ['jcfreeman2']
 
     version('master', branch='master')
     depends_on('openssl')
     depends_on('libpthread-stubs')
+
+    def patch(self):
+        copy(join_path(os.path.dirname(__file__),
+             "pistacheConfig.cmake"), "pistacheConfig.cmake")
+        copy(join_path(os.path.dirname(__file__),
+             "pistacheConfigVersion.cmake"), "pistacheConfigVersion.cmake")
+        copy(join_path(os.path.dirname(__file__),
+             "pistacheTargets.cmake"), "pistacheTargets.cmake")
+        
+    def install(self, spec, prefix):
+        dest=prefix
+        make()
+        make('prefix=' + dest, 'install')
+        install('pistacheConfig.cmake',prefix)
+        install('pistacheConfigVersion.cmake',prefix)
+        install('pistacheTargets.cmake',prefix)
