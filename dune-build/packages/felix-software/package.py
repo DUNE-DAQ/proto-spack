@@ -7,16 +7,18 @@ import spack.util.environment as envutil
 
 class FelixSoftware(Package):
 
-    homepage = "https://gitlab.cern.ch/atlas-tdaq-felix/software"
-    git = "https://gitlab.cern.ch/atlas-tdaq-felix/software.git"
+    #homepage = "https://gitlab.cern.ch/atlas-tdaq-felix/software"
+    #git = "https://gitlab.cern.ch/atlas-tdaq-felix/software.git"
+    git = "file:///home/spacknp/jcfree/software"
 
+    #version('issue161', branch='johnfreeman/daq-buildtools_issue161')
     version('master', branch='master')
 
 
     depends_on('boost@1.75.0', type='build')
     depends_on('python@3.8.11', type='build')
     depends_on('cmake@3.20.5', type='build')
-    depends_on('qt@5.15.2', type='build')
+#    depends_on('qt@5.15.2', type='build')
     depends_on('intel-tbb@2020.3', type='build')
     depends_on('yaml-cpp@0.7.0', type='build')
     depends_on('czmq@4.1.1', type='build')
@@ -24,11 +26,11 @@ class FelixSoftware(Package):
 
     def patch(self):
         copy(join_path(os.path.dirname(__file__),
-             "felixConfig.cmake"), "felixConfig.cmake")
+             "felixConfig.cmake"), self.prefix + "/felixConfig.cmake")
         copy(join_path(os.path.dirname(__file__),
-             "felixConfigVersion.cmake"), "felixConfigVersion.cmake")
+             "felixConfigVersion.cmake"), self.prefix + "/felixConfigVersion.cmake")
         copy(join_path(os.path.dirname(__file__),
-             "felixTargets.cmake"), "felixTargets.cmake")
+             "felixTargets.cmake"), self.prefix + "/felixTargets.cmake")
 
     def install(self, spec, prefix):
 #        install('*',prefix)
@@ -74,4 +76,34 @@ class FelixSoftware(Package):
             os.system('cmake_config x86_64-centos7-gcc8-opt') 
             os.chdir("x86_64-centos7-gcc8-opt")
             make()
-                        
+
+        # JCF, Oct-21-2021
+        # Perform the same copies as in daq-release's build_felix.sh excepting ftools which may have build issues
+
+        with working_dir(prefix):
+        
+            for subdir in ["include", "lib", "bin"]:
+                os.mkdir(subdir)
+
+            copytree("software/drivers_rcc", "drivers_rcc")
+            copytree("software/regmap/regmap", "include/regmap")
+            copytree("software/drivers_rcc/cmem_rcc", "include/cmem_rcc")
+            copytree("software/drivers_rcc/rcc_error", "include/rcc_error")
+            copytree("software/flxcard/flxcard", "include/flxcard")
+            copytree("software/packetformat/packetformat", "include/packetformat")
+
+            os.system("cp -p software/drivers_rcc/lib64/lib* lib")
+            os.system("cp -r software/regmap/regmap include")
+            os.system("cp -r software/drivers_rcc/cmem_rcc  include")
+            os.system("cp -r software/drivers_rcc/rcc_error include")
+            os.system("cp -r software/flxcard/flxcard include")
+            os.system("cp -r software/packetformat/packetformat include")
+
+            os.system("cp software/drivers_rcc/lib64/lib* lib")
+            os.system("cp software/x86_64-centos7-gcc8-opt/flxcard/lib* lib")
+            os.system("cp software/x86_64-centos7-gcc8-opt/packetformat/lib* lib")
+            os.system("cp software/x86_64-centos7-gcc8-opt/regmap/lib* lib")
+            os.system("cp software/x86_64-centos7-gcc8-opt/drivers_rcc/lib* lib")
+            os.system("cp software/x86_64-centos7-gcc8-opt/flxcard/flx-* bin")
+
+            os.system("rm -rf software")
