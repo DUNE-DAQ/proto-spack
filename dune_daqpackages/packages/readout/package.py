@@ -28,7 +28,7 @@ class Readout(CMakePackage):
     depends_on("logging")
 
     depends_on('boost+context+container cxxstd=17')
-    depends_on("py-moo")
+    depends_on("py-moo", type='build')
 
 
 

@@ -26,7 +26,7 @@ class Appfwk(CMakePackage):
     depends_on('opmonlib')
     depends_on('nlohmann-json')
 
-    depends_on('py-moo')
+    depends_on('py-moo', type='build')
     depends_on('boost +context +container cxxstd=17' )
     depends_on('trace')
 

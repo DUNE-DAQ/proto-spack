@@ -23,7 +23,7 @@ class Dqm(CMakePackage):
     depends_on("dataformats")
     depends_on("timinglibs")
     depends_on("librdkafka")
-    depends_on("py-moo")
+    depends_on("py-moo", type='build')
     depends_on("cyrus-sasl")
 
     def setup_run_environment(self, env):

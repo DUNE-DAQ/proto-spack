@@ -23,7 +23,7 @@ class Timing(CMakePackage):
     depends_on('py-pybind11')
     depends_on('nlohmann-json')
     depends_on('uhal')
-    depends_on("py-moo")
+    depends_on("py-moo", type='build')
 
     def setup_run_environment(self, env):
         env.prepend_path("DUNEDAQ_SHARE_PATH", self.prefix + "/share")

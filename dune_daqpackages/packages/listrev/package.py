@@ -23,7 +23,7 @@ class Listrev(CMakePackage):
     depends_on("rcif")
     depends_on("opmonlib")
 
-    depends_on("py-moo")
+    depends_on("py-moo", type='build')
 
     def setup_run_environment(self, env):
         env.prepend_path("DUNEDAQ_SHARE_PATH", self.prefix + "/share")

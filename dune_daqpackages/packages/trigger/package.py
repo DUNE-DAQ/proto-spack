@@ -19,7 +19,7 @@ class Trigger(CMakePackage):
 
     depends_on("triggeralgs")
     depends_on("timinglibs")
-    depends_on("py-moo")
+    depends_on("py-moo", type='build')
 
     def setup_run_environment(self, env):
         env.prepend_path("DUNEDAQ_SHARE_PATH", self.prefix + "/share")

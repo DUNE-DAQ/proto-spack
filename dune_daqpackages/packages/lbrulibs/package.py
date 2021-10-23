@@ -22,7 +22,7 @@ class Lbrulibs(CMakePackage):
     depends_on("appfwk")
     depends_on("logging")
     depends_on("dataformats")
-    depends_on("py-moo")
+    depends_on("py-moo", type='build')
 
     def setup_run_environment(self, env):
         env.prepend_path("DUNEDAQ_SHARE_PATH", self.prefix + "/share")

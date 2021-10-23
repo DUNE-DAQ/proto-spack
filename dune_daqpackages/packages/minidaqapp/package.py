@@ -17,7 +17,7 @@ class Minidaqapp(CMakePackage):
 
     version("dunedaq-v2.8.0", sha256='1a3f5585ffa794634eaf68f3481510a912dbfc324f0a6706b74e71514330ebd2', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/minidaqapp/legacy.tar.gz/dunedaq-v2.8.0")
 
-    depends_on("py-moo")
+    depends_on("py-moo", type='build')
     depends_on("py-pybind11")
 
     depends_on("py-rich")

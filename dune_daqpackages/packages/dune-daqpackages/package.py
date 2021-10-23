@@ -37,8 +37,6 @@ class DuneDaqpackages(BundlePackage):
     depends_on('ers@dunedaq-v2.8.0', when='@dunedaq-v2.8.0')
     depends_on('daq-cmake@issue161', when='@dunedaq-v2.8.0')
     depends_on('trace@v3_16_02', when='@dunedaq-v2.8.0')
-    depends_on('py-moo')
-    depends_on('py-pexpect') # Needed for traditional workareas
 
     depends_on('listrev@dunedaq-v2.8.0', when='@dunedaq-v2.8.0')
 

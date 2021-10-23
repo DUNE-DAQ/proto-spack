@@ -22,7 +22,7 @@ class Nwqueueadapters(CMakePackage):
     depends_on("ipm")
     depends_on("serialization")
     depends_on("opmonlib")
-    depends_on("py-moo")
+    depends_on("py-moo", type='build')
 
     depends_on("nlohmann-json")
 

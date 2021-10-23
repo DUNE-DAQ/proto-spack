@@ -20,7 +20,7 @@ class Serialization(CMakePackage):
     depends_on("appfwk")
     depends_on("logging")
 
-    depends_on("py-moo")
+    depends_on("py-moo", type='build')
 
     depends_on("msgpack-c")
     depends_on("nlohmann-json")
