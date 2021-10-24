@@ -39,4 +39,4 @@ class DuneDaqpackages(BundlePackage):
     depends_on('trace@v3_16_02', when='@dunedaq-v2.8.0')
 
     depends_on('listrev@dunedaq-v2.8.0', when='@dunedaq-v2.8.0')
-
+    depends_on('restcmd@dunedaq-v2.8.0', when='@dunedaq-v2.8.0')
