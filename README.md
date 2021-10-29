@@ -92,19 +92,10 @@ dbt-workarea-env
 ```
 ...where `dbt-workarea-env` will load in `dune-daqpackages`. 
 
-Now we need to do two things: 
-
-(1) revert to the system ssh, rather than the one loaded in by the openssh spack package which openmpi (used by hdf5) loads at runtime. If we don't, then we'll have problems launching processes in the minidaqapp demo:
+Now we need to revert to the system ssh, rather than the one loaded in by the openssh spack package which openmpi (used by hdf5) loads at runtime. If we don't, then we'll have problems launching processes in the minidaqapp demo:
 ```
 spack unload openssh
 ```
-
-(2) set the `READOUT_SHARE` and `TIMING_SHARE` environment variables which are set for ups product setups but not (currently) for Spack product setups. The minidaqapp demo needs these:
-```
-export READOUT_SHARE=$( spack find -p readout | sed -r -n '$s/.*\s+(\S+)$/\1\/share/p' )
-export TIMING_SHARE=$( spack find -p timing | sed -r -n '$s/.*\s+(\S+)$/\1\/share/p' )
-```
-(Sed translation: take the last non-whitespace token in the last line of the output of `spack find -p readout`, which is the installation directory, and slap a "share" subdirectory on it)
 
 And at this point, you can run the demo by starting at point (7) of the [instructions for the minidaqapp demo](https://dune-daq-sw.readthedocs.io/en/latest/packages/minidaqapp/InstructionsForCasualUsers/)
 
