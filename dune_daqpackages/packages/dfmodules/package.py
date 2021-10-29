@@ -15,7 +15,7 @@ class Dfmodules(CMakePackage):
 
     maintainers = ["jcfreeman2"]
 
-    version("dunedaq-v2.8.0", sha256='c62c967508b0b24101eb529be47311ea6c0a26efa55f3f5a59a4942acff073a4', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/dfmodules/legacy.tar.gz/dunedaq-v2.8.0")
+    version("2.2.1", sha256='c62c967508b0b24101eb529be47311ea6c0a26efa55f3f5a59a4942acff073a4', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/dfmodules/legacy.tar.gz/dunedaq-v2.8.0")
     
     depends_on("readout")
     depends_on("trigger")

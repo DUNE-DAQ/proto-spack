@@ -14,7 +14,7 @@ class Opmonlib(CMakePackage):
 
     maintainers = ['jcfreeman2']
 
-    version('dunedaq-v2.8.0', sha256='5f6e170ee6713b94c1a571233e801ea636f6c5baa61a68ab79ee4eedca0a6934', extension='tar.gz', url="https://codeload.github.com/DUNE-DAQ/opmonlib/legacy.tar.gz/dunedaq-v2.8.0")
+    version('1.3.2', sha256='5f6e170ee6713b94c1a571233e801ea636f6c5baa61a68ab79ee4eedca0a6934', extension='tar.gz', url="https://codeload.github.com/DUNE-DAQ/opmonlib/legacy.tar.gz/dunedaq-v2.8.0")
 
     depends_on('daq-cmake')
     depends_on('cetlib')

@@ -15,7 +15,7 @@ class Triggeralgs(CMakePackage):
 
     maintainers = ["jcfreeman2"]
 
-    version("dunedaq-v2.8.0", sha256='51fbdbc71b77f1bfc0c80d7eb766b9b58bbf55186997cdd5d34cf859e02c31da', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/triggeralgs/legacy.tar.gz/dunedaq-v2.8.0")
+    version("0.3.0", sha256='51fbdbc71b77f1bfc0c80d7eb766b9b58bbf55186997cdd5d34cf859e02c31da', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/triggeralgs/legacy.tar.gz/dunedaq-v2.8.0")
 
     depends_on("nlohmann-json")
     depends_on("trace")

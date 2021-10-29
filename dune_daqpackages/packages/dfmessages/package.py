@@ -15,7 +15,7 @@ class Dfmessages(CMakePackage):
 
     maintainers = ["jcfreeman2"]
 
-    version("dunedaq-v2.8.0", sha256='80b6b78e1d36c6db19b623152a37138470e64cf750370483e0820bbaaa607603', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/dfmessages/legacy.tar.gz/dunedaq-v2.8.0")
+    version("2.2.0", sha256='80b6b78e1d36c6db19b623152a37138470e64cf750370483e0820bbaaa607603', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/dfmessages/legacy.tar.gz/dunedaq-v2.8.0")
 
     depends_on("nwqueueadapters")
     depends_on("serialization")

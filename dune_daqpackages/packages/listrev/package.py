@@ -16,7 +16,7 @@ class Listrev(CMakePackage):
 
     maintainers = ["jcfreeman2"]
 
-    version("dunedaq-v2.8.0", sha256='31250d8f002ce96ad90cd9cb18ab8bf9053abd57f591c019cd6b7c580ecd9236', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/listrev/legacy.tar.gz/dunedaq-v2.8.0")
+    version("2.1.4", sha256='31250d8f002ce96ad90cd9cb18ab8bf9053abd57f591c019cd6b7c580ecd9236', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/listrev/legacy.tar.gz/dunedaq-v2.8.0")
 
     depends_on("appfwk")
     depends_on("daq-cmake")

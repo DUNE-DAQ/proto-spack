@@ -15,7 +15,7 @@ class Logging(CMakePackage):
 
     maintainers = ["jcfreeman2"]
 
-    version("dunedaq-v2.8.0", sha256='fdf0e8a6ca4f223c584e18af25fad146401d1b6a2545cc62c6b1787e92d271f5', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/logging/legacy.tar.gz/dunedaq-v2.8.0")
+    version("1.0.3", sha256='fdf0e8a6ca4f223c584e18af25fad146401d1b6a2545cc62c6b1787e92d271f5', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/logging/legacy.tar.gz/dunedaq-v2.8.0")
 
     depends_on('daq-cmake')
     depends_on('trace')

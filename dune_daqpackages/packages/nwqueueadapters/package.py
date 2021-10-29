@@ -15,7 +15,7 @@ class Nwqueueadapters(CMakePackage):
 
     maintainers = ["jcfreeman2"]
 
-    version("dunedaq-v2.8.0", sha256='76298a304ac50b035bbab4ffc011f91a81037123740a69a0a795e015857298aa', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/nwqueueadapters/legacy.tar.gz/dunedaq-v2.8.0")
+    version("1.4.0", sha256='76298a304ac50b035bbab4ffc011f91a81037123740a69a0a795e015857298aa', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/nwqueueadapters/legacy.tar.gz/dunedaq-v2.8.0")
 
     depends_on("appfwk")
     depends_on("logging")
