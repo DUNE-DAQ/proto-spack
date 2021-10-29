@@ -22,7 +22,7 @@ class Restcmd(CMakePackage):
     depends_on("cmdlib")
 
     depends_on("nlohmann-json")
-    depends_on("pistache@dunedaq-v2.8.0", when="@dunedaq-v2.8.0")
+    depends_on("pistache@dunedaq-v2.8.0", when="@1.1.3")
 
     def setup_run_environment(self, env):
         env.set(self.__module__.split(".")[-1].upper().replace("-", "_") + "_SHARE", self.prefix + "/share" )
