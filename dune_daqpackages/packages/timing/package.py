@@ -17,9 +17,11 @@ class Timing(CMakePackage):
 
     version("5.5.1", sha256='17ef87db84ff85fecae32b01ceb755a5e43af46a883ed6fab3653e1cfaa6bc09', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/timing/legacy.tar.gz/dunedaq-v2.8.0")
 
+    depends_on('daq-cmake')
     depends_on('logging')
+    depends_on('ers')
     depends_on('opmonlib')
-    depends_on('boost')
+    depends_on('boost +context +container cxxstd=17' )
     depends_on('py-pybind11')
     depends_on('nlohmann-json')
     depends_on('uhal')

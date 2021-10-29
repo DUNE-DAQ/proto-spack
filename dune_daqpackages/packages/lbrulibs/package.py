@@ -17,6 +17,7 @@ class Lbrulibs(CMakePackage):
 
     version("dunedaq-v2.8.0", sha256='365e361c8736aa365d31e036f6cf7b8b0fc0c0dc04abf3e62bb83838a7afa65b', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/lbrulibs/legacy.tar.gz/dunedaq-v2.8.0")
 
+    depends_on("daq-cmake")
     depends_on("readout")
     depends_on("ipm")
     depends_on("appfwk")

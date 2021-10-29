@@ -17,6 +17,8 @@ class Timinglibs(CMakePackage):
 
     version("1.2.0", sha256='3e2bcde77e8104318443f2eebf59058555fd4aeec3a211d4d39eb105009e89d8', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/timinglibs/legacy.tar.gz/dunedaq-v2.8.0")
 
+    depends_on("daq-cmake")
+    depends_on("ers")
     depends_on("timing")
     depends_on("dfmessages")
     depends_on("uhal")

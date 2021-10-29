@@ -21,6 +21,7 @@ class Appfwk(CMakePackage):
     depends_on('logging')
     depends_on('cetlib')
     depends_on('folly cxxstd=17')
+    depends_on('ers')
     depends_on('cmdlib')
     depends_on('rcif')
     depends_on('opmonlib')

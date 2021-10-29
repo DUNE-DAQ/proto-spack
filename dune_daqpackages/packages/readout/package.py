@@ -17,6 +17,7 @@ class Readout(CMakePackage):
 
     version("1.4.2", sha256='4575251e054f56fd6c48280e3419cc92db436a681f6e30487126eaae42e84834', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/readout/legacy.tar.gz/dunedaq-v2.8.0")
 
+    depends_on("daq-cmake")
     depends_on("trigger")
     depends_on("timinglibs")
     depends_on("triggeralgs")

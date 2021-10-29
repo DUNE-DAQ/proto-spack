@@ -18,6 +18,7 @@ class Opmonlib(CMakePackage):
 
     depends_on('daq-cmake')
     depends_on('cetlib')
+    depends_on('ers')
     depends_on('logging')
     depends_on('nlohmann-json')
 

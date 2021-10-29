@@ -17,6 +17,7 @@ class Serialization(CMakePackage):
 
     version("1.2.2", sha256='008cf64f9ede712cca240908dd181e28008b510f2042a343f0079ae2c7640afe', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/serialization/legacy.tar.gz/dunedaq-v2.8.0")
 
+    depends_on("daq-cmake")
     depends_on("appfwk")
     depends_on("logging")
 

@@ -17,10 +17,12 @@ class Dfmessages(CMakePackage):
 
     version("2.2.0", sha256='80b6b78e1d36c6db19b623152a37138470e64cf750370483e0820bbaaa607603', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/dfmessages/legacy.tar.gz/dunedaq-v2.8.0")
 
+    depends_on("daq-cmake")
     depends_on("nwqueueadapters")
     depends_on("serialization")
     depends_on("dataformats")
-    depends_on("boost")
+
+    depends_on('boost +context +container cxxstd=17' )
 
     def setup_run_environment(self, env):
         env.set(self.__module__.split(".")[-1].upper().replace("-", "_") + "_SHARE", self.prefix + "/share" )

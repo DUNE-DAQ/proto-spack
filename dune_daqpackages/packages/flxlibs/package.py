@@ -17,6 +17,7 @@ class Flxlibs(CMakePackage):
 
     version("1.2.1", sha256='e506aa2b7e10aaaadb3fbac951eb28375ada2c6c65e99ccba5842303c3f59d2d', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/flxlibs/legacy.tar.gz/dunedaq-v2.8.0")
 
+    depends_on("daq-cmake")
     depends_on("appfwk")
     depends_on("logging")
     depends_on("dataformats")
