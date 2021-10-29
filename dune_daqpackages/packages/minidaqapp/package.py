@@ -23,5 +23,6 @@ class Minidaqapp(CMakePackage):
     depends_on("py-rich")
 
     def setup_run_environment(self, env):
+        env.set(self.__module__.split(".")[-1].upper().replace("-", "_") + "_SHARE", self.prefix + "/share" )
         env.prepend_path('PYTHONPATH', self.prefix.lib + "64/python")
 
