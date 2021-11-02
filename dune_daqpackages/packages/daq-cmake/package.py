@@ -17,5 +17,7 @@ class DaqCmake(CMakePackage):
 
     version('issue161', branch='johnfreeman/daq-buildtools_issue161', git=url)
 
+    depends_on("py-pybind11")
+
     def setup_run_environment(self, env):
         env.prepend_path('PYTHONPATH', self.prefix.lib + "64/python")
