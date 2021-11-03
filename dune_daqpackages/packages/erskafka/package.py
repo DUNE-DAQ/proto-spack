@@ -20,7 +20,7 @@ class Erskafka(CMakePackage):
     depends_on("daq-cmake")
     depends_on("ers")
     depends_on("librdkafka")
-    depends_on('boost +context +container cxxstd=17' )
+    depends_on('boost' )
     
     depends_on("openssl")
     depends_on("cyrus-sasl")

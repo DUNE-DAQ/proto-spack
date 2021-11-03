@@ -20,7 +20,7 @@ class Cmdlib(CMakePackage):
     depends_on('nlohmann-json')
     depends_on('cetlib')
     depends_on('logging')
-    depends_on('boost +context +container cxxstd=17' )
+    depends_on('boost' )
 
     depends_on('py-moo', type='build')
 

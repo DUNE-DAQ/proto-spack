@@ -22,7 +22,7 @@ class Dfmessages(CMakePackage):
     depends_on("serialization")
     depends_on("dataformats")
 
-    depends_on('boost +context +container cxxstd=17' )
+    depends_on('boost' )
 
     def setup_run_environment(self, env):
         env.set(self.__module__.split(".")[-1].upper().replace("-", "_") + "_SHARE", self.prefix + "/share" )

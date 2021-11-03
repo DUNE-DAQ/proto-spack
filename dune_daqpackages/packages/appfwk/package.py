@@ -28,7 +28,7 @@ class Appfwk(CMakePackage):
     depends_on('nlohmann-json')
 
     depends_on('py-moo', type='build')
-    depends_on('boost +context +container cxxstd=17' )
+    depends_on('boost' )
     depends_on('trace')
 
     def setup_run_environment(self, env):

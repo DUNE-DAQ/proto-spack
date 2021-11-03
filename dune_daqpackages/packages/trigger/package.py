@@ -28,7 +28,7 @@ class Trigger(CMakePackage):
     depends_on("nwqueueadapters")
     depends_on("dataformats")
 
-    depends_on('boost +context +container cxxstd=17' )
+    depends_on('boost' )
     depends_on("py-moo", type='build')
 
 

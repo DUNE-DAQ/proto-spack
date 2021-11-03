@@ -22,7 +22,7 @@ class Timing(CMakePackage):
     depends_on('ers')
     depends_on('opmonlib')
 
-    depends_on('boost +context +container cxxstd=17' )
+    depends_on('boost' )
     depends_on('nlohmann-json')
     depends_on('uhal')
     depends_on("py-moo", type='build')
