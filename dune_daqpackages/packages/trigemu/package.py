@@ -21,7 +21,6 @@ class Trigemu(CMakePackage):
     depends_on("appfwk")
     depends_on("logging")
     depends_on("dfmessages")
-    depends_on("py-pybind11")
 
     depends_on('py-moo', type='build')
 

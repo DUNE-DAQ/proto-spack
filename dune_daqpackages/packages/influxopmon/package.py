@@ -20,7 +20,6 @@ class Influxopmon(CMakePackage):
     depends_on("daq-cmake")
     depends_on("opmonlib")
     depends_on("cpr")
-    depends_on("py-pybind11")
 
     def setup_run_environment(self, env):
         env.set(self.__module__.split(".")[-1].upper().replace("-", "_") + "_SHARE", self.prefix + "/share" )

@@ -25,7 +25,6 @@ class Erskafka(CMakePackage):
     depends_on("openssl")
     depends_on("cyrus-sasl")
     depends_on("nlohmann-json")
-    depends_on("py-pybind11")
 
     def setup_run_environment(self, env):
         env.set(self.__module__.split(".")[-1].upper().replace("-", "_") + "_SHARE", self.prefix + "/share" )

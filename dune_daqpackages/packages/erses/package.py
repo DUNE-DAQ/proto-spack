@@ -19,9 +19,8 @@ class Erses(CMakePackage):
 
     depends_on("daq-cmake")
     depends_on("ers")
-
     depends_on("cpr")
-    depends_on("py-pybind11")
+
     depends_on("nlohmann-json")
 
     depends_on('py-moo', type='build')
