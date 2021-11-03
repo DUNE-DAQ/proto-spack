@@ -39,3 +39,8 @@ class DuneDaqpackages(BundlePackage):
 
     depends_on('listrev@2.1.4', when='@dunedaq-v2.8.0')
     depends_on('restcmd@1.1.3', when='@dunedaq-v2.8.0')
+    depends_on('erskafka@1.3.0', when='@dunedaq-v2.8.0')
+    depends_on('trigemu@2.3.0', when='@dunedaq-v2.8.0')
+    depends_on('erses@1.0.0', when='@dunedaq-v2.8.0')
+    depends_on('influxopmon@1.4.0', when='@dunedaq-v2.8.0')
+
