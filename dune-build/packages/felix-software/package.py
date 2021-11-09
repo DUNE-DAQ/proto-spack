@@ -33,7 +33,7 @@ class FelixSoftware(Package):
              "felixTargets.cmake"), self.prefix + "/felixTargets.cmake")
 
     def install(self, spec, prefix):
-#        install('*',prefix)
+
         copytree('.', prefix.software)
 
         with working_dir(prefix.software):

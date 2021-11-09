@@ -46,6 +46,11 @@ class Cetlib(CMakePackage):
             multi=False,
             description='Use the specified C++ standard when building.')
 
+    variant('build_type', default='RelWithDebInfo',
+            description='The build type to build',
+            values=('Debug', 'Release', 'RelWithDebInfo'))
+
+
     # Build-only dependencies.
     depends_on('cmake@3.20.5', type='build')
     depends_on('cetmodules@2.25.05', type='build')
@@ -53,10 +58,10 @@ class Cetlib(CMakePackage):
     depends_on('intel-tbb@2020.3', type=('build', 'link'))
 
     # Build / link dependencies.
-    depends_on('boost@1.75.0')
+    depends_on('boost@1.75.0+debug', when='build_type=Debug')
     depends_on('sqlite@3.35.5')
-    depends_on('cetlib-except')
-    depends_on('hep-concurrency', when='@3.0.5:')
+    depends_on('cetlib-except build_type=Debug', when='build_type=Debug')
+    depends_on('hep-concurrency build_type=Debug', when='build_type=Debug')
     depends_on('openssl@1.1.1l')
     depends_on('perl@5.34.0')  # Module skeletons, etc.
 

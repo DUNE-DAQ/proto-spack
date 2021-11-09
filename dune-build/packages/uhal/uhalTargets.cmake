@@ -42,15 +42,9 @@ unset(_expectedTargets)
 
 
 # Compute the installation prefix relative to this file.
-get_filename_component(_IMPORT_PREFIX "${CMAKE_CURRENT_LIST_FILE}" PATH)
 
 # JCF, Oct-21-2021: currently stashing the *.cmake files in the base of the uhal directory
-#get_filename_component(_IMPORT_PREFIX "${_IMPORT_PREFIX}" PATH)
-#get_filename_component(_IMPORT_PREFIX "${_IMPORT_PREFIX}" PATH)
-#get_filename_component(_IMPORT_PREFIX "${_IMPORT_PREFIX}" PATH)
-#if(_IMPORT_PREFIX STREQUAL "/")
-#  set(_IMPORT_PREFIX "")
-#endif()
+get_filename_component(_IMPORT_PREFIX "${CMAKE_CURRENT_LIST_FILE}" PATH)
 
 # Create imported target uhal::log
 add_library(uhal::log SHARED IMPORTED)

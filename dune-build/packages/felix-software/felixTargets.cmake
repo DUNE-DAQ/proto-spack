@@ -46,12 +46,6 @@ unset(_expectedTargets)
 # JCF, Oct-18-2021: currently stashing the cmake files used by find_package in the base of the installation directory for felix-software
 
 get_filename_component(_IMPORT_PREFIX "${CMAKE_CURRENT_LIST_FILE}" PATH)
-#get_filename_component(_IMPORT_PREFIX "${_IMPORT_PREFIX}" PATH)
-#get_filename_component(_IMPORT_PREFIX "${_IMPORT_PREFIX}" PATH)
-#get_filename_component(_IMPORT_PREFIX "${_IMPORT_PREFIX}" PATH)
-#if(_IMPORT_PREFIX STREQUAL "/")
-#  set(_IMPORT_PREFIX "")
-#endif()
 
 # Create imported target felix::cmem_rcc
 add_library(felix::cmem_rcc SHARED IMPORTED)
