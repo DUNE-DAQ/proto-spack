@@ -46,7 +46,3 @@ class Pistache(CMakePackage):
         super().install(spec, prefix)
         os.system(f"cp -p {self.build_directory}/src/*.so* {self.prefix}/lib64")
 
-    variant('build_type', default='RelWithDebInfo',
-            description='The build type to build',
-            values=('Debug', 'Release', 'RelWithDebInfo'))
-

@@ -46,24 +46,22 @@ class Cetlib(CMakePackage):
             multi=False,
             description='Use the specified C++ standard when building.')
 
-    variant('build_type', default='RelWithDebInfo',
-            description='The build type to build',
-            values=('Debug', 'Release', 'RelWithDebInfo'))
-
-
-    # Build-only dependencies.
     depends_on('cmake@3.20.5', type='build')
     depends_on('cetmodules@2.25.05', type='build')
     depends_on('catch2@2.13.4:', type=('build', 'link'))
     depends_on('intel-tbb@2020.3', type=('build', 'link'))
-
-    # Build / link dependencies.
-    depends_on('boost@1.75.0+debug', when='build_type=Debug')
     depends_on('sqlite@3.35.5')
-    depends_on('cetlib-except build_type=Debug', when='build_type=Debug')
-    depends_on('hep-concurrency build_type=Debug', when='build_type=Debug')
     depends_on('openssl@1.1.1l')
-    depends_on('perl@5.34.0')  # Module skeletons, etc.
+    depends_on('perl@5.34.0')  # Module skeletons, etc.  
+
+    for build_type in ["Debug", "Release", "RelWithDebInfo"]:
+        depends_on(f'cetlib-except build_type={build_type}', when=f'build_type={build_type}')
+        depends_on(f'hep-concurrency build_type={build_type}', when=f'build_type={build_type}')
+
+        if build_type != "Debug":
+            depends_on('boost@1.75.0', when=f'build_type={build_type}')            
+        else:
+            depends_on('boost@1.75.0+debug', when='build_type=Debug')
 
     if 'SPACKDEV_GENERATOR' in os.environ:
         generator = os.environ['SPACKDEV_GENERATOR']

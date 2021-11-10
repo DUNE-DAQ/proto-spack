@@ -38,17 +38,13 @@ class HepConcurrency(CMakePackage):
             multi=False,
             description='Use the specified C++ standard when building.')
 
-    variant('build_type', default='RelWithDebInfo',
-            description='The build type to build',
-            values=('Debug', 'Release', 'RelWithDebInfo'))
-
-
     patch('hep_concurrency.1.04.01.patch', when='@1.04.01')
 
     # Build-only dependencies.
-    depends_on('cmake@3.20.5 build_type=Debug', when='build_type=Debug', type='build')
-    depends_on('cetmodules@2.25.05 build_type=Debug', when='build_type=Debug', type='build')
-    depends_on('cetlib-except@1.07.04 build_type=Debug', when='build_type=Debug', type=('build','run'))
+    for build_type in ["Debug", "Release", "RelWithDebInfo"]:
+        depends_on(f'cmake@3.20.5 build_type={build_type}', when=f'build_type={build_type}', type='build')
+        depends_on(f'cetmodules@2.25.05 build_type={build_type}', when=f'build_type={build_type}', type='build')
+        depends_on(f'cetlib-except@1.07.04 build_type={build_type}', when=f'build_type={build_type}', type=('build','run'))
 
     # Build / link dependencies.
     depends_on('cppunit@1.14.0')

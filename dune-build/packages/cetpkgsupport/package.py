@@ -17,9 +17,5 @@ class Cetpkgsupport(CMakePackage):
 
     version('master', branch='master', git=homepage)
 
-
-    depends_on('cmake@3.20.5 build_type=Debug', when='build_type=Debug')
-
-    variant('build_type', default='RelWithDebInfo',
-            description='The build type to build',
-            values=('Debug', 'Release', 'RelWithDebInfo'))
+    for build_type in ["Debug", "Release", "RelWithDebInfo"]:
+        depends_on(f'cmake@3.20.5 build_type={build_type}', when=f'build_type={build_type}')

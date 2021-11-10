@@ -41,14 +41,11 @@ class CetlibExcept(CMakePackage):
             multi=False,
             description='Use the specified C++ standard when building.')
 
-    variant('build_type', default='RelWithDebInfo',
-            description='The build type to build',
-            values=('Debug', 'Release', 'RelWithDebInfo'))
-
-
-    depends_on('cmake@3.20.5 build_type=Debug', when='build_type=Debug', type='build')
-    depends_on('cetmodules@2.25.05 build_type=Debug', when='build_type=Debug', type='build')
-    depends_on('cetpkgsupport build_type=Debug', when='build_type=Debug', type=('build','run'))
+    for build_type in ["Debug", "Release", "RelWithDebInfo"]:
+        depends_on(f'cmake@3.20.5: build_type={build_type}', when=f'build_type={build_type}', type='build')
+        depends_on(f'cetmodules@2.25.05 build_type={build_type}', when=f'build_type={build_type}', type='build')
+        depends_on(f'cetpkgsupport build_type={build_type}', when=f'build_type={build_type}', type=('build','run'))
+    
     depends_on('catch2@2.13.4', type=('build','run'))
 
     if 'SPACKDEV_GENERATOR' in os.environ:
