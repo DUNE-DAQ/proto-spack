@@ -16,6 +16,3 @@ class Cetpkgsupport(CMakePackage):
     homepage = 'https://gitlab.cern.ch/dune-daq/experimental/externals/cetpkgsupport.git'
 
     version('master', branch='master', git=homepage)
-
-    for build_type in ["Debug", "Release", "RelWithDebInfo"]:
-        depends_on(f'cmake@3.20.5 build_type={build_type}', when=f'build_type={build_type}')

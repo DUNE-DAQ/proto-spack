@@ -40,9 +40,10 @@ class HepConcurrency(CMakePackage):
 
     patch('hep_concurrency.1.04.01.patch', when='@1.04.01')
 
+    depends_on(f'cmake@3.20.5', type='build')
+
     # Build-only dependencies.
     for build_type in ["Debug", "Release", "RelWithDebInfo"]:
-        depends_on(f'cmake@3.20.5 build_type={build_type}', when=f'build_type={build_type}', type='build')
         depends_on(f'cetmodules@2.25.05 build_type={build_type}', when=f'build_type={build_type}', type='build')
         depends_on(f'cetlib-except@1.07.04 build_type={build_type}', when=f'build_type={build_type}', type=('build','run'))
 
