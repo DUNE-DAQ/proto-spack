@@ -7,12 +7,9 @@ import spack.util.environment as envutil
 
 class FelixSoftware(Package):
 
-    #homepage = "https://gitlab.cern.ch/atlas-tdaq-felix/software"
-    #git = "https://gitlab.cern.ch/atlas-tdaq-felix/software.git"
-    git = "file:///home/spacknp/jcfree/software"
+    git = "https://github.com/jcfreeman2/intentionallyempty.git"
 
-    #version('issue161', branch='johnfreeman/daq-buildtools_issue161')
-    version('master', branch='master')
+    version("dunedaq-v2.8.0")
 
 
     depends_on('boost@1.75.0', type='build')
@@ -31,6 +28,8 @@ class FelixSoftware(Package):
              "felixConfigVersion.cmake"), self.prefix + "/felixConfigVersion.cmake")
         copy(join_path(os.path.dirname(__file__),
              "felixTargets.cmake"), self.prefix + "/felixTargets.cmake")
+        copy(join_path(os.path.dirname(__file__), 
+            "CMakeLists_base_of_software_repo.txt"), "CMakeLists.txt")
 
     def install(self, spec, prefix):
 
@@ -45,29 +44,37 @@ class FelixSoftware(Package):
             os.chdir(prefix.software)
 
 
+            print("About to clone https://gitlab.cern.ch/atlas-tdaq-felix/cmake_tdaq.git")
             os.system('git clone https://gitlab.cern.ch/atlas-tdaq-felix/cmake_tdaq.git')
             os.system('sed -i \'2 i set(NOLCG TRUE)\' cmake_tdaq/cmake/modules/FELIX.cmake')
             os.system('pushd cmake_tdaq && git checkout 3f176ac && popd')
  
+            print("About to clone https://gitlab.cern.ch/atlas-tdaq-felix/drivers_rcc.git")
             os.system('git clone https://gitlab.cern.ch/atlas-tdaq-felix/drivers_rcc.git')
             os.system('pushd drivers_rcc && git checkout a3a453e && popd')
+            print("About to clone https://gitlab.cern.ch/atlas-tdaq-felix/flxcard.git")
             os.system('git clone https://gitlab.cern.ch/atlas-tdaq-felix/flxcard.git')
             os.system('pushd flxcard && git checkout 8208c3a && popd')
 
             os.system('sed -i \'s/REG_PCIE_ENDPOINTS/REG_PCIE_ENDPOINT/g\' flxcard/src/FlxCard.cpp')
             os.system('sed -i \'s/BF_PCIE_ENDPOINTS/BF_PCIE_ENDPOINT/g\' flxcard/src/flx-info.cpp')
+            print("About to clone https://gitlab.cern.ch/atlas-tdaq-felix/regmap.git")
             os.system('git clone https://gitlab.cern.ch/atlas-tdaq-felix/regmap.git')
             os.system('pushd regmap && git checkout adc0025 && popd')
 
+            print("About to clone https://gitlab.cern.ch/atlas-tdaq-felix/packetformat.git")
             os.system('git clone https://gitlab.cern.ch/atlas-tdaq-felix/packetformat.git')
             os.system('pushd packetformat && git checkout 15c0fc1 && popd')
 
+            print("Aout to clone https://gitlab.cern.ch/atlas-tdaq-felix/ftools.git")
             os.system('git clone https://gitlab.cern.ch/atlas-tdaq-felix/ftools.git')
             os.system('pushd ftools && git checkout 0dc8aca && popd')
             ftools_dir=prefix+"/software/ftools/"
             install('CMakeLists.txt',ftools_dir)
             os.system('git clone https://gitlab.cern.ch/atlas-tdaq-felix/external-catch.git external/catch')
             os.system('pushd external/catch && git checkout 6a9aa08 && popd')
+
+            print("About to clone ssh://git@gitlab.cern.ch:7999/atlas-tdaq-felix/client-template.git")
             os.system('git clone ssh://git@gitlab.cern.ch:7999/atlas-tdaq-felix/client-template.git')
             os.system('pushd client-template && git checkout 390ec87 && popd')
 
