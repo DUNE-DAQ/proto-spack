@@ -16,11 +16,13 @@ class Dfmessages(CMakePackage):
     maintainers = ["jcfreeman2"]
 
     version("2.2.0", sha256='80b6b78e1d36c6db19b623152a37138470e64cf750370483e0820bbaaa607603', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/dfmessages/legacy.tar.gz/dunedaq-v2.8.0")
+    version("2.2.1", sha256='c442229fb445711edc5d4a7a6884ab35e2853a48c890dcdefba81bcb9c159540', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/dfmessages/legacy.tar.gz/dunedaq-v2.8.2")
 
     depends_on("daq-cmake")
     depends_on("nwqueueadapters")
     depends_on("serialization")
-    depends_on("dataformats")
+    depends_on("dataformats", when="@2.2.0")
+    depends_on("daqdataformats", when=f"@2.2.1:")
 
     depends_on('boost' )
 

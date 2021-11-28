@@ -16,6 +16,7 @@ class Trigger(CMakePackage):
     maintainers = ["jcfreeman2"]
 
     version("1.1.2", sha256='1d0e03e377ca975f5f9889109abe3d32acd83c980e80227f3d687f3730387995', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/trigger/legacy.tar.gz/dunedaq-v2.8.0")
+    version("1.1.3", sha256='cdbf0758aea8c0c46f3ac34b41e3ba84adb23a8cbdf396c1889cc433bac1dcfb', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/trigger/legacy.tar.gz/dunedaq-v2.8.2")
 
     depends_on("daq-cmake")
     depends_on("ers")
@@ -26,7 +27,8 @@ class Trigger(CMakePackage):
     depends_on("dfmessages")
     depends_on("timinglibs")
     depends_on("nwqueueadapters")
-    depends_on("dataformats")
+    depends_on("dataformats", when="@1.1.2")
+    depends_on("daqdataformats", when="@1.1.3:")
 
     depends_on('boost' )
     depends_on("py-moo", type='build')

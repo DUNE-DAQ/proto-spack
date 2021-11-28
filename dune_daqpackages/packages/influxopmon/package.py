@@ -16,6 +16,8 @@ class Influxopmon(CMakePackage):
     maintainers = ["jcfreeman2"]
 
     version("1.4.0", sha256='3ed4818efe6af45b8d4fe6bdb552ceeeed8b83c58e03f49d1abfa5bce5816c8a', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/influxopmon/legacy.tar.gz/dunedaq-v2.8.0")
+    version("1.5.2", sha256='17b4f7a9159af34373572e47a8d980d7eaa14611a77bb737351b93a6a4681b40', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/influxopmon/legacy.tar.gz/dunedaq-v2.8.2")
+
 
     depends_on("daq-cmake")
     depends_on("opmonlib")
