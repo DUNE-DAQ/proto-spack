@@ -89,14 +89,14 @@ spack install <package_name>@<version_number>
 
 for example: spack py-pybind11@2.6.2
 
-## Setting up the DUNE-DAQ packages and running the minidaqapp demo
+## Setting up the DUNE-DAQ packages and running the minidaqapp demo 
 
-As of the most recent non-documentation commit (8e82a57352e8e74fa2, Oct-27-2021) it's possible to recreate the minidaqapp demo found in the ["Instructions for Casual Users" section of the minidaqapp documentation](https://dune-daq-sw.readthedocs.io/en/latest/packages/minidaqapp/InstructionsForCasualUsers/), except instead of using ups packages you'll be using Spack packages. To see this (and to learn a bit more about the work done getting DUNE-DAQ packages spackified), log in to epdtdi-spack-build03 and do the following to start working in my (JCF) area:
+As of the most recent non-documentation commit (d5ced499f4d169ed277c7, Dec-6-2021) it's possible to recreate the minidaqapp demo found in the ["Instructions for Casual Users" section of the minidaqapp documentation](https://dune-daq-sw.readthedocs.io/en/latest/packages/minidaqapp/InstructionsForCasualUsers/), except instead of using ups packages you'll be using Spack packages. To see this (and to learn a bit more about the work done getting DUNE-DAQ packages spackified), log in to epdtdi-spack-build03 and do the following to start working in my (JCF) area:
 ```
 export HOME=/home/spacknp/jcfree
 cd ~
 . daq-buildtools/env.sh  # May want to check that you're on the johnfreeman/issue161_spack branch
-dbt-create.sh dunedaq-v2.8.0 <name of workarea>
+dbt-create.sh dunedaq-v2.8.2 <name of workarea>
 cd <name of workarea>
 dbt-workarea-env
 ```
