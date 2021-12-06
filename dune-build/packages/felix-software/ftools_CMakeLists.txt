@@ -7,7 +7,10 @@ include(FELIX)
 
 set(VERSION "0.0.0")
 
+#felix_add_external(json ${json_version})
+#felix_add_external(yaml-cpp ${yaml-cpp_version} ${BINARY_TAG})
 find_package(nlohmann_json)
+find_package(yaml-cpp)
 
 # Stuff for this project
 include_directories(src)
@@ -23,7 +26,7 @@ set(CMAKE_BUILD_TYPE Debug)
 # FlxTools library
 file(GLOB FLXTOOLS_SOURCES src/*.cpp)
 tdaq_add_library(FlxTools NOINSTALL ${FLXTOOLS_SOURCES})
-target_link_libraries(FlxTools FlxCard drivers_rcc nlohmann_json::nlohmann_json)
+target_link_libraries(FlxTools FlxCard drivers_rcc nlohmann_json::nlohmann_json yaml-cpp)
 
 # fcap: Tool to list some FLX-device capabilities
 tdaq_add_executable(fcap tools/fcap.cpp)
@@ -195,6 +198,10 @@ target_link_libraries(fscaid FlxCard FlxTools)
 # fsca-gpio-i2c-test: FELIX<->GBT-SCA multi-message test using GPIO and I2C
 tdaq_add_executable(fsca-gpio-i2c-test tools/fsca-gpio-i2c-test.cpp)
 target_link_libraries(fsca-gpio-i2c-test FlxCard FlxTools)
+
+# fscareply: Tool to parse a GBT-SCA reply frame
+tdaq_add_executable(fscareply tools/fscareply.cpp)
+target_link_libraries(fscareply FlxCard FlxTools)
 
 # fscatest: FELIX<->GBT-SCA multi-command test
 #tdaq_add_executable(fscatest tools/fscatest.cpp)
