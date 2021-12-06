@@ -21,7 +21,8 @@ class Trigemu(CMakePackage):
     depends_on("daq-cmake")
     depends_on("appfwk")
     depends_on("logging")
-    depends_on("dfmessages")
+    depends_on("dfmessages@2.2.0", when="@2.3.0")
+    depends_on("dfmessages@2.2.1", when="@2.3.1:")
 
     depends_on('py-moo', type='build')
 

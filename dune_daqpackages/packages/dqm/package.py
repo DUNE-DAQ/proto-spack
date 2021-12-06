@@ -16,12 +16,19 @@ class Dqm(CMakePackage):
     maintainers = ["jcfreeman2"]
 
     version("1.0.0", sha256='80e872d0e55130f9f560f19730e0934f2c6d211eab9af5112575717520a7cc32', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/dqm/legacy.tar.gz/dunedaq-v2.8.0")
+    version("1.1.6", sha256='1ca02fe6dcdf9d0ee7e1bda2f8e36e0fdf7786d28c5154c1b224c2cbec0901fa', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/dqm/legacy.tar.gz/dunedaq-v2.8.2")
 
     depends_on("daq-cmake")
     depends_on("readout")
     depends_on("appfwk")
     depends_on("opmonlib")
-    depends_on("dataformats")
+    depends_on("dataformats", when="@1.0.0")
+    depends_on("daqdataformats", when="@1.1.6:")
+    depends_on("detdataformats", when="@1.1.6:")
+    depends_on("detchannelmaps", when="@1.1.6:")
+    depends_on("highfive", when="@1.1.6:")
+    depends_on("ers", when="@1.1.6:")
+    depends_on("boost", when="@1.1.6:")
     depends_on("timinglibs")
     depends_on("librdkafka")
     depends_on("py-moo", type='build')

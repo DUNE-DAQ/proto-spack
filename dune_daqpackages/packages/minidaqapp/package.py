@@ -16,6 +16,7 @@ class Minidaqapp(CMakePackage):
     maintainers = ["jcfreeman2"]
 
     version("4.0.0", sha256='1a3f5585ffa794634eaf68f3481510a912dbfc324f0a6706b74e71514330ebd2', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/minidaqapp/legacy.tar.gz/dunedaq-v2.8.0")
+    version("4.1.3", sha256='8780b4148afd5b060d798f33a83abef45057a1ac40ebed5209e26dff1d574262', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/minidaqapp/legacy.tar.gz/dunedaq-v2.8.2")
 
     depends_on("daq-cmake")
     depends_on("py-moo", type='build')
