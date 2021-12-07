@@ -20,6 +20,7 @@ class Serialization(CMakePackage):
     depends_on("daq-cmake")
     depends_on("appfwk")
     depends_on("logging")
+    depends_on("ipm", when="@1.2.2")
 
     depends_on("py-moo", type='build')
 
