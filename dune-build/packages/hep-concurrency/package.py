@@ -31,6 +31,7 @@ class HepConcurrency(CMakePackage):
     url = 'https://gitlab.cern.ch/dune-daq/experimental/externals/hep_concurrency/-/archive/v1_07_04/hep_concurrency-v1_07_04.tar.gz'
 
     version('1.07.04', tag='v1_07_04', git=git_base, get_full_repo=True)  
+    version('1.05.00', tag='v1_05_00', git=git_base, get_full_repo=True)  
 
     variant('cxxstd',
             default='17',
@@ -40,17 +41,18 @@ class HepConcurrency(CMakePackage):
 
     patch('hep_concurrency.1.04.01.patch', when='@1.04.01')
 
-    depends_on(f'cmake@3.20.5', type='build')
+    depends_on('cmake', type='build')
 
     # Build-only dependencies.
     for build_type in ["Debug", "Release", "RelWithDebInfo"]:
-        depends_on(f'cetmodules@2.25.05 build_type={build_type}', when=f'build_type={build_type}', type='build')
-        depends_on(f'cetlib-except@1.07.04 build_type={build_type}', when=f'build_type={build_type}', type=('build','run'))
+        depends_on(f'cetmodules@2.25.05 build_type={build_type}', when=f'@1.07.04: build_type={build_type}', type='build')
+        depends_on(f'cetlib-except build_type={build_type}', when=f'build_type={build_type}', type=('build','run'))
 
     # Build / link dependencies.
-    depends_on('cppunit@1.14.0')
-    depends_on('catch2@2.13.4')
-    depends_on('intel-tbb@2020.3')
+    depends_on('cppunit@1.15.1')
+    depends_on('catch2@2.13.4', when='@1.07.04:')
+    depends_on('intel-tbb@2020.3', when='@1.07.04:')
+    depends_on('intel-tbb@2020.2', when='@1.05.00')
 
     if 'SPACKDEV_GENERATOR' in os.environ:
         generator = os.environ['SPACKDEV_GENERATOR']

@@ -36,6 +36,7 @@ class Cetlib(CMakePackage):
     url = 'https://gitlab.cern.ch/dune-daq/experimental/externals/cetlib/-/archive/v3_13_04/cetlib-v3_13_04.tar.gz'
 
     version('3.13.04', tag='v3_13_04', git=git_base, get_full_repo=True)
+    version('3.11.01', tag='v3_11_01', git=git_base, get_full_repo=True)
    
     patch('cetlib-notests.patch', when='@develop')
     patch('cetlib_openssl_spack.patch')
@@ -46,22 +47,29 @@ class Cetlib(CMakePackage):
             multi=False,
             description='Use the specified C++ standard when building.')
 
-    depends_on('cmake@3.20.5', type='build')
-    depends_on('cetmodules@2.25.05', type='build')
-    depends_on('catch2@2.13.4:', type=('build', 'link'))
-    depends_on('intel-tbb@2020.3', type=('build', 'link'))
-    depends_on('sqlite@3.35.5')
+    depends_on('cmake', type='build')
+    depends_on('cetmodules@2.25.05', when="@3.13.04:", type='build')
+    depends_on('catch2@2.13.4:', when="@3.13.04:", type=('build', 'link'))
+    depends_on('intel-tbb@2020.3', when="@3.13.04:", type=('build', 'link'))
+    depends_on('intel-tbb@2020.2', when="@3.11.01", type=('build', 'link'))
+    depends_on('sqlite@3.35.5', when="@3.13.04:", type=('build', 'link'))
+    depends_on('sqlite@3.32.03', when="@3.11.01", type=('build', 'link'))
     depends_on('openssl@1.1.1l')
     depends_on('perl@5.34.0')  # Module skeletons, etc.  
 
     for build_type in ["Debug", "Release", "RelWithDebInfo"]:
+        depends_on(f'cetlib-except@1.05.00 build_type={build_type}', when=f'@3.11.01 build_type={build_type}')
         depends_on(f'cetlib-except build_type={build_type}', when=f'build_type={build_type}')
+
+        depends_on(f'hep-concurrency@1.05.00 build_type={build_type}', when=f'@3.11.01 build_type={build_type}')
         depends_on(f'hep-concurrency build_type={build_type}', when=f'build_type={build_type}')
 
         if build_type != "Debug":
-            depends_on('boost@1.75.0', when=f'build_type={build_type}')            
+            depends_on('boost@1.73.0', when=f'@3.13.04: build_type={build_type}')            
+            depends_on('boost@1.73.0', when=f'@3.11.01 build_type={build_type}')            
         else:
-            depends_on('boost@1.75.0+debug', when='build_type=Debug')
+            depends_on('boost@1.73.0+debug', when='@3.13.04: build_type=Debug')
+            depends_on('boost@1.73.0+debug', when='@3.11.01 build_type=Debug')
 
     if 'SPACKDEV_GENERATOR' in os.environ:
         generator = os.environ['SPACKDEV_GENERATOR']

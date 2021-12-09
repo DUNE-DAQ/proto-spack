@@ -31,7 +31,7 @@ class Dfmodules(CMakePackage):
     depends_on("logging")
     depends_on("py-moo", type='build')
 
-    depends_on("highfive@2.2.2")
+    depends_on("highfive")
     depends_on("boost")
 
     # DBT_DEBUG is used by daq-cmake to set compiler options 

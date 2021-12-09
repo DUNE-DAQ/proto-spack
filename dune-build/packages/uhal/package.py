@@ -6,18 +6,18 @@ import os
 class Uhal(Package):
 
     homepage = "https://github.com/ipbus/"
-    url      = "https://github.com/ipbus/ipbus-software/archive/refs/tags/v2.8.0.tar.gz"
+    url      = "https://codeload.github.com/ipbus/ipbus-software/tar.gz/refs/tags/v2.8.1"
 
-
-    version('2.8.0', sha256='c452d4763fd8badd00cb7aa39174b4c53a2b5ac645245e553deaad882dff3c10')
+    version('2.8.1', sha256='73f26639a16ea65cecd367045ad0767a7eb4f5f8f488df1bbf121fc47aec3142', extension='tar.gz')
 
     #depends_on('boost@1.75.0+debug', type='build')
-    depends_on('boost@1.75.0', type='build')
-    depends_on('pugixml@1.11.4', type='build')
+    depends_on('boost', type='build')
+    depends_on('pugixml@1.11', type='build')
     depends_on('gettext@0.21', type=('build', 'link', 'run'))
-    depends_on('py-pybind11@2.6.2', type=('build', 'link', 'run'))
+    depends_on('py-pybind11', type=('build', 'link', 'run'))
 
-    patch('ipbus_2.patch', when='@2.8.0')
+    #patch('ipbus_2.patch', when='@2.8.0')
+    patch('ipbus_2.patch', when='@2.8.1')
 
     def setup_build_environment(self,env):
         spec=self.spec

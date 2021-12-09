@@ -13,13 +13,13 @@ class FelixSoftware(Package):
 
 
     depends_on('boost', type='build')
-    depends_on('python@3.8.11:', type='build')
-    depends_on('cmake@3.20.5:', type='build')
+    depends_on('python', type='build')
+    depends_on('cmake', type='build')
 #    depends_on('qt@5.15.2', type='build')
-    depends_on('intel-tbb@2020.3', type='build')
-    depends_on('yaml-cpp@0.7.0', type='build')
+#    depends_on('intel-tbb', type='build')
+    depends_on('yaml-cpp@0.6.3', type='build')
     depends_on('czmq@4.1.1', type='build')
-    depends_on('cppzmq@4.3.0', type='build')
+    depends_on('cppzmq', type='build')
     depends_on('py-pybind11', type=('build', 'link', 'run'))
     depends_on("nlohmann-json")
 
@@ -102,15 +102,6 @@ class FelixSoftware(Package):
             copytree("software/drivers_rcc/rcc_error", "include/rcc_error")
             copytree("software/flxcard/flxcard", "include/flxcard")
             copytree("software/packetformat/packetformat", "include/packetformat")
-
-
-#            os.system("cp -p software/drivers_rcc/lib64/lib* lib")
-#            os.system("cp -r software/regmap/regmap include")
-#            os.system("cp -r software/drivers_rcc/cmem_rcc  include")
-#            os.system("cp -r software/drivers_rcc/rcc_error include")
-#            os.system("cp -r software/flxcard/flxcard include")
-#            os.system("cp -r software/flxcard_py/flxcard_py include")
-#            os.system("cp -r software/packetformat/packetformat include")
 
             os.system("cp software/drivers_rcc/lib64/lib* lib")
             os.system("cp software/x86_64-centos7-gcc8-opt/flxcard/lib* lib")
