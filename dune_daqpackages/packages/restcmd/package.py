@@ -15,6 +15,8 @@ class Restcmd(CMakePackage):
 
     maintainers = ["jcfreeman2"]
 
+    version("develop", branch="develop", git=url)
+
     version("1.1.3", sha256='840b5a0e115e9699100706b860c7438213917b401f7881ab3f60fe6179b9cfd2', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/restcmd/legacy.tar.gz/dunedaq-v2.8.0")
 
     depends_on("daq-cmake")

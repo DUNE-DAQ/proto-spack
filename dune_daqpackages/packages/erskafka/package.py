@@ -15,6 +15,8 @@ class Erskafka(CMakePackage):
 
     maintainers = ["jcfreeman2"]
 
+    version("develop", branch="develop", git=url)
+
     version("1.3.0", sha256='166dbdc9cf1b37d9b1c0ae89fac977d113ebb90dd6b72499a85ab90b814b3100', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/erskafka/legacy.tar.gz/dunedaq-v2.8.0")
 
     depends_on("daq-cmake")

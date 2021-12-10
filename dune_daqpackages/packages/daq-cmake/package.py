@@ -15,7 +15,7 @@ class DaqCmake(CMakePackage):
 
     maintainers = ["jcfreeman2"]
 
-    version('develop', branch='develop', git=url)
+    version("develop", branch="develop", git=url)
 
     depends_on("py-pybind11")
 

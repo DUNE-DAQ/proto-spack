@@ -15,6 +15,8 @@ class Lbrulibs(CMakePackage):
 
     maintainers = ["jcfreeman2"]
 
+    version("develop", branch="develop", git=url)
+
     version("1.0.3", sha256='365e361c8736aa365d31e036f6cf7b8b0fc0c0dc04abf3e62bb83838a7afa65b', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/lbrulibs/legacy.tar.gz/dunedaq-v2.8.0")
     version("1.0.5", sha256='70171acdacd6e4fedde5b61e0464433d02948b552445205ebe3f60fd22d66eec', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/lbrulibs/legacy.tar.gz/dunedaq-v2.8.2")
 

@@ -15,6 +15,8 @@ class Rcif(CMakePackage):
 
     maintainers = ["jcfreeman2"]
 
+    version("develop", branch="develop", git=url)
+
     version("1.1.1", sha256='e69765efe1eeaffe9c44047b48be481c603c632c48ae00c2e444203217b43a63', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/rcif/legacy.tar.gz/dunedaq-v2.8.0")
 
     depends_on("daq-cmake")

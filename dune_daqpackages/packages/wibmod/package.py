@@ -15,6 +15,8 @@ class Wibmod(CMakePackage):
 
     maintainers = ["jcfreeman2"]
 
+    version("develop", branch="develop", git=url)
+
     version("1.2.3", sha256='b61aed5c68eb51d8559df3e8bc19e7971bbe16b26d29aa22312f98020f28c266', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/wibmod/legacy.tar.gz/dunedaq-v2.8.2")
 
     depends_on("ers")

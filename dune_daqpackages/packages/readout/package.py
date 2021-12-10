@@ -15,6 +15,8 @@ class Readout(CMakePackage):
 
     maintainers = ["jcfreeman2"]
 
+    version("develop", branch="develop", git=url)
+
     version("1.4.2", sha256='4575251e054f56fd6c48280e3419cc92db436a681f6e30487126eaae42e84834', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/readout/legacy.tar.gz/dunedaq-v2.8.0")
     version("1.4.5", sha256='cf3165590a9557883d7e278403e2afa1e4d6bd83459fb1e95938917b4c3d9aef', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/readout/legacy.tar.gz/dunedaq-v2.8.2")
 

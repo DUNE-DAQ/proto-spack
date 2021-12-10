@@ -15,6 +15,8 @@ class Erses(CMakePackage):
 
     maintainers = ["jcfreeman2"]
 
+    version("develop", branch="develop", git=url)
+
     version("1.0.0", sha256='cc171ad7ad870901b296d4c814f96efe732cb332611fb5d5b5ee7d2e52775168', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/erses/legacy.tar.gz/dunedaq-v2.8.0")
 
     depends_on("daq-cmake")

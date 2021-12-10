@@ -15,6 +15,8 @@ class Kafkaopmon(CMakePackage):
 
     maintainers = ["jcfreeman2"]
 
+    version("develop", branch="develop", git=url)
+
     version("1.3.0", sha256='434b0bfa0ceb83f0665f66f5d242a63956b5b81259c4135edd7c84ba198a08c8', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/kafkaopmon/legacy.tar.gz/dunedaq-v2.8.2")
 
     depends_on("daq-cmake")

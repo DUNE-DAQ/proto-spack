@@ -15,6 +15,8 @@ class Dataformats(CMakePackage):
 
     maintainers = ["jcfreeman2"]
 
+    version("develop", branch="develop", git=url)
+
     version("3.0.0", sha256='6da3f65d645792bc022468e27bf16d3f9c4f844fa08a5634e5f6cb1f850cf4ef', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/dataformats/legacy.tar.gz/dunedaq-v2.8.0")
 
     depends_on("daq-cmake")

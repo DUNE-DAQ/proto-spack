@@ -15,6 +15,8 @@ class Daqdataformats(CMakePackage):
 
     maintainers = ["jcfreeman2"]
 
+    version("develop", branch="develop", git=url)
+
     version("3.2.1", sha256='c5ac6c1df84e59be6fe185e94793e1a9e8d1380b7ce4d848442e2f2fa6e6effb', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/daqdataformats/legacy.tar.gz/dunedaq-v2.8.2")
 
     depends_on("daq-cmake")

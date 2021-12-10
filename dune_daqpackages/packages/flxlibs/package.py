@@ -15,6 +15,8 @@ class Flxlibs(CMakePackage):
 
     maintainers = ["jcfreeman2"]
 
+    version("develop", branch="develop", git=url)
+
     version("1.2.1", sha256='e506aa2b7e10aaaadb3fbac951eb28375ada2c6c65e99ccba5842303c3f59d2d', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/flxlibs/legacy.tar.gz/dunedaq-v2.8.0")
     version("1.2.3", sha256='c36b770072db26dad98f6262bcc15deed7e4af26b0d3aed18dc2b3e2b4fb1c97', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/flxlibs/legacy.tar.gz/dunedaq-v2.8.2")
 

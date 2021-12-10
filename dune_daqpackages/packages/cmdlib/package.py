@@ -15,6 +15,8 @@ class Cmdlib(CMakePackage):
     
     maintainers = ['jcfreeman2']
 
+    version("develop", branch="develop", git=url)
+
     version('1.1.4', sha256='049a6de55b4a53a9c101a268a521cd0c5086acadab8e490d29c8918de3d17723', extension='tar.gz', url="https://codeload.github.com/DUNE-DAQ/cmdlib/legacy.tar.gz/dunedaq-v2.8.0")
 
     depends_on('daq-cmake')

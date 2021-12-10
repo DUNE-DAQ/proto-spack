@@ -15,6 +15,8 @@ class Detchannelmaps(CMakePackage):
 
     maintainers = ["jcfreeman2"]
 
+    version("develop", branch="develop", git=url)
+
     version("1.0.2", sha256='e0e673b6772c99354ea4347fbb9f61e2a1b32b072ea5e13d7f66341fa21e3c70', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/detchannelmaps/legacy.tar.gz/dunedaq-v2.8.2")
 
     depends_on("daq-cmake")

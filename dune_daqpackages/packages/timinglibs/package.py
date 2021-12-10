@@ -15,6 +15,8 @@ class Timinglibs(CMakePackage):
 
     maintainers = ["jcfreeman2"]
 
+    version("develop", branch="develop", git=url)
+
     version("1.2.0", sha256='3e2bcde77e8104318443f2eebf59058555fd4aeec3a211d4d39eb105009e89d8', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/timinglibs/legacy.tar.gz/dunedaq-v2.8.0")
     version("1.4.0", sha256='aa2a9ffc42d476b331d488ceb342c638ac9b465cf3a8531e26e9f0696cb92936', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/timinglibs/legacy.tar.gz/dunedaq-v2.8.2")
 

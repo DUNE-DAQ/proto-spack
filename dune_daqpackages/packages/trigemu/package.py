@@ -15,6 +15,8 @@ class Trigemu(CMakePackage):
 
     maintainers = ["jcfreeman2"]
 
+    version("develop", branch="develop", git=url)
+
     version("2.3.0", sha256='3caed5c248c919ccd958b5b910dcdfc25da9e909af4a01e77cd78bc1144dabe2', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/trigemu/legacy.tar.gz/dunedaq-v2.8.0")
     version("2.3.1", sha256='7d3de1e978d9011755905c214174fc69ca55ccc595a016b72aecbd7140871c97', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/trigemu/legacy.tar.gz/dunedaq-v2.8.2")
 

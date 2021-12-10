@@ -15,6 +15,8 @@ class Sspmodules(CMakePackage):
 
     maintainers = ["jcfreeman2"]
 
+    version("develop", branch="develop", git=url)
+
     version("1.0.2", sha256='e92a55c0367489c1d1390736722009c07df296b6dbe18d1a2cb984d877eea1a9', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/sspmodules/legacy.tar.gz/dunedaq-v2.8.2")
 
     depends_on("appfwk")
