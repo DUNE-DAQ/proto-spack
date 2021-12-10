@@ -11,7 +11,7 @@ class Readout(CMakePackage):
     """Upstream DAQ readout, DAQ modules, CCM interface implementations"""
 
     homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.0/packages/readout/"
-    url      = "https://codeload.github.com/DUNE-DAQ/readout/legacy.tar.gz/dunedaq-v2.8.0"
+    url =      "https://github.com/DUNE-DAQ/readout"
 
     maintainers = ["jcfreeman2"]
 

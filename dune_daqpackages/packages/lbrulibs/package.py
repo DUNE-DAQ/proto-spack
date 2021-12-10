@@ -11,7 +11,7 @@ class Lbrulibs(CMakePackage):
     """DAQ modules, utilities, and scripts for DUNE-ND Upstream DAQ Low Bandwidth Readout Unit"""
 
     homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.0/packages/lbrulibs/"
-    url      = "https://codeload.github.com/DUNE-DAQ/lbrulibs/legacy.tar.gz/dunedaq-v2.8.0"
+    url =      "https://github.com/DUNE-DAQ/lbrulibs"
 
     maintainers = ["jcfreeman2"]
 

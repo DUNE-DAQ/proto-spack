@@ -11,7 +11,7 @@ class Wibmod(CMakePackage):
     """WIB configuration and monitoring interface for DUNE's appfwk"""
 
     homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.2/packages/wibmod/"
-    url      = "https://codeload.github.com/DUNE-DAQ/wibmod/legacy.tar.gz/dunedaq-v2.8.2"
+    url =      "https://github.com/DUNE-DAQ/wibmod"
 
     maintainers = ["jcfreeman2"]
 

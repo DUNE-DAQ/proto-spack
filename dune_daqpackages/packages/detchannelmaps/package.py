@@ -11,7 +11,7 @@ class Detchannelmaps(CMakePackage):
     """DUNE detectors channel maps"""
 
     homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.2/packages/detchannelmaps/"
-    url      = "https://codeload.github.com/DUNE-DAQ/detchannelmaps/legacy.tar.gz/dunedaq-v2.8.2"
+    url =      "https://github.com/DUNE-DAQ/detchannelmaps"
 
     maintainers = ["jcfreeman2"]
 

@@ -12,7 +12,7 @@ class Listrev(CMakePackage):
     """Educational example of DAQ modules for new developers"""
 
     homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.0/packages/listrev/"
-    url      = "https://codeload.github.com/DUNE-DAQ/listrev/legacy.tar.gz/dunedaq-v2.8.0"
+    url =      "https://github.com/DUNE-DAQ/listrev"
 
     maintainers = ["jcfreeman2"]
 

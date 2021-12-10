@@ -11,6 +11,7 @@ class Opmonlib(CMakePackage):
     """Operational monitoring library"""
 
     homepage = "https://dune-daq-sw.readthedocs.io/en/latest/packages/opmonlib/"
+    url =      "https://github.com/DUNE-DAQ/opmonlib"
 
     maintainers = ['jcfreeman2']
 

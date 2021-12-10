@@ -11,7 +11,7 @@ class Rcif(CMakePackage):
     """Run Control related"""
 
     homepage = "https://github.com/DUNE-DAQ/rcif"
-    url      = "https://codeload.github.com/DUNE-DAQ/rcif/legacy.tar.gz/dunedaq-v2.8.0"
+    url =      "https://github.com/DUNE-DAQ/rcif"
 
     maintainers = ["jcfreeman2"]
 

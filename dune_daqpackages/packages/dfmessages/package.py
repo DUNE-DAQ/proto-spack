@@ -11,7 +11,7 @@ class Dfmessages(CMakePackage):
     """Dataflow messages"""
 
     homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.0/packages/dfmessages/"
-    url      = "https://codeload.github.com/DUNE-DAQ/dfmessages/legacy.tar.gz/dunedaq-v2.8.0"
+    url =      "https://github.com/DUNE-DAQ/dfmessages"
 
     maintainers = ["jcfreeman2"]
 

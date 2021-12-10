@@ -11,7 +11,7 @@ class Erskafka(CMakePackage):
     """The erskafka plugin"""
 
     homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.0/packages/erskafka/"
-    url      = "https://codeload.github.com/DUNE-DAQ/erskafka/legacy.tar.gz/dunedaq-v2.8.0"
+    url =      "https://github.com/DUNE-DAQ/erskafka"
 
     maintainers = ["jcfreeman2"]
 

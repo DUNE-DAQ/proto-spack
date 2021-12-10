@@ -11,7 +11,7 @@ class Restcmd(CMakePackage):
     """HTTP REST backend based CommandFacility"""
 
     homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.0/packages/restcmd/"
-    url      = "https://codeload.github.com/DUNE-DAQ/restcmd/legacy.tar.gz/dunedaq-v2.8.0"
+    url =      "https://github.com/DUNE-DAQ/restcmd"
 
     maintainers = ["jcfreeman2"]
 

@@ -11,7 +11,7 @@ class Timinglibs(CMakePackage):
     """Timing control and monitoring"""
 
     homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.0/packages/timinglibs/"
-    url      = "https://codeload.github.com/DUNE-DAQ/timinglibs/legacy.tar.gz/dunedaq-v2.8.0"
+    url =      "https://github.com/DUNE-DAQ/timinglibs"
 
     maintainers = ["jcfreeman2"]
 

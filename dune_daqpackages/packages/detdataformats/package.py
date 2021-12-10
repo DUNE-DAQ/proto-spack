@@ -11,7 +11,7 @@ class Detdataformats(CMakePackage):
     """DUNE detectors data formats"""
 
     homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.2/packages/detdataformats/"
-    url      = "https://codeload.github.com/DUNE-DAQ/detdataformats/legacy.tar.gz/dunedaq-v2.8.2"
+    url =      "https://github.com/DUNE-DAQ/detdataformats"
 
     maintainers = ["jcfreeman2"]
 

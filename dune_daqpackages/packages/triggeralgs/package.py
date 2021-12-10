@@ -11,7 +11,7 @@ class Triggeralgs(CMakePackage):
     """Trigger algorithms"""
 
     homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.0/packages/triggeralgs/"
-    url      = "https://codeload.github.com/DUNE-DAQ/triggeralgs/legacy.tar.gz/dunedaq-v2.8.0"
+    url =      "https://github.com/DUNE-DAQ/triggeralgs"
 
     maintainers = ["jcfreeman2"]
 

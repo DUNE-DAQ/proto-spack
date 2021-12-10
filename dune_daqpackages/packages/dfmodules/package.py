@@ -11,7 +11,7 @@ class Dfmodules(CMakePackage):
     """Dataflow Applications"""
 
     homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.0/packages/dfmodules/"
-    url      = "https://codeload.github.com/DUNE-DAQ/dfmodules/legacy.tar.gz/dunedaq-v2.8.0"
+    url =      "https://github.com/DUNE-DAQ/dfmodules"
 
     maintainers = ["jcfreeman2"]
 

@@ -11,7 +11,7 @@ class Appfwk(CMakePackage):
     """Home of daq_application and tools for writing DAQ modules"""
 
     homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.0/packages/appfwk/"
-    url      = "https://codeload.github.com/DUNE-DAQ/appfwk/legacy.tar.gz/dunedaq-v2.8.0"
+    url =      "https://github.com/DUNE-DAQ/appfwk"
 
     maintainers = ["jcfreeman2"]
 

@@ -11,7 +11,7 @@ class Hdf5libs(CMakePackage):
     """FIXME: Put a proper description of your package here."""
 
     homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.2/packages/hdf5libs/"
-    url      = "https://codeload.github.com/DUNE-DAQ/hdf5libs/legacy.tar.gz/dunedaq-v2.8.2"
+    url =      "https://github.com/DUNE-DAQ/hdf5libs"
 
     maintainers = ["jcfreeman2"]
 

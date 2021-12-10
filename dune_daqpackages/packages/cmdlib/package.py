@@ -11,6 +11,7 @@ class Cmdlib(CMakePackage):
     """Interfaces for commanded objects"""
 
     homepage = "https://dune-daq-sw.readthedocs.io/en/latest/packages/cmdlib/"
+    url =      "https://github.com/DUNE-DAQ/cmdlib"
     
     maintainers = ['jcfreeman2']
 

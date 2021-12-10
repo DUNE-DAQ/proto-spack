@@ -11,7 +11,7 @@ class Serialization(CMakePackage):
     """Utilities for C++ object serialization/deserialization"""
 
     homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.0/packages/serialization/"
-    url      = "https://codeload.github.com/DUNE-DAQ/serialization/legacy.tar.gz/dunedaq-v2.8.0"
+    url =      "https://github.com/DUNE-DAQ/serialization"
 
     maintainers = ["jcfreeman2"]
 

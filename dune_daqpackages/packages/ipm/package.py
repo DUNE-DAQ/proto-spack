@@ -11,7 +11,7 @@ class Ipm(CMakePackage):
     """Message passing between processes"""
 
     homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.0/packages/ipm/"
-    url      = "https://codeload.github.com/DUNE-DAQ/ipm/legacy.tar.gz/dunedaq-v2.8.0"
+    url =      "https://github.com/DUNE-DAQ/ipm"
 
     maintainers = ["jcfreeman2"]
 

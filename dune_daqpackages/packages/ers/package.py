@@ -11,7 +11,7 @@ class Ers(CMakePackage):
     """A fork of the ATLAS Error Reporting System"""
 
     homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.0/packages/ers/"
-    url      = "https://codeload.github.com/DUNE-DAQ/ers/legacy.tar.gz/dunedaq-v2.8.0"
+    url =      "https://github.com/DUNE-DAQ/ers"
 
     maintainers = ["jcfreeman2"]
 

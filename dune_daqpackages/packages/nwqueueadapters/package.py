@@ -11,7 +11,7 @@ class Nwqueueadapters(CMakePackage):
     """DAQ modules that connect appfwk queues to IPM network connections"""
 
     homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.0/packages/nwqueueadapters/"
-    url      = "https://codeload.github.com/DUNE-DAQ/nwqueueadapters/legacy.tar.gz/dunedaq-v2.8.0"
+    url =      "https://github.com/DUNE-DAQ/nwqueueadapters"
 
     maintainers = ["jcfreeman2"]
 

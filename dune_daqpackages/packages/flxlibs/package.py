@@ -11,7 +11,7 @@ class Flxlibs(CMakePackage):
     """DAQ modules, utilities, and scripts for Upstream FELIX Readout Software"""
 
     homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.0/packages/flxlibs/"
-    url      = "https://codeload.github.com/DUNE-DAQ/flxlibs/legacy.tar.gz/dunedaq-v2.8.0"
+    url =      "https://github.com/DUNE-DAQ/flxlibs"
 
     maintainers = ["jcfreeman2"]
 

@@ -11,7 +11,7 @@ class Sspmodules(CMakePackage):
     """SiPM Signal Processor (SSP) readout related modules and utilities"""
 
     homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.2/packages/sspmodules/"
-    url      = "https://codeload.github.com/DUNE-DAQ/sspmodules/legacy.tar.gz/dunedaq-v2.8.2"
+    url =      "https://github.com/DUNE-DAQ/sspmodules"
 
     maintainers = ["jcfreeman2"]
 

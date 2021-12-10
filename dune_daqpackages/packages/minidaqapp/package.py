@@ -11,7 +11,7 @@ class Minidaqapp(CMakePackage):
     """Application to read out Felix data and store it in HDF5 files on disk"""
 
     homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.0/packages/minidaqapp/"
-    url      = "https://codeload.github.com/DUNE-DAQ/minidaqapp/legacy.tar.gz/dunedaq-v2.8.0"
+    url =      "https://github.com/DUNE-DAQ/minidaqapp"
 
     maintainers = ["jcfreeman2"]
 

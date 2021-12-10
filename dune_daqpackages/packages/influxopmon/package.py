@@ -11,7 +11,7 @@ class Influxopmon(CMakePackage):
     """Influx database based plugin for operational monitoring"""
 
     homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.0/packages/influxopmon/"
-    url      = "https://codeload.github.com/DUNE-DAQ/influxopmon/legacy.tar.gz/dunedaq-v2.8.0"
+    url =      "https://github.com/DUNE-DAQ/influxopmon"
 
     maintainers = ["jcfreeman2"]
 

@@ -11,7 +11,7 @@ class Trigemu(CMakePackage):
     """Trigger decision emulator for readout application tests"""
 
     homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.0/packages/trigemu/"
-    url      = "https://codeload.github.com/DUNE-DAQ/trigemu/legacy.tar.gz/dunedaq-v2.8.0"
+    url =      "https://github.com/DUNE-DAQ/trigemu"
 
     maintainers = ["jcfreeman2"]
 

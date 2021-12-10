@@ -11,7 +11,7 @@ class Kafkaopmon(CMakePackage):
     """Converts JSON objects into Kafka messages"""
 
     homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.2/packages/kafkaopmon/"
-    url      = "https://codeload.github.com/DUNE-DAQ/kafkaopmon/legacy.tar.gz/dunedaq-v2.8.2"
+    url =      "https://github.com/DUNE-DAQ/kafkaopmon"
 
     maintainers = ["jcfreeman2"]
 

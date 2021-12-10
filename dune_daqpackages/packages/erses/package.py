@@ -11,7 +11,7 @@ class Erses(CMakePackage):
     """Insert ERS messages into a searchable database"""
 
     homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.0/packages/erses/"
-    url      = "https://codeload.github.com/DUNE-DAQ/erses/legacy.tar.gz/dunedaq-v2.8.0"
+    url =      "https://github.com/DUNE-DAQ/erses"
 
     maintainers = ["jcfreeman2"]
 

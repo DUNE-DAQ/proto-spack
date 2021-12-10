@@ -11,7 +11,7 @@ class Trigger(CMakePackage):
     """Modules that make up the DUNE FD DAQ trigger system"""
 
     homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.0/packages/trigger/"
-    url      = "https://codeload.github.com/DUNE-DAQ/trigger/legacy.tar.gz/dunedaq-v2.8.0"
+    url =      "https://github.com/DUNE-DAQ/trigger"
 
     maintainers = ["jcfreeman2"]
 

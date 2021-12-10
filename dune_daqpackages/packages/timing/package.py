@@ -11,7 +11,7 @@ class Timing(CMakePackage):
     """C++ interface to the timing firmware"""
 
     homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.0/packages/timing/"
-    url      = "https://codeload.github.com/DUNE-DAQ/timing/legacy.tar.gz/dunedaq-v2.8.0"
+    url =      "https://github.com/DUNE-DAQ/timing"
 
     maintainers = ["jcfreeman2"]
 

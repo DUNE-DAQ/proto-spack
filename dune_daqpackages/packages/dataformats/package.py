@@ -11,7 +11,7 @@ class Dataformats(CMakePackage):
     """Raw data reinterpretation utilities"""
 
     homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.0/packages/dataformats/"
-    url      = "https://codeload.github.com/DUNE-DAQ/dataformats/legacy.tar.gz/dunedaq-v2.8.0"
+    url =      "https://github.com/DUNE-DAQ/dataformats"
 
     maintainers = ["jcfreeman2"]
 

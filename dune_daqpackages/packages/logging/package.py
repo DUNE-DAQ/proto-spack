@@ -11,7 +11,7 @@ class Logging(CMakePackage):
     """Contains the functions DUNE DAQ packages use to output text"""
 
     homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.0/packages/logging/"
-    url      = "https://codeload.github.com/DUNE-DAQ/logging/legacy.tar.gz/dunedaq-v2.8.0"
+    url =      "https://github.com/DUNE-DAQ/logging"
 
     maintainers = ["jcfreeman2"]
 
