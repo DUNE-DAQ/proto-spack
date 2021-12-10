@@ -19,7 +19,6 @@ class Externals(BundlePackage):
     depends_on("boost@1.73.0 +context+container cxxstd=17", when="@dunedaq-v2.8.2")
     depends_on('folly cxxstd=17', when="@dunedaq-v2.8.2")    
     depends_on("cetlib@3.13.04", when="@dunedaq-v2.8.2")
-    depends_on("cetlib-except@1.07.04", when="@dunedaq-v2.8.2")
     depends_on("trace@3.16.02", when="@dunedaq-v2.8.2")
 
     depends_on('nlohmann-json@3.9.0', when="@dunedaq-v2.8.2")
