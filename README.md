@@ -51,6 +51,8 @@ Then any package can be rebuilt following the esample available at the section: 
 
 # List of external DUNE packages
 
+_JCF, Dec-9-2021: the following versions and locations have changed and are now obsolete_
+
 cetlib 3.11.01 -- Provided by the proto-spack repository
 
 cetmodules 2.25.05 -- Provided by the proto-spack repository
@@ -83,6 +85,8 @@ uhal 2.8.0 -- Provided by proto-spack repository with all dependencies
 
 ## Built example
 
+_JCF, Dec-9-2021: also obsolete_
+
 The dunedaq-spack repository is already added to the local spack configuration in both build machines. Therefore, once you have log in, you just need to build any of the mentioned packages executing the command:
 
 spack install <package_name>@<version_number>
@@ -109,5 +113,10 @@ spack unload openssh
 
 And at this point, you can run the demo by starting at point (7) of the [instructions for the minidaqapp demo](https://dune-daq-sw.readthedocs.io/en/latest/packages/minidaqapp/InstructionsForCasualUsers/)
 
-If you run `spack find` you'll see DUNE DAQ packages up through dune-daqpackages on the chain. We can also get `spack find` to be more informative. E.g., `spack find -N` will tell you which repo each package belongs to. `builtin` means it's outside our purview, `dune-build` corresponds to the DUNE external packages (folly, etc.) and `dune_daqpackages` corresponds to the DAQ packages (cmdlib, etc.). `spack repo list` will tell you which repos are available. `spack find -d dune-daqpackages@dunedaq-v2.8.0` will tell you how the dependencies for our dummy package work in spack. 
+If you run `spack find` you'll see DUNE DAQ packages up through dune-daqpackages on the chain. We can also get `spack find` to be more informative. E.g., `spack find -N` will tell you which repo each package belongs to. `builtin` means it's outside our purview, `dune-build` corresponds to the DUNE external packages (folly, etc.) and `dune_daqpackages` corresponds to the DAQ packages (cmdlib, etc.). `spack repo list` will tell you which repos are available. `spack find -d dune-daqpackages@dunedaq-v2.8.2 build_type=RelWithDebInfo` will tell you how the dependencies for our dummy package work in spack. 
 
+Note that as of Dec-9-2021, you can get `dbt-workarea-env` to work with Spack package sets if you're using the `johnfreeman/issue161_spack branch` branch of daq-buildtools; this is analogous to the standard ups behavior of `dbt-workarea-env` when you're using a versioned daq-buildtools. E.g., the following:
+```
+dbt-workarea-env -s externals@dunedaq-v2.8.2
+```
+...will load the external packages, but not the DUNE DAQ-specific packages, from the `dunedaq-v2.8.2` frozen release. 
