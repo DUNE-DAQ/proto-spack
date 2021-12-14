@@ -25,8 +25,11 @@ class Flxlibs(CMakePackage):
     depends_on("logging")
     depends_on("ers", when="@1.2.3:")
     depends_on("dataformats", when="@1.2.1")
-    depends_on("readout")
+    depends_on("readout", when="@:1.2.3")
+    depends_on("readoutlibs", when="@develop")
+    depends_on("fdreadoutlibs", when="@develop")
     depends_on("felix-software")
+    depends_on("opmonlib", when="@develop")
     depends_on("py-moo", type='build')
 
     # DBT_DEBUG is used by daq-cmake to set compiler options 

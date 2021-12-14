@@ -7,31 +7,30 @@
 from spack import *
 
 
-class Nwqueueadapters(CMakePackage):
-    """DAQ modules that connect appfwk queues to IPM network connections"""
+class Fdreadoutlibs(CMakePackage):
+    """Classes for working with far detector data (WIB, SSP, etc.)"""
 
-    homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.0/packages/nwqueueadapters/"
-    url =      "https://github.com/DUNE-DAQ/nwqueueadapters"
+    homepage = "https://github.com/DUNE-DAQ/fdreadoutlibs"
+    url      = "https://github.com/DUNE-DAQ/fdreadoutlibs"
 
-    maintainers = ["jcfreeman2"]
+    maintainers = ['jcfreeman2']
 
     version("develop", branch="develop", git=url)
 
-    version("1.4.0", sha256='76298a304ac50b035bbab4ffc011f91a81037123740a69a0a795e015857298aa', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/nwqueueadapters/legacy.tar.gz/dunedaq-v2.8.0")
+    depends_on("ers")
+    depends_on("appfwk")
+    depends_on("logging")
+    depends_on("opmonlib")
+    depends_on("readoutlibs")
+    depends_on("daqdataformats")
+    depends_on("detdataformats")
+    depends_on("trigger")
+    depends_on("triggeralgs")
+    depends_on('folly cxxstd=17')
+    depends_on("boost")
 
     depends_on("daq-cmake")
-    depends_on("appfwk")
-    depends_on("utilities", when="@develop")
-    depends_on("networkmanager", when="@develop")
-    depends_on("logging")
-    depends_on("ipm")
-    depends_on("serialization")
-    depends_on("opmonlib")
-    depends_on("ers", when="@develop")
-    depends_on("boost", when="@develop")
     depends_on("py-moo", type='build')
-
-    depends_on("nlohmann-json")
 
     # DBT_DEBUG is used by daq-cmake to set compiler options 
     def cmake_args(self): 

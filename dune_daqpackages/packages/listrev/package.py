@@ -24,6 +24,8 @@ class Listrev(CMakePackage):
     depends_on("daq-cmake")
     depends_on("rcif")
     depends_on("opmonlib")
+    depends_on("logging", when="@develop")
+    depends_on("ers", when="@develop")
 
     depends_on("py-moo", type='build')
 

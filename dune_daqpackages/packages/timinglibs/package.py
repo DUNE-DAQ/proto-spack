@@ -23,8 +23,7 @@ class Timinglibs(CMakePackage):
     depends_on("daq-cmake")
     depends_on("ers")
     depends_on("timing")
-    depends_on("dfmessages@2.2.0", when="@1.2.0")
-    depends_on("dfmessages@2.2.1", when="@1.4.0:")
+    depends_on("dfmessages")
     depends_on("uhal")
     depends_on("logging")
     depends_on("appfwk")
@@ -32,6 +31,8 @@ class Timinglibs(CMakePackage):
     depends_on("opmonlib")
     depends_on("cmdlib")
     depends_on("ers")
+    depends_on("networkmanager", when="@develop")
+    depends_on("boost", when="@develop")
     
     depends_on("nlohmann-json")
     depends_on("pugixml")

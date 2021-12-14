@@ -21,12 +21,17 @@ class Lbrulibs(CMakePackage):
     version("1.0.5", sha256='70171acdacd6e4fedde5b61e0464433d02948b552445205ebe3f60fd22d66eec', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/lbrulibs/legacy.tar.gz/dunedaq-v2.8.2")
 
     depends_on("daq-cmake")
-    depends_on("readout")
+    depends_on("readout", when="@:1.0.5")
+    depends_on("readoutlibs", when="@develop")
+    depends_on("ndreadoutlibs", when="@develop")
     depends_on("ipm")
     depends_on("appfwk")
     depends_on("logging")
+    depends_on("boost")
+    depends_on("ers", when="@develop")
     depends_on("dataformats", when="@1.0.3")
     depends_on("detdataformats", when="@1.0.5:")
+    depends_on("detdataformats", when="@develop")
     depends_on("py-moo", type='build')
 
     # DBT_DEBUG is used by daq-cmake to set compiler options 

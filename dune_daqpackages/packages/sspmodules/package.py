@@ -21,8 +21,12 @@ class Sspmodules(CMakePackage):
 
     depends_on("appfwk")
     depends_on("logging")
+    depends_on("ers", when="@develop")
     depends_on("detdataformats")
     depends_on("readout", when="@1.0.2")
+    depends_on("readoutlibs", when="@develop")
+    depends_on("fdreadoutlibs", when="@develop")
+    depends_on("opmonlib", when="@develop")
     depends_on("daq-cmake")
     depends_on('py-moo', type='build')
 

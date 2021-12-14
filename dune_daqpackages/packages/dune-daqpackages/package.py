@@ -14,6 +14,7 @@ class DuneDaqpackages(BundlePackage):
 
     version("dunedaq-v2.8.0")
     version("dunedaq-v2.8.2")
+    version("develop")
 
     variant('build_type', default='RelWithDebInfo',
             description='The build type to build',
@@ -89,3 +90,17 @@ class DuneDaqpackages(BundlePackage):
         depends_on(f'wibmod@1.2.3 build_type={build_type}', when=f'@dunedaq-v2.8.2 build_type={build_type}')
         depends_on(f'sspmodules@1.0.2 build_type={build_type}', when=f'@dunedaq-v2.8.2 build_type={build_type}')
         depends_on(f'hdf5libs@1.0.1 build_type={build_type}', when=f'@dunedaq-v2.8.2 build_type={build_type}')
+
+        
+        depends_on("externals@develop", when="@develop")
+
+        for pkg in ["minidaqapp", "dqm", "flxlibs", "readoutlibs", "fdreadoutlibs", \
+                    "ndreadoutlibs", "trigger", "triggeralgs", "timing", "timinglibs", \
+                    "dfmodules", "daqdataformats", "detdataformats", "detchannelmaps", \
+                    "dfmessages", "listrev", "ipm", "serialization", "appfwk", "rcif", \
+                    "cmdlib", "opmonlib", "logging", "ers", "daq-cmake", "listrev", \
+                    "restcmd", "erskafka", "trigemu", "erses", "influxopmon", "lbrulibs", \
+                    "kafkaopmon", "wibmod", "sspmodules", "hdf5libs", "readoutlibs", \
+                    "fdreadoutlibs", "ndreadoutlibs", "readoutmodules", "utilities", \
+                    "networkmanager", "nwqueueadapters"]:
+            depends_on(f'{pkg}@develop build_type={build_type}', when=f'@develop build_type={build_type}')

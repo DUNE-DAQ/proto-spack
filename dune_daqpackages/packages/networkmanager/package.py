@@ -7,7 +7,7 @@
 from spack import *
 
 
-class Networkmanager(Package):
+class Networkmanager(CMakePackage):
     """Provides an interface for performing network sends and receives directly from DAQ modules"""
 
     homepage = "https://github.com/DUNE-DAQ/networkmanager"
@@ -24,6 +24,9 @@ class Networkmanager(Package):
     depends_on("ers")
     depends_on("nlohmann-json")
     depends_on("boost")
+
+    depends_on("py-moo", type='build')
+    depends_on("daq-cmake")
 
     # DBT_DEBUG is used by daq-cmake to set compiler options 
     def cmake_args(self): 

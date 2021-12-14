@@ -24,6 +24,7 @@ class Cmdlib(CMakePackage):
     depends_on('cetlib')
     depends_on('logging')
     depends_on('boost' )
+    depends_on('ers', when="@develop")
 
     depends_on('py-moo', type='build')
 

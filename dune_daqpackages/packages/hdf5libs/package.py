@@ -25,6 +25,7 @@ class Hdf5libs(CMakePackage):
     depends_on("detdataformats")
     depends_on("detchannelmaps")
     depends_on("cetlib")
+    depends_on("ers", when="@develop")
     depends_on("daq-cmake")
     depends_on('py-moo', type='build')
 

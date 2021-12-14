@@ -7,7 +7,7 @@
 from spack import *
 
 
-class Utilities(Package):
+class Utilities(CMakePackage):
     """Self-explanatory"""
 
     homepage = "https://github.com/DUNE-DAQ/utilities"
@@ -21,6 +21,9 @@ class Utilities(Package):
     depends_on("logging")
     depends_on("boost")
     depends_on("ers")
+
+    depends_on("py-moo", type='build')
+    depends_on("daq-cmake")
 
     # DBT_DEBUG is used by daq-cmake to set compiler options 
     def cmake_args(self): 

@@ -24,7 +24,8 @@ class Dfmessages(CMakePackage):
     depends_on("nwqueueadapters")
     depends_on("serialization")
     depends_on("dataformats", when="@2.2.0")
-    depends_on("daqdataformats", when=f"@2.2.1:")
+    depends_on("daqdataformats", when="@2.2.1:")
+    depends_on("daqdataformats", when="@develop")
 
     depends_on('boost' )
 

@@ -12,7 +12,9 @@ class Systems(BundlePackage):
 
     homepage = "https://dune-daq-sw.readthedocs.io/en/latest/"
 
+    version("develop")
     version("dunedaq-v2.8.2")
 
     # Leaving gcc out until I figure out how best to handle this...
-    depends_on("python@3.8.3 +debug", when="@dunedaq-v2.8.2") # +debug is for gdb
+    for ver in ["develop", "dunedaq-v2.8.2"]:
+        depends_on("python@3.8.3 +debug", when=f"@{ver}") # +debug is for gdb
