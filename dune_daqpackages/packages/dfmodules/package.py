@@ -29,7 +29,7 @@ class Dfmodules(CMakePackage):
     depends_on("serialization")
     depends_on("appfwk")
     depends_on("opmonlib")
-    depends_on("networkmanager")
+    depends_on("networkmanager", when="@develop")
     depends_on("readoutlibs", when="@develop")
     depends_on("logging")
     depends_on("ers", when="@develop")

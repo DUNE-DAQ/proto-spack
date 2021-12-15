@@ -27,7 +27,7 @@ class Appfwk(CMakePackage):
     depends_on('ers')
     depends_on('cmdlib')
     depends_on('rcif')
-    depends_on('networkmanager')
+    depends_on('networkmanager', when='@develop')
     depends_on('opmonlib')
     depends_on('nlohmann-json')
 
