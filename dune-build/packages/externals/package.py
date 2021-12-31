@@ -12,14 +12,14 @@ class Externals(BundlePackage):
 
     homepage = "https://dune-daq-sw.readthedocs.io/en/latest/"
 
+    version("dunedaq-v2.9.0")
     version("dunedaq-v2.8.2")
     version("develop")
 
-    for ver in ["develop", "dunedaq-v2.8.2"]:
+    for ver in ["develop", "dunedaq-v2.8.2", "dunedaq-v2.9.0"]:
         depends_on("devtools@dunedaq-v2.8.2", when=f"@{ver}")
 
         depends_on("boost@1.73.0 +context+container cxxstd=17", when=f"@{ver}")
-        depends_on('folly cxxstd=17', when=f"@{ver}")    
         depends_on("cetlib@3.13.04", when=f"@{ver}")
         depends_on("trace@3.16.02", when=f"@{ver}")
 
@@ -36,3 +36,7 @@ class Externals(BundlePackage):
         depends_on('librdkafka@1.7.0', when=f"@{ver}")
         depends_on('protobuf@3.14.0', when=f"@{ver}")
 
+    
+    depends_on("folly@2021.12.13.00 cxxstd=17", when=f"@dunedaq-v2.9.0")
+    depends_on("folly@2021.05.24.00 cxxstd=17", when=f"@dunedaq-v2.8.2")
+    depends_on("folly@2021.05.24.00 cxxstd=17", when=f"@develop")
