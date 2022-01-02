@@ -10,13 +10,13 @@ from spack import *
 class Ipm(CMakePackage):
     """Message passing between processes"""
 
-    homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.0/packages/ipm/"
+    homepage = "https://dune-daq-sw.readthedocs.io/en/latest/packages/ipm/"
     url =      "https://github.com/DUNE-DAQ/ipm"
 
     maintainers = ["jcfreeman2"]
 
-    version("develop", branch="develop", git=url)
-
+    version("develop", branch="develop", git="https://github.com/DUNE-DAQ/ipm")
+    version("2.3.0", sha256="a4e2e08d0dc3624f6d76e911c211d32f40392bacbe8c34908ea81a69fa889f02", extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/ipm/legacy.tar.gz/dunedaq-v2.9.0")
     version("2.2.0", sha256='4c907785d5edfc9108a990653be4b991b25db2e594c6a31439cf5a1631a24c90', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/ipm/legacy.tar.gz/dunedaq-v2.8.0")
 
     depends_on("daq-cmake")
@@ -24,7 +24,9 @@ class Ipm(CMakePackage):
     depends_on("logging")
     depends_on("ers")
     depends_on("cetlib", when="@develop")
+    depends_on("cetlib", when="@2.3.0:")
     depends_on("boost", when="@develop")
+    depends_on("boost", when="@2.3.0:")
 
     depends_on("cppzmq")
     depends_on("nlohmann-json")

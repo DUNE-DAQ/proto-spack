@@ -10,15 +10,15 @@ from spack import *
 class Dfmessages(CMakePackage):
     """Dataflow messages"""
 
-    homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.0/packages/dfmessages/"
+    homepage = "https://dune-daq-sw.readthedocs.io/en/latest/packages/dfmessages/"
     url =      "https://github.com/DUNE-DAQ/dfmessages"
 
     maintainers = ["jcfreeman2"]
 
-    version("develop", branch="develop", git=url)
-
-    version("2.2.0", sha256='80b6b78e1d36c6db19b623152a37138470e64cf750370483e0820bbaaa607603', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/dfmessages/legacy.tar.gz/dunedaq-v2.8.0")
+    version("develop", branch="develop", git="https://github.com/DUNE-DAQ/dfmessages")
+    version("2.2.2", sha256="358d2e1ed266a790db34455091fc847d607a9a67e019839f7647062b113f2219", extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/dfmessages/legacy.tar.gz/dunedaq-v2.9.0")
     version("2.2.1", sha256='c442229fb445711edc5d4a7a6884ab35e2853a48c890dcdefba81bcb9c159540', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/dfmessages/legacy.tar.gz/dunedaq-v2.8.2")
+    version("2.2.0", sha256='80b6b78e1d36c6db19b623152a37138470e64cf750370483e0820bbaaa607603', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/dfmessages/legacy.tar.gz/dunedaq-v2.8.0")
 
     depends_on("daq-cmake")
     depends_on("nwqueueadapters")

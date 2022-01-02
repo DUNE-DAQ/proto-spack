@@ -15,8 +15,8 @@ class Cmdlib(CMakePackage):
     
     maintainers = ['jcfreeman2']
 
-    version("develop", branch="develop", git=url)
-
+    version("develop", branch="develop", git="https://github.com/DUNE-DAQ/cmdlib")
+    version("1.1.5", sha256="ce8d43e402b9d2abc0a166e11521612f80989c803502868ab6cb2784ab59ba5b", extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/cmdlib/legacy.tar.gz/dunedaq-v2.9.0")
     version('1.1.4', sha256='049a6de55b4a53a9c101a268a521cd0c5086acadab8e490d29c8918de3d17723', extension='tar.gz', url="https://codeload.github.com/DUNE-DAQ/cmdlib/legacy.tar.gz/dunedaq-v2.8.0")
 
     depends_on('daq-cmake')
@@ -25,6 +25,7 @@ class Cmdlib(CMakePackage):
     depends_on('logging')
     depends_on('boost' )
     depends_on('ers', when="@develop")
+    depends_on('ers', when="@1.1.5:")
 
     depends_on('py-moo', type='build')
 

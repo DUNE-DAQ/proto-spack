@@ -10,15 +10,16 @@ from spack import *
 class Triggeralgs(CMakePackage):
     """Trigger algorithms"""
 
-    homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.0/packages/triggeralgs/"
+    homepage = "https://dune-daq-sw.readthedocs.io/en/latest/packages/triggeralgs/"
     url =      "https://github.com/DUNE-DAQ/triggeralgs"
 
     maintainers = ["jcfreeman2"]
 
-    version("develop", branch="develop", git=url)
-
-    version("0.3.0", sha256='51fbdbc71b77f1bfc0c80d7eb766b9b58bbf55186997cdd5d34cf859e02c31da', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/triggeralgs/legacy.tar.gz/dunedaq-v2.8.0")
+    version("develop", branch="develop", git="https://github.com/DUNE-DAQ/triggeralgs")
+    version("0.3.3", sha256="6da270a7a770d48f317b0b5917cc34628cb32eb31b81253e17ec95b32314e4ad", extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/triggeralgs/legacy.tar.gz/dunedaq-v2.9.0")
     version("0.3.1", sha256='379dd49081e9443abd856a0bb6fddee1c5f06769be7a29371e48ddc843f50f66', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/triggeralgs/legacy.tar.gz/dunedaq-v2.8.2")
+    version("0.3.0", sha256='51fbdbc71b77f1bfc0c80d7eb766b9b58bbf55186997cdd5d34cf859e02c31da', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/triggeralgs/legacy.tar.gz/dunedaq-v2.8.0")
+
 
     depends_on("nlohmann-json")
     depends_on("trace")

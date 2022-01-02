@@ -10,12 +10,13 @@ from spack import *
 class DaqCmake(CMakePackage):
     """CMake support for DUNE-DAQ packages"""
 
-    homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.0/packages/daq-cmake/"
+    homepage = "https://dune-daq-sw.readthedocs.io/en/latest/packages/daq-cmake/"
     url      = "https://github.com/DUNE-DAQ/daq-cmake"
 
     maintainers = ["jcfreeman2"]
 
-    version("develop", branch="develop", git=url)
+    version("develop", branch="develop", git="https://github.com/DUNE-DAQ/daq-cmake")
+    version('2.1.0', sha256='5fa145804846d582e95d4ec4eb1157ff1d30b1352811c75ad0bd17bf5be9bf19', extension='tar.gz', url="https://codeload.github.com/DUNE-DAQ/daq-cmake/legacy.tar.gz/dunedaq-v2.9.0")
 
     depends_on("py-pybind11")
 

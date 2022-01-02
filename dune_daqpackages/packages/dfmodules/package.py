@@ -10,15 +10,16 @@ from spack import *
 class Dfmodules(CMakePackage):
     """Dataflow Applications"""
 
-    homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.0/packages/dfmodules/"
+    homepage = "https://dune-daq-sw.readthedocs.io/en/latest/packages/dfmodules/"
     url =      "https://github.com/DUNE-DAQ/dfmodules"
 
     maintainers = ["jcfreeman2"]
 
-    version("develop", branch="develop", git=url)
-
-    version("2.2.1", sha256='c62c967508b0b24101eb529be47311ea6c0a26efa55f3f5a59a4942acff073a4', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/dfmodules/legacy.tar.gz/dunedaq-v2.8.0")
+    version("develop", branch="develop", git="https://github.com/DUNE-DAQ/dfmodules")
+    version("2.4.0", sha256="3cb01817201e93eb3f9d821683d1ea7de8f3c28a115a8e48744d05348dc609ec", extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/dfmodules/legacy.tar.gz/dunedaq-v2.9.0")
     version("2.3.2", sha256='675989875d3e4effcc92ea9f9263dc9e456a63f57ea4ba5eb3cce1122141061b', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/dfmodules/legacy.tar.gz/dunedaq-v2.8.2")
+    version("2.2.1", sha256='c62c967508b0b24101eb529be47311ea6c0a26efa55f3f5a59a4942acff073a4', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/dfmodules/legacy.tar.gz/dunedaq-v2.8.0")
+
 
     depends_on("daq-cmake")
     depends_on("readout", when="@:2.3.2")
@@ -30,9 +31,13 @@ class Dfmodules(CMakePackage):
     depends_on("appfwk")
     depends_on("opmonlib")
     depends_on("networkmanager", when="@develop")
+    depends_on("networkmanager", when="@2.4.0:")
     depends_on("readoutlibs", when="@develop")
-    depends_on("logging")
+    depends_on("readoutlibs", when="@2.4.0:")
     depends_on("ers", when="@develop")
+    depends_on("ers", when="@2.4.0:")
+    
+    depends_on("logging")
     depends_on("py-moo", type='build')
 
     depends_on("highfive")

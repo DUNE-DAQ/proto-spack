@@ -10,13 +10,13 @@ from spack import *
 class Erskafka(CMakePackage):
     """The erskafka plugin"""
 
-    homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.0/packages/erskafka/"
+    homepage = "https://dune-daq-sw.readthedocs.io/en/latest/packages/erskafka/"
     url =      "https://github.com/DUNE-DAQ/erskafka"
 
     maintainers = ["jcfreeman2"]
 
-    version("develop", branch="develop", git=url)
-
+    version("develop", branch="develop", git="https://github.com/DUNE-DAQ/erskafka")
+    version("1.3.3", sha256="83920a48200e20f420be1b8225c4f6bc80efeb35c7f168caf72fe884be8223aa", extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/erskafka/legacy.tar.gz/dunedaq-v2.9.0")
     version("1.3.0", sha256='166dbdc9cf1b37d9b1c0ae89fac977d113ebb90dd6b72499a85ab90b814b3100', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/erskafka/legacy.tar.gz/dunedaq-v2.8.0")
 
     depends_on("daq-cmake")

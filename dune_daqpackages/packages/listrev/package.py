@@ -11,13 +11,13 @@ import os
 class Listrev(CMakePackage):
     """Educational example of DAQ modules for new developers"""
 
-    homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.0/packages/listrev/"
+    homepage = "https://dune-daq-sw.readthedocs.io/en/latest/packages/listrev/"
     url =      "https://github.com/DUNE-DAQ/listrev"
 
     maintainers = ["jcfreeman2"]
 
-    version("develop", branch="develop", git=url)
-
+    version("develop", branch="develop", git="https://github.com/DUNE-DAQ/listrev")
+    version("2.1.5", sha256="6612d37f6e3095bf93605cdddc774376cf76bb4fae1bb223e5d20ed9d989e8a6", extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/listrev/legacy.tar.gz/dunedaq-v2.9.0")
     version("2.1.4", sha256='31250d8f002ce96ad90cd9cb18ab8bf9053abd57f591c019cd6b7c580ecd9236', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/listrev/legacy.tar.gz/dunedaq-v2.8.0")
 
     depends_on("appfwk")
@@ -25,7 +25,9 @@ class Listrev(CMakePackage):
     depends_on("rcif")
     depends_on("opmonlib")
     depends_on("logging", when="@develop")
+    depends_on("logging", when="@2.1.5:")
     depends_on("ers", when="@develop")
+    depends_on("ers", when="@2.1.5:")
 
     depends_on("py-moo", type='build')
 

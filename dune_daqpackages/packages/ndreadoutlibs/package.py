@@ -15,7 +15,8 @@ class Ndreadoutlibs(CMakePackage):
 
     maintainers = ['jcfreeman2']
 
-    version("develop", branch="develop", git=url)
+    version("develop", branch="develop", git="https://github.com/DUNE-DAQ/ndreadoutlibs")
+    version("1.0.0", sha256="e905da00add6cdc8bf650f2571c29b612542d12ec688c10bfd95d79bbc5fbe5e", extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/ndreadoutlibs/legacy.tar.gz/dunedaq-v2.9.0")
 
     depends_on("ers")
     depends_on("appfwk")

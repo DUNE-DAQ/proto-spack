@@ -10,25 +10,29 @@ from spack import *
 class Nwqueueadapters(CMakePackage):
     """DAQ modules that connect appfwk queues to IPM network connections"""
 
-    homepage = "https://dune-daq-sw.readthedocs.io/en/dunedaq-v2.8.0/packages/nwqueueadapters/"
+    homepage = "https://dune-daq-sw.readthedocs.io/en/latest/packages/nwqueueadapters/"
     url =      "https://github.com/DUNE-DAQ/nwqueueadapters"
 
     maintainers = ["jcfreeman2"]
 
-    version("develop", branch="develop", git=url)
-
+    version("develop", branch="develop", git="https://github.com/DUNE-DAQ/nwqueueadapters")
+    version("1.5.0", sha256="338d1fc42d9fbbdb4e88c117a287ab4cbbd3099086b292c7e1b4264b24551692", extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/nwqueueadapters/legacy.tar.gz/dunedaq-v2.9.0")
     version("1.4.0", sha256='76298a304ac50b035bbab4ffc011f91a81037123740a69a0a795e015857298aa', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/nwqueueadapters/legacy.tar.gz/dunedaq-v2.8.0")
 
     depends_on("daq-cmake")
     depends_on("appfwk")
     depends_on("utilities", when="@develop")
+    depends_on("utilities", when="@1.5.0:")
     depends_on("networkmanager", when="@develop")
+    depends_on("networkmanager", when="@1.5.0:")
     depends_on("logging")
     depends_on("ipm")
     depends_on("serialization")
     depends_on("opmonlib")
     depends_on("ers", when="@develop")
+    depends_on("ers", when="@1.5.0:")
     depends_on("boost", when="@develop")
+    depends_on("boost", when="@1.5.0:")
     depends_on("py-moo", type='build')
 
     depends_on("nlohmann-json")

@@ -10,12 +10,13 @@ from spack import *
 class Networkmanager(CMakePackage):
     """Provides an interface for performing network sends and receives directly from DAQ modules"""
 
-    homepage = "https://github.com/DUNE-DAQ/networkmanager"
+    homepage = "https://dune-daq-sw.readthedocs.io/en/latest/packages/networkmanager/"
     url      = "https://github.com/DUNE-DAQ/networkmanager"
 
     maintainers = ['jcfreeman2']
 
-    version("develop", branch="develop", git=url)
+    version("develop", branch="develop", git="https://github.com/DUNE-DAQ/networkmanager")
+    version("1.0.2", sha256="dc47f5d45b37026f09c50c21514fc087270c55d35fb717bf83ea599f7878371c", extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/networkmanager/legacy.tar.gz/dunedaq-v2.9.0")
 
     depends_on("ipm")
     depends_on("logging")

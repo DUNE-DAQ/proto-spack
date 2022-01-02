@@ -53,8 +53,10 @@ sed -r -i '/^(\s*)version\("develop".*/a\    version("'$pkg_version'", sha256="F
 
 cat<<EOF
 
-In order to add the version of $package corresponding to the frozen release $version,
-ignore everything on the line above besides the checksum. Replace the phrase "FILL THIS IN"
-in $package's package.py file with the checksum.
+In order to add the version of $package corresponding to the frozen
+release $version, ignore everything on the line above relevant to your
+frozen release which starts with "    version(" besides the
+checksum. Replace the phrase "FILL THIS IN" in $package's package.py
+file with this checksum.
 
 EOF

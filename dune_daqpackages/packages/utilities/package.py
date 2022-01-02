@@ -15,7 +15,8 @@ class Utilities(CMakePackage):
 
     maintainers = ['jcfreeman2']
 
-    version("develop", branch="develop", git=url)
+    version("develop", branch="develop", git="https://github.com/DUNE-DAQ/utilities")
+    version("1.0.0", sha256="b5a564fcc2a3ba5816048f838719b652e259e4ddb255e7c34df89af885c0265f", extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/utilities/legacy.tar.gz/dunedaq-v2.9.0")
 
     depends_on("nlohmann-json")
     depends_on("logging")

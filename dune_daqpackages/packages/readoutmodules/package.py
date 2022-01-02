@@ -10,12 +10,13 @@ from spack import *
 class Readoutmodules(CMakePackage):
     """DAQ modules for constructing readout-focused processes"""
 
-    homepage = "https://github.com/DUNE-DAQ/readoutmodules"
+    homepage = "https://dune-daq-sw.readthedocs.io/en/latest/packages/readoutmodules/"
     url      = "https://github.com/DUNE-DAQ/readoutmodules"
 
     maintainers = ['jcfreeman2']
 
-    version("develop", branch="develop", git=url)
+    version("develop", branch="develop", git="https://github.com/DUNE-DAQ/readoutmodules")
+    version("1.0.0", sha256="ba389a45d9bf304e80943e0d870a9f915b2e0cedfc6b4f7a8d54c338da16298c", extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/readoutmodules/legacy.tar.gz/dunedaq-v2.9.0")
 
     depends_on("ers")
     depends_on("appfwk")
