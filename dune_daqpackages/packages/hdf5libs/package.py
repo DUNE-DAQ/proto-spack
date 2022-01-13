@@ -20,7 +20,7 @@ class Hdf5libs(CMakePackage):
     version("1.0.1", sha256='619d3f65089f1c6bddc78073e75ab61489a4fd0fb843ff4f7fabda30f96876d6', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/hdf5libs/legacy.tar.gz/dunedaq-v2.8.2")
 
     depends_on("logging")
-    depends_on("highfive")
+    depends_on("highfive ~mpi")
     depends_on("daqdataformats")
     depends_on("detdataformats")
     depends_on("detchannelmaps")

@@ -25,7 +25,7 @@ class Wibmod(CMakePackage):
     depends_on("appfwk")
     depends_on("cppzmq")
     depends_on("protobuf")
-    depends_on("highfive", when="@1.2.5:")
+    depends_on("highfive ~mpi", when="@1.2.5:")
     depends_on("daqdataformats", when="@1.2.5:")
     depends_on("detdataformats", when="@1.2.5:")
     depends_on("detchannelmaps", when="@1.2.5:")

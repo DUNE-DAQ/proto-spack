@@ -25,7 +25,7 @@ class Externals(BundlePackage):
 
         depends_on('nlohmann-json@3.9.0', when=f"@{ver}")
         depends_on('pistache@dunedaq-v2.8.0', when=f"@{ver}") # Same version for 2.8.0 and 2.8.2
-        depends_on('highfive@2.3.1', when=f"@{ver}")
+        depends_on('highfive@2.3.1 ~mpi', when=f"@{ver}")
         depends_on('libzmq@4.3.1', when=f"@{ver}")
         depends_on('cppzmq@4.3.0', when=f"@{ver}")
         depends_on('msgpack-c@3.3.0', when=f"@{ver}")

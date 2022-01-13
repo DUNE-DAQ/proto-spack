@@ -106,12 +106,7 @@ dbt-workarea-env
 ```
 ...where `dbt-workarea-env` will load in `dune-daqpackages`. 
 
-Now we need to revert to the system ssh, rather than the one loaded in by the openssh spack package which openmpi (used by hdf5) loads at runtime. If we don't, then we'll have problems launching processes in the minidaqapp demo:
-```
-spack unload openssh
-```
-
-And at this point, you can run the demo by starting at point (7) of the [instructions for the minidaqapp demo](https://dune-daq-sw.readthedocs.io/en/latest/packages/minidaqapp/InstructionsForCasualUsers/)
+At this point, you can run the demo by starting at point (7) of the [instructions for the minidaqapp demo](https://dune-daq-sw.readthedocs.io/en/latest/packages/minidaqapp/InstructionsForCasualUsers/)
 
 If you run `spack find` you'll see DUNE DAQ packages up through dune-daqpackages on the chain. We can also get `spack find` to be more informative. E.g., `spack find -N` will tell you which repo each package belongs to. `builtin` means it's outside our purview, `dune-build` corresponds to the DUNE external packages (folly, etc.) and `dune_daqpackages` corresponds to the DAQ packages (cmdlib, etc.). `spack repo list` will tell you which repos are available. `spack find -d dune-daqpackages@dunedaq-v2.8.2 build_type=RelWithDebInfo` will tell you how the dependencies for our dummy package work in spack. 
 
