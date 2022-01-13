@@ -100,7 +100,7 @@ As of the most recent non-documentation commit (d5ced499f4d169ed277c7, Dec-6-202
 export HOME=/home/spacknp/jcfree
 cd ~
 . daq-buildtools/env.sh  # May want to check that you're on the johnfreeman/issue161_spack branch
-dbt-create.sh <frozen release> <name of workarea>  # dunedaq-v2.8.2 and dunedaq-v2.9.0 currently supported
+dbt-create.py <frozen release> <name of workarea>  # dunedaq-v2.8.2 (when installed) and dunedaq-v2.9.0 (when installed) currently supported
 cd <name of workarea>
 dbt-workarea-env
 ```
