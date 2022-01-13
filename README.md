@@ -100,7 +100,7 @@ As of the most recent non-documentation commit (d5ced499f4d169ed277c7, Dec-6-202
 export HOME=/home/spacknp/jcfree
 cd ~
 . daq-buildtools/env.sh  # May want to check that you're on the johnfreeman/issue161_spack branch
-dbt-create.sh dunedaq-v2.8.2 <name of workarea>
+dbt-create.sh <frozen release> <name of workarea>  # dunedaq-v2.8.2 and dunedaq-v2.9.0 currently supported
 cd <name of workarea>
 dbt-workarea-env
 ```
@@ -113,7 +113,7 @@ spack unload openssh
 
 And at this point, you can run the demo by starting at point (7) of the [instructions for the minidaqapp demo](https://dune-daq-sw.readthedocs.io/en/latest/packages/minidaqapp/InstructionsForCasualUsers/)
 
-If you run `spack find` you'll see DUNE DAQ packages up through dune-daqpackages on the chain. We can also get `spack find` to be more informative. E.g., `spack find -N` will tell you which repo each package belongs to. `builtin` means it's outside our purview, `dune-build` corresponds to the DUNE external packages (folly, etc.) and `dune_daqpackages` corresponds to the DAQ packages (cmdlib, etc.). `spack repo list` will tell you which repos are available. `spack find -d dune-daqpackages@dunedaq-v2.8.2 build_type=RelWithDebInfo` will tell you how the dependencies for our dummy package work in spack. 
+If you run `spack find` you'll see DUNE DAQ packages up through dune-daqpackages on the chain. We can also get `spack find` to be more informative. E.g., `spack find -N` will tell you which repo each package belongs to. `builtin` means it's outside our purview, `dune-build` corresponds to the DUNE external packages (folly, etc.) and `dune_daqpackages` corresponds to the DAQ packages (cmdlib, etc.). `spack repo list` will tell you which repos are available. `spack find -d dune-daqpackages@dunedaq-v2.9.0 build_type=RelWithDebInfo` will tell you how the dependencies for our dummy package work in spack. 
 
 Note that as of Dec-9-2021, you can get `dbt-workarea-env` to work with Spack package sets if you're using the `johnfreeman/issue161_spack branch` branch of daq-buildtools; this is analogous to the standard ups behavior of `dbt-workarea-env` when you're using a versioned daq-buildtools. E.g., the following:
 ```
