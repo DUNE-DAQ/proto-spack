@@ -115,3 +115,5 @@ Note that as of Dec-9-2021, you can get `dbt-workarea-env` to work with Spack pa
 dbt-workarea-env -s externals@dunedaq-v2.8.2
 ```
 ...will load the external packages, but not the DUNE DAQ-specific packages, from the `dunedaq-v2.8.2` frozen release. 
+
+Note that as of Jan-18-2022, you now have the option of running `dbt-setup-release` just as you do when ups is used instead of Spack. 
