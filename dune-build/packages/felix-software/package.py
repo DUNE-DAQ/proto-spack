@@ -46,45 +46,51 @@ class FelixSoftware(Package):
 
         copytree('.', prefix.software)
 
+        def return_zero_or_exit(cmd):
+            retval = os.system(cmd)
+            if retval != 0:
+                sys.stderr.write(f"Error: return value of {retval} for the command \"{cmd}\"")
+                sys.exit(retval)
+
         with working_dir(prefix.software):
 
             os.chdir(prefix.software)
 
             print("About to clone https://gitlab.cern.ch/atlas-tdaq-felix/cmake_tdaq.git")
-            os.system('git clone https://gitlab.cern.ch/atlas-tdaq-felix/cmake_tdaq.git')
-            os.system('sed -i \'2 i set(NOLCG TRUE)\' cmake_tdaq/cmake/modules/FELIX.cmake')
-            os.system('pushd cmake_tdaq && git checkout d66ce21b && popd')
+            return_zero_or_exit('git clone https://gitlab.cern.ch/atlas-tdaq-felix/cmake_tdaq.git')
+            return_zero_or_exit('sed -i \'2 i set(NOLCG TRUE)\' cmake_tdaq/cmake/modules/FELIX.cmake')
+            return_zero_or_exit('pushd cmake_tdaq && git checkout d66ce21b && popd')
  
             print("About to clone https://gitlab.cern.ch/atlas-tdaq-felix/drivers_rcc.git")
-            os.system('git clone https://gitlab.cern.ch/atlas-tdaq-felix/drivers_rcc.git')
-            os.system('pushd drivers_rcc && git checkout b37bd757 && popd')
+            return_zero_or_exit('git clone https://gitlab.cern.ch/atlas-tdaq-felix/drivers_rcc.git')
+            return_zero_or_exit('pushd drivers_rcc && git checkout b37bd757 && popd')
             print("About to clone https://gitlab.cern.ch/atlas-tdaq-felix/flxcard.git")
-            os.system('git clone https://gitlab.cern.ch/atlas-tdaq-felix/flxcard.git')
-            os.system('pushd flxcard && git checkout 683d9696 && popd')
+            return_zero_or_exit('git clone https://gitlab.cern.ch/atlas-tdaq-felix/flxcard.git')
+            return_zero_or_exit('pushd flxcard && git checkout 683d9696 && popd')
 
             print("About to clone https://gitlab.cern.ch/atlas-tdaq-felix/regmap.git")
-            os.system('git clone https://gitlab.cern.ch/atlas-tdaq-felix/regmap.git')
-            os.system('pushd regmap && git checkout 87ce47ba && popd')
+            return_zero_or_exit('git clone https://gitlab.cern.ch/atlas-tdaq-felix/regmap.git')
+            return_zero_or_exit('pushd regmap && git checkout 87ce47ba && popd')
 
             print("About to clone https://gitlab.cern.ch/atlas-tdaq-felix/packetformat.git")
-            os.system('git clone https://gitlab.cern.ch/atlas-tdaq-felix/packetformat.git')
-            os.system('pushd packetformat && git checkout a84931eb && popd')
+            return_zero_or_exit('git clone https://gitlab.cern.ch/atlas-tdaq-felix/packetformat.git')
+            return_zero_or_exit('pushd packetformat && git checkout a84931eb && popd')
 
             print("About to clone https://gitlab.cern.ch/atlas-tdaq-felix/flxcard_py.git")
-            os.system('git clone https://gitlab.cern.ch/atlas-tdaq-felix/flxcard_py.git')
-            os.system('pushd flxcard_py && git checkout 61001bd6 && popd')
+            return_zero_or_exit('git clone https://gitlab.cern.ch/atlas-tdaq-felix/flxcard_py.git')
+            return_zero_or_exit('pushd flxcard_py && git checkout 61001bd6 && popd')
             install("flxcard_py_CMakeLists.txt", prefix+"/software/flxcard_py/CMakeLists.txt")
 
             print("Aout to clone https://gitlab.cern.ch/atlas-tdaq-felix/ftools.git")
-            os.system('git clone https://gitlab.cern.ch/atlas-tdaq-felix/ftools.git')
-            os.system('pushd ftools && git checkout 1cfd1b56 && popd')
+            return_zero_or_exit('git clone https://gitlab.cern.ch/atlas-tdaq-felix/ftools.git')
+            return_zero_or_exit('pushd ftools && git checkout 1cfd1b56 && popd')
             install('ftools_CMakeLists.txt', prefix+"/software/ftools/CMakeLists.txt")
 
-            os.system('git clone https://gitlab.cern.ch/atlas-tdaq-felix/external-catch.git external/catch')
-            os.system('pushd external/catch && git checkout 6a9aa08a && popd')
+            return_zero_or_exit('git clone https://gitlab.cern.ch/atlas-tdaq-felix/external-catch.git external/catch')
+            return_zero_or_exit('pushd external/catch && git checkout 6a9aa08a && popd')
 
             os.environ['PATH'] = prefix+"/software/cmake_tdaq/bin" + ":" + os.environ['PATH']
-            os.system('cmake_config x86_64-centos7-gcc8-opt') 
+            return_zero_or_exit('cmake_config x86_64-centos7-gcc8-opt') 
             os.chdir("x86_64-centos7-gcc8-opt")
             make()
 
@@ -103,15 +109,15 @@ class FelixSoftware(Package):
             copytree("software/flxcard/flxcard", "include/flxcard")
             copytree("software/packetformat/packetformat", "include/packetformat")
 
-            os.system("cp software/drivers_rcc/lib64/lib* lib")
-            os.system("cp software/x86_64-centos7-gcc8-opt/flxcard/lib* lib")
-            os.system("cp software/x86_64-centos7-gcc8-opt/flxcard_py/lib* lib")
-            os.system("cp software/x86_64-centos7-gcc8-opt/packetformat/lib* lib")
-            os.system("cp software/x86_64-centos7-gcc8-opt/regmap/lib* lib")
-            os.system("cp software/x86_64-centos7-gcc8-opt/drivers_rcc/lib* lib")
-            os.system("cp software/x86_64-centos7-gcc8-opt/ftools/libFlxTools* lib")
+            return_zero_or_exit("cp software/drivers_rcc/lib64/lib* lib")
+            return_zero_or_exit("cp software/x86_64-centos7-gcc8-opt/flxcard/lib* lib")
+            return_zero_or_exit("cp software/x86_64-centos7-gcc8-opt/flxcard_py/lib* lib")
+            return_zero_or_exit("cp software/x86_64-centos7-gcc8-opt/packetformat/lib* lib")
+            return_zero_or_exit("cp software/x86_64-centos7-gcc8-opt/regmap/lib* lib")
+            return_zero_or_exit("cp software/x86_64-centos7-gcc8-opt/drivers_rcc/lib* lib")
+            return_zero_or_exit("cp software/x86_64-centos7-gcc8-opt/ftools/libFlxTools* lib")
 
-            os.system("cp software/x86_64-centos7-gcc8-opt/flxcard/flx-* bin")
-            os.system("cp software/x86_64-centos7-gcc8-opt/ftools/f* bin")
+            return_zero_or_exit("cp software/x86_64-centos7-gcc8-opt/flxcard/flx-* bin")
+            return_zero_or_exit("cp software/x86_64-centos7-gcc8-opt/ftools/f* bin")
 
-            os.system("rm -rf software")
+            return_zero_or_exit("rm -rf software")
