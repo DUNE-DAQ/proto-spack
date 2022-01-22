@@ -2,7 +2,7 @@ _JCF, Jan-19-2022: to try step-by-step instructions which exercise the latest-gr
 
 # proto-spack
 
-Warning: None of the external packages (besides cmake) will work with a vanilla installation of the gcc8.2.0. It is mandatory that this compiler is built linking it against a binutils installation first
+Warning [from Patricia]: None of the external packages (besides cmake) will work with a vanilla installation of gcc 8.2.0. It is mandatory that this compiler is built linking it against a binutils installation first
 NOTE: The packages provided by spack (builtin) are included in this repository in the so called builtin-spack-packages
 
 ## Setup of the build machine
@@ -17,7 +17,7 @@ $pkgs_pip_base = [ 'python34-setuptools_scm', 'python34-pip', 'python3-apipkg', 
 ## Building `gcc@8.2.0`
 The following instructions are applicable to a Centos7 node which has a default compiler `gcc4.8.5`
 ### Ensure gcc will be built against binutils
-spack install gcc@8.2.8+binutils 
+spack install gcc@8.2.0+binutils 
 
 is enogh to ensure the installation of the gcc8.2.0 compiler using binutils.   
 The new compiler can be chosen to build the rest of packages. Ensure the compiler defined in default in the machine points to this new package. For this reason, reconfigure the `compilers.yaml` file of spack just pointing to the proper positions of the executables: `gcc`, `gfortran` and `g++` which have to be included into the env variables:
@@ -29,7 +29,7 @@ fc
 ```
 Which are already predefined into the mentioned file
 
-Once the gcc8.2.0 compiler has been built, the compilers.yaml file of the local spack configuration should be modified to point to the new distribution 
+Once the gcc8.2.0 compiler has been built, the compilers.yaml file of the local spack configuration should be modified to point to the new distribution. For more, go [here](https://spack.readthedocs.io/en/latest/getting_started.html#compiler-configuration). 
 
 # Testing: Machines
 The following machines have been created to test the builds:
@@ -37,6 +37,8 @@ The following machines have been created to test the builds:
 epdtdi-spack-build01, epdtdi-spack-build02 and epdtdi-spack-build03 reachable through the account: spacknp
 
 # First build: Steps using any of the epdtdi-spack-build0X machines:
+
+_JCF, Jan-22-2022: this section covers something you probably wouldn't need/want to do, but it's a useful historical record of how Patricia got gcc working on the build machine_
 
 Download the script: https://github.com/DUNE-DAQ/proto-spack/blob/98318b8e6f38a2717d8aaee9817f20356f828603/spack-build.sh
 
@@ -46,55 +48,11 @@ NOTE: This procedure is needed only once. It will automatically install the comp
 
 # Development: Steps using any of the epdtdi-spack-build0X machines:
 
-Individual packages will just need the setup of the spack configuration as follows:
+To read the official documentation on how to get started building with Spack, go [here](https://spack-tutorial.readthedocs.io/en/latest/tutorial_basics.html). However, since Spack has already been installed on epdtdi-spack-build03, you can just kick things off after you login with the following standard source:
 
 source $HOME/spack/share/spack/setup-env.sh
 
-Then any package can be rebuilt following the esample available at the section: "Buold example"  below. 
-
-# List of external DUNE packages
-
-_JCF, Dec-9-2021: the following versions and locations have changed and are now obsolete_
-
-cetlib 3.11.01 -- Provided by the proto-spack repository
-
-cetmodules 2.25.05 -- Provided by the proto-spack repository
-
-trace (master) -- Provided by the proto-spack repository
-
-cetlib-except 1.07.04 -- Provided by the proto-spack repository
-
-hep-concurrency 1.07.04 -- Provided by the proto-spack repository
-
-folly 2021.05.24.00 -- SPACK builtin 
-
-nlohmann_json 3.9.1 -- SPACK builtin
-
-pistache 2020.10.07 (master) -- Provided by the proto-spack repository
-
-highfive 2.2.2 -- SPACK builtin
-
-libzmq 4.3.4 -- SPACK builtin
-
-cppzmq 4.3.0 -- SPACK builtin
-
-msgpack-c 3.3.0 -- SPACK builtin
-
-Felix (master) -- Provided by proto-spack repository together with all dependencies
-
-py-pybind11 2.6.2 -- SPACK bultin
-
-uhal 2.8.0 -- Provided by proto-spack repository with all dependencies
-
-## Built example
-
-_JCF, Dec-9-2021: also obsolete_
-
-The dunedaq-spack repository is already added to the local spack configuration in both build machines. Therefore, once you have log in, you just need to build any of the mentioned packages executing the command:
-
-spack install <package_name>@<version_number>
-
-for example: spack py-pybind11@2.6.2
+and then you can run `spack find`, `spack install <pkg>`, etc.
 
 ## Setting up the DUNE-DAQ packages and running the minidaqapp demo 
 
