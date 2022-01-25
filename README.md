@@ -1,5 +1,7 @@
 _JCF, Jan-19-2022: to try step-by-step instructions which exercise the latest-greatest in Spack support for DUNE DAQ packages, scroll down to the "Setting up the DUNE-DAQ packages and running the minidaqapp demo" section of this page_
 
+_JCF, Jan-25-2022: be aware that as I work toward making the Spack development stack neater / more portable, sometimes the target packages meant to be loaded in by following the instructions (dune-daqpackages@dunedaq-v2.9.0, e.g.) will be uninstalled, in which case the instructions (temporarily) won't work. Please contact me if this is the case and I'll reinstall for you_
+
 # proto-spack
 
 Warning [from Patricia]: None of the external packages (besides cmake) will work with a vanilla installation of gcc 8.2.0. It is mandatory that this compiler is built linking it against a binutils installation first
