@@ -26,6 +26,8 @@ class DuneDaqpackages(BundlePackage):
     depends_on("externals@dunedaq-v2.8.2", when="@dunedaq-v2.8.2")
     depends_on("externals@develop", when="@develop")
 
+    depends_on("systems@dunedaq-v2.9.0", when="@dunedaq-v2.9.0")
+
     for build_type in ["Debug", "RelWithDebInfo", "Release"]:
 
         depends_on(f"daq-cmake@2.1.0 build_type={build_type}", when=f"@dunedaq-v2.9.0 build_type={build_type}")

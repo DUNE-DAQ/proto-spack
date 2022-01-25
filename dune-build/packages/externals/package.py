@@ -12,24 +12,24 @@ class Externals(BundlePackage):
 
     homepage = "https://dune-daq-sw.readthedocs.io/en/latest/"
 
+    version("develop")
     version("dunedaq-v2.9.0")
     version("dunedaq-v2.8.2")
-    version("develop")
 
     for ver in ["develop", "dunedaq-v2.8.2", "dunedaq-v2.9.0"]:
-        depends_on("devtools@dunedaq-v2.8.2", when=f"@{ver}")
+        depends_on(f"devtools@{ver}", when=f"@{ver}")
 
         depends_on("boost@1.73.0 +context+container cxxstd=17", when=f"@{ver}")
         depends_on("cetlib@3.13.04", when=f"@{ver}")
         depends_on("trace@3.16.02", when=f"@{ver}")
 
         depends_on('nlohmann-json@3.9.0', when=f"@{ver}")
-        depends_on('pistache@dunedaq-v2.8.0', when=f"@{ver}") # Same version for 2.8.0 and 2.8.2
+        depends_on('pistache@dunedaq-v2.8.0', when=f"@{ver}") # Same version for 2.8.0, 2.8.2, 2.9.0...
         depends_on('highfive@2.3.1 ~mpi', when=f"@{ver}")
         depends_on('libzmq@4.3.1', when=f"@{ver}")
         depends_on('cppzmq@4.3.0', when=f"@{ver}")
         depends_on('msgpack-c@3.3.0', when=f"@{ver}")
-        depends_on('felix-software@dunedaq-v2.8.0', when=f"@{ver}") # Same version for 2.8.0 and 2.8.2
+        depends_on('felix-software@dunedaq-v2.8.0', when=f"@{ver}") # Same version for 2.8.0, 2.8.2, 2.9.0...
         depends_on('py-pybind11@2.6.2', when=f"@{ver}")
         depends_on('uhal@2.8.1', when=f"@{ver}")
         depends_on('cpr@1.5.2', when=f"@{ver}")
