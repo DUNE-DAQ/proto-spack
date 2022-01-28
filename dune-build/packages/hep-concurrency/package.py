@@ -49,7 +49,7 @@ class HepConcurrency(CMakePackage):
         depends_on(f'cetlib-except build_type={build_type}', when=f'build_type={build_type}', type=('build','run'))
 
     # Build / link dependencies.
-    depends_on('cppunit@1.15.1')
+    #depends_on('cppunit@1.15.1')
     depends_on('catch2@2.13.4', when='@1.07.04:')
     depends_on('intel-tbb@2020.3', when='@1.07.04:')
     depends_on('intel-tbb@2020.2', when='@1.05.00')
