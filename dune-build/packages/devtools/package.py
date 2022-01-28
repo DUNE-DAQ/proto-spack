@@ -17,7 +17,6 @@ class Devtools(BundlePackage):
     version("dunedaq-v2.8.2")
 
     for ver in ["develop", "dunedaq-v2.8.2", "dunedaq-v2.9.0"]:
-        depends_on(f"systems@{ver}", when=f"@{ver}")
 
         depends_on("cmake@3.20.5", when=f"@{ver}")  # Should be 3.17.2, but hep-concurrency needs a newer CMake version
         depends_on("gdb@9.2", when=f"@{ver}")
