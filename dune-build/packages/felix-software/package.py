@@ -58,8 +58,8 @@ class FelixSoftware(Package):
 
             print("About to clone https://gitlab.cern.ch/atlas-tdaq-felix/cmake_tdaq.git")
             return_zero_or_exit('git clone https://gitlab.cern.ch/atlas-tdaq-felix/cmake_tdaq.git')
-            return_zero_or_exit('sed -i \'2 i set(NOLCG TRUE)\' cmake_tdaq/cmake/modules/FELIX.cmake')
             return_zero_or_exit('pushd cmake_tdaq && git checkout d66ce21b && popd')
+            return_zero_or_exit('sed -i \'2 i set(NOLCG TRUE)\' cmake_tdaq/cmake/modules/FELIX.cmake')
  
             print("About to clone https://gitlab.cern.ch/atlas-tdaq-felix/drivers_rcc.git")
             return_zero_or_exit('git clone https://gitlab.cern.ch/atlas-tdaq-felix/drivers_rcc.git')
