@@ -80,3 +80,32 @@ dbt-workarea-env -s externals@dunedaq-v2.8.2
 ...will load the external packages, but not the DUNE DAQ-specific packages, from the `dunedaq-v2.8.2` frozen release. 
 
 Note that as of Jan-18-2022, you now have the option of running `dbt-setup-release` just as you do when ups is used instead of Spack. 
+
+# Installing the DUNE DAQ suite in Spack form on a new machine
+
+_JCF, Jan-31-2022: this is under construction_
+
+```
+git clone -c feature.manyFiles=true https://github.com/spack/spack.git
+cd spack
+git checkout 7134cab8 # Probably the most recent tag, v0.17.1, would also work
+cd ..
+git clone -c feature.manyFiles=true https://github.com/DUNE-DAQ/proto-spack
+. spack/share/spack/setup-env.sh
+spack compiler find  # Should add the /usr/bin compiler to ~/.spack/linux/compilers.yaml
+cd proto-spack/
+spack repo add dune-build
+spack repo add dune_daqpackages
+spack install systems@dunedaq-v2.9.0  # 60-90 minutes on epdtdi-spack-build02
+```
+You'll now have gcc 8.2.0 and python 3.8.3, both built with the system gcc (4.8.5 on epdtdi-spack-build02). In my experience, you can't build gdb with python support unless you have python 3.8.3 built with gcc 8.2.0. So we rebuild systems:
+```
+spack install systems@dunedaq-v2.9.0 
+```
+...which gives us gcc 8.2.0 and python 3.8.3 built with gcc 8.2.0. 
+
+Now we install dune-daqpackages:
+```
+spack install dune-daqpackages@dunedaq-v2.9.0 ^/whatever the hash of the gcc 8.2.0-built gcc 8.2.0 is
+```
+...keeping in mind that some of the gitlab-located packages (e.g., cetlib) will require you to enter your username and password for access. 
