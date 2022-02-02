@@ -4,8 +4,9 @@ _JCF, Jan-25-2022: be aware that as I work toward making the Spack development s
 
 # proto-spack
 
-Warning [from Patricia]: None of the external packages (besides cmake) will work with a vanilla installation of gcc 8.2.0. It is mandatory that this compiler is built linking it against a binutils installation first
-NOTE: The packages provided by spack (builtin) are included in this repository in the so called builtin-spack-packages
+# Testing: Machines
+The following machines have been created to test the builds:
+epdtdi-spack-build01, epdtdi-spack-build02 and epdtdi-spack-build03 reachable through the account: spacknp
 
 ## Setup of the build machine
 The build machine has been set via puppet as a Centos7 base machine. The set of packages pre-installed in the system are the following (puppet repository: it-puppet-hostgroup-detector_interface. Specific spackdune.pp available at: code/manifest)
@@ -15,38 +16,35 @@ $pkgs_to_be_installed = [ 'python3.x86_64', 'python3-devel.x86_64', 'python3-lib
 
 $pkgs_pip_base = [ 'python34-setuptools_scm', 'python34-pip', 'python3-apipkg', 'python2-pip' ]
 
+# Installing the DUNE DAQ suite in Spack form on a new machine
 
-## Building `gcc@8.2.0`
-The following instructions are applicable to a Centos7 node which has a default compiler `gcc4.8.5`
-### Ensure gcc will be built against binutils
-spack install gcc@8.2.0+binutils 
+_JCF, Jan-31-2022: this is under construction_
 
-is enogh to ensure the installation of the gcc8.2.0 compiler using binutils.   
-The new compiler can be chosen to build the rest of packages. Ensure the compiler defined in default in the machine points to this new package. For this reason, reconfigure the `compilers.yaml` file of spack just pointing to the proper positions of the executables: `gcc`, `gfortran` and `g++` which have to be included into the env variables:
+The following instructions are applicable to a Centos7 node which has a default compiler `gcc4.8.5`. This works on CERN build machines. 
 ```
-cc
-cxx
-f77
-fc
+git clone -c feature.manyFiles=true https://github.com/spack/spack.git
+cd spack
+git checkout 7134cab8 # Probably the most recent tag, v0.17.1, would also work
+cd ..
+git clone -c feature.manyFiles=true https://github.com/DUNE-DAQ/proto-spack
+. spack/share/spack/setup-env.sh
+spack compiler find  # Should add the /usr/bin gcc compiler to ~/.spack/linux/compilers.yaml
+cd proto-spack/
+spack repo add dune-build
+spack repo add dune_daqpackages
+spack install systems@dunedaq-v2.9.0  # 60-90 minutes on epdtdi-spack-build02
 ```
-Which are already predefined into the mentioned file
+You'll now have gcc 8.2.0 and python 3.8.3, both built with the system gcc. So we rebuild systems:
+```
+spack install systems@dunedaq-v2.9.0 
+```
+...which gives us gcc 8.2.0 and python 3.8.3 built with gcc 8.2.0. 
 
-Once the gcc8.2.0 compiler has been built, the compilers.yaml file of the local spack configuration should be modified to point to the new distribution. For more, go [here](https://spack.readthedocs.io/en/latest/getting_started.html#compiler-configuration). 
-
-# Testing: Machines
-The following machines have been created to test the builds:
-
-epdtdi-spack-build01, epdtdi-spack-build02 and epdtdi-spack-build03 reachable through the account: spacknp
-
-# First build: Steps using any of the epdtdi-spack-build0X machines:
-
-_JCF, Jan-22-2022: this section covers something you probably wouldn't need/want to do, but it's a useful historical record of how Patricia got gcc working on the build machine_
-
-Download the script: https://github.com/DUNE-DAQ/proto-spack/blob/98318b8e6f38a2717d8aaee9817f20356f828603/spack-build.sh
-
-and execute it. This script is intended to install locally all externals and dependencies. It will also install the gcc8.2.0 compiler already interfaced with binutils.
-
-NOTE: This procedure is needed only once. It will automatically install the compiler and all packages. For future developments and builds of individual packages, this script should not be used and procedures are decribed at the next section
+Now we install dune-daqpackages:
+```
+spack install dune-daqpackages@dunedaq-v2.9.0 ^/whatever the hash of the gcc 8.2.0-built gcc 8.2.0 is
+```
+...keeping in mind that some of the gitlab-located packages (e.g., cetlib) will require you to enter your username and password for access. 
 
 # Development: Steps using any of the epdtdi-spack-build0X machines:
 
@@ -63,7 +61,7 @@ As of the most recent non-documentation commit (d5ced499f4d169ed277c7, Dec-6-202
 export HOME=/home/spacknp/jcfree
 cd ~
 . daq-buildtools/env.sh  # May want to check that you're on the johnfreeman/issue161_spack branch
-dbt-create.py <frozen release> <name of workarea>  # dunedaq-v2.8.2 (when installed) and dunedaq-v2.9.0 (when installed) currently supported
+dbt-create.sh --spack <frozen release> <name of workarea>  # dunedaq-v2.9.0 (when installed) currently supported
 cd <name of workarea>
 dbt-workarea-env
 ```
@@ -75,37 +73,10 @@ If you run `spack find` you'll see DUNE DAQ packages up through dune-daqpackages
 
 Note that as of Dec-9-2021, you can get `dbt-workarea-env` to work with Spack package sets if you're using the `johnfreeman/issue161_spack branch` branch of daq-buildtools; this is analogous to the standard ups behavior of `dbt-workarea-env` when you're using a versioned daq-buildtools. E.g., the following:
 ```
-dbt-workarea-env -s externals@dunedaq-v2.8.2
+dbt-workarea-env -s externals@dunedaq-v2.9.0
 ```
-...will load the external packages, but not the DUNE DAQ-specific packages, from the `dunedaq-v2.8.2` frozen release. 
+...will load the external packages, but not the DUNE DAQ-specific packages, from the `dunedaq-v2.9.0` frozen release. 
 
 Note that as of Jan-18-2022, you now have the option of running `dbt-setup-release` just as you do when ups is used instead of Spack. 
 
-# Installing the DUNE DAQ suite in Spack form on a new machine
 
-_JCF, Jan-31-2022: this is under construction_
-
-```
-git clone -c feature.manyFiles=true https://github.com/spack/spack.git
-cd spack
-git checkout 7134cab8 # Probably the most recent tag, v0.17.1, would also work
-cd ..
-git clone -c feature.manyFiles=true https://github.com/DUNE-DAQ/proto-spack
-. spack/share/spack/setup-env.sh
-spack compiler find  # Should add the /usr/bin compiler to ~/.spack/linux/compilers.yaml
-cd proto-spack/
-spack repo add dune-build
-spack repo add dune_daqpackages
-spack install systems@dunedaq-v2.9.0  # 60-90 minutes on epdtdi-spack-build02
-```
-You'll now have gcc 8.2.0 and python 3.8.3, both built with the system gcc (4.8.5 on epdtdi-spack-build02). In my experience, you can't build gdb with python support unless you have python 3.8.3 built with gcc 8.2.0. So we rebuild systems:
-```
-spack install systems@dunedaq-v2.9.0 
-```
-...which gives us gcc 8.2.0 and python 3.8.3 built with gcc 8.2.0. 
-
-Now we install dune-daqpackages:
-```
-spack install dune-daqpackages@dunedaq-v2.9.0 ^/whatever the hash of the gcc 8.2.0-built gcc 8.2.0 is
-```
-...keeping in mind that some of the gitlab-located packages (e.g., cetlib) will require you to enter your username and password for access. 
