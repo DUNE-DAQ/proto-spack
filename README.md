@@ -34,15 +34,15 @@ spack repo add dune-build
 spack repo add dune_daqpackages
 spack install systems@dunedaq-v2.9.0  # 60-90 minutes on epdtdi-spack-build02
 ```
-You'll now have gcc 8.2.0 and python 3.8.3, both built with the system gcc. So we rebuild systems:
+You'll now have gcc 8.2.0 and python 3.8.3, both built with the system gcc. Now let's tell Spack that gcc 8.2.0 is available:
 ```
-spack install systems@dunedaq-v2.9.0 
+spack load systems@dunedaq-v2.9.0
+spack compiler find # Should add the gcc 8.2.0 you just built to ~/.spack/linux/compilers.yaml 
 ```
-...which gives us gcc 8.2.0 and python 3.8.3 built with gcc 8.2.0. 
 
 Now we install dune-daqpackages:
 ```
-spack install dune-daqpackages@dunedaq-v2.9.0 ^/whatever the hash of the gcc 8.2.0-built gcc 8.2.0 is
+spack install dune-daqpackages@dunedaq-v2.9.0 
 ```
 ...keeping in mind that some of the gitlab-located packages (e.g., cetlib) will require you to enter your username and password for access. 
 
