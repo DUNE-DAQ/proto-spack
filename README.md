@@ -18,8 +18,6 @@ $pkgs_pip_base = [ 'python34-setuptools_scm', 'python34-pip', 'python3-apipkg', 
 
 # Installing the DUNE DAQ suite in Spack form on a new machine
 
-_JCF, Jan-31-2022: this is under construction_
-
 The following instructions are applicable to a Centos7 node which has a default compiler `gcc4.8.5`. This works on CERN build machines. 
 ```
 git clone -c feature.manyFiles=true https://github.com/spack/spack.git
@@ -46,14 +44,6 @@ spack install dune-daqpackages@dunedaq-v2.9.0
 ```
 ...keeping in mind that some of the gitlab-located packages (e.g., cetlib) will require you to enter your username and password for access. 
 
-# Development: Steps using any of the epdtdi-spack-build0X machines:
-
-To read the official documentation on how to get started building with Spack, go [here](https://spack-tutorial.readthedocs.io/en/latest/tutorial_basics.html). However, since Spack has already been installed on epdtdi-spack-build03, you can just kick things off after you login with the following standard source:
-
-source $HOME/spack/share/spack/setup-env.sh
-
-and then you can run `spack find`, `spack install <pkg>`, etc.
-
 ## Setting up the DUNE-DAQ packages and running the minidaqapp demo 
 
 As of the most recent non-documentation commit (d5ced499f4d169ed277c7, Dec-6-2021) it's possible to recreate the minidaqapp demo found in the ["Instructions for Casual Users" section of the minidaqapp documentation](https://dune-daq-sw.readthedocs.io/en/latest/packages/minidaqapp/InstructionsForCasualUsers/), except instead of using ups packages you'll be using Spack packages. To see this (and to learn a bit more about the work done getting DUNE-DAQ packages spackified), log in to epdtdi-spack-build03 and do the following to start working in my (JCF) area:
@@ -61,7 +51,7 @@ As of the most recent non-documentation commit (d5ced499f4d169ed277c7, Dec-6-202
 export HOME=/home/spacknp/jcfree
 cd ~
 . daq-buildtools/env.sh  # May want to check that you're on the johnfreeman/issue161_spack branch
-dbt-create.sh --spack <frozen release> <name of workarea>  # dunedaq-v2.9.0 (when installed) currently supported
+dbt-create.sh --spack --clone-pyvenv <frozen release> <name of workarea>  # dunedaq-v2.9.0 (when installed) currently supported
 cd <name of workarea>
 dbt-workarea-env --spack
 ```
@@ -78,5 +68,13 @@ dbt-workarea-env --spack -s externals
 ...will load the external packages, but not the DUNE DAQ-specific packages, from the frozen release corresponding to your work area. 
 
 Note that as of Jan-18-2022, you now have the option of running `dbt-setup-release` just as you do when ups is used instead of Spack. E.g. `dbt-setup-release --spack dunedaq-v2.9.0` will set up the dunedaq-v2.9.0 frozen release suite of packages. 
+
+# Development: Steps using any of the epdtdi-spack-build0X machines:
+
+To read the official documentation on how to get started building with Spack, go [here](https://spack-tutorial.readthedocs.io/en/latest/tutorial_basics.html). However, since Spack has already been installed on the CERN build machines, you can just kick things off after you login with the following standard source:
+
+source $HOME/spack/share/spack/setup-env.sh
+
+and then you can run `spack find`, `spack install <pkg>`, etc.
 
 
