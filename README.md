@@ -63,9 +63,9 @@ cd ~
 . daq-buildtools/env.sh  # May want to check that you're on the johnfreeman/issue161_spack branch
 dbt-create.sh --spack <frozen release> <name of workarea>  # dunedaq-v2.9.0 (when installed) currently supported
 cd <name of workarea>
-dbt-workarea-env
+dbt-workarea-env --spack
 ```
-...where `dbt-workarea-env` will load in `dune-daqpackages`. 
+...where `dbt-workarea-env --spack` will load in `dune-daqpackages`. Note that if you leave out the `--spack` argument either in `dbt-create.sh` or `dbt-workarea-env` that ups will be used instead of Spack. 
 
 At this point, you can run the demo by starting at point (7) of the [instructions for the minidaqapp demo](https://dune-daq-sw.readthedocs.io/en/latest/packages/minidaqapp/InstructionsForCasualUsers/)
 
@@ -73,10 +73,10 @@ If you run `spack find` you'll see DUNE DAQ packages up through dune-daqpackages
 
 Note that as of Dec-9-2021, you can get `dbt-workarea-env` to work with Spack package sets if you're using the `johnfreeman/issue161_spack branch` branch of daq-buildtools; this is analogous to the standard ups behavior of `dbt-workarea-env` when you're using a versioned daq-buildtools. E.g., the following:
 ```
-dbt-workarea-env -s externals@dunedaq-v2.9.0
+dbt-workarea-env --spack -s externals
 ```
-...will load the external packages, but not the DUNE DAQ-specific packages, from the `dunedaq-v2.9.0` frozen release. 
+...will load the external packages, but not the DUNE DAQ-specific packages, from the frozen release corresponding to your work area. 
 
-Note that as of Jan-18-2022, you now have the option of running `dbt-setup-release` just as you do when ups is used instead of Spack. 
+Note that as of Jan-18-2022, you now have the option of running `dbt-setup-release` just as you do when ups is used instead of Spack. E.g. `dbt-setup-release --spack dunedaq-v2.9.0` will set up the dunedaq-v2.9.0 frozen release suite of packages. 
 
 
