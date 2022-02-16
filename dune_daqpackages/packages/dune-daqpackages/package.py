@@ -52,7 +52,7 @@ class DuneDaqpackages(BundlePackage):
                      "minidaqapp", \
                      "ndreadoutlibs", \
                      "networkmanager", \
-                     "nwqueueadapters" \
+                     "nwqueueadapters", \
                      "opmonlib", \
                      "rcif", \
                      "readoutlibs", \
