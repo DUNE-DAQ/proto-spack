@@ -28,6 +28,49 @@ class DuneDaqpackages(BundlePackage):
 
     for build_type in ["Debug", "RelWithDebInfo", "Release"]:
 
+        for pkg in [ \
+                     "appfwk", \
+                     "cmdlib", \
+                     "daq-cmake", \
+                     "daqdataformats", \
+                     "detchannelmaps", \
+                     "detdataformats", \
+                     "dfmessages", \
+                     "dfmodules", \
+                     "dqm", \
+                     "ers", \
+                     "erskafka", \
+                     "fdreadoutlibs", \
+                     "flxlibs", \
+                     "hdf5libs", \
+                     "influxopmon", \
+                     "ipm", \
+                     "kafkaopmon", \
+                     "lbrulibs", \
+                     "listrev", \
+                     "logging", \
+                     "minidaqapp", \
+                     "ndreadoutlibs", \
+                     "networkmanager", \
+                     "nwqueueadapters" \
+                     "opmonlib", \
+                     "rcif", \
+                     "readoutlibs", \
+                     "readoutmodules", \
+                     "restcmd", \
+                     "serialization", \
+                     "sspmodules", \
+                     "timing", \
+                     "timinglibs", \
+                     "trigemu", \
+                     "trigger", \
+                     "triggeralgs", \
+                     "utilities", \
+                     "wibmod" \
+        ]:
+            depends_on(f'{pkg}@develop build_type={build_type}', when=f'@develop build_type={build_type}')
+
+
         depends_on(f"daq-cmake@2.1.0 build_type={build_type}", when=f"@dunedaq-v2.9.0 build_type={build_type}")
         depends_on(f"ers@1.1.5 build_type={build_type}", when=f"@dunedaq-v2.9.0 build_type={build_type}")
         depends_on(f"logging@1.0.5 build_type={build_type}", when=f"@dunedaq-v2.9.0 build_type={build_type}")
@@ -136,13 +179,3 @@ class DuneDaqpackages(BundlePackage):
         depends_on(f'kafkaopmon@1.3.0 build_type={build_type}', when=f'@dunedaq-v2.8.0 build_type={build_type}')
 
 
-        for pkg in ["minidaqapp", "dqm", "flxlibs", "readoutlibs", "fdreadoutlibs", \
-                    "ndreadoutlibs", "trigger", "triggeralgs", "timing", "timinglibs", \
-                    "dfmodules", "daqdataformats", "detdataformats", "detchannelmaps", \
-                    "dfmessages", "listrev", "ipm", "serialization", "appfwk", "rcif", \
-                    "cmdlib", "opmonlib", "logging", "ers", "daq-cmake", "listrev", \
-                    "restcmd", "erskafka", "trigemu", "erses", "influxopmon", "lbrulibs", \
-                    "kafkaopmon", "wibmod", "sspmodules", "hdf5libs", "readoutlibs", \
-                    "fdreadoutlibs", "ndreadoutlibs", "readoutmodules", "utilities", \
-                    "networkmanager", "nwqueueadapters"]:
-            depends_on(f'{pkg}@develop build_type={build_type}', when=f'@develop build_type={build_type}')
