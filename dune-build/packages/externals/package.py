@@ -40,3 +40,6 @@ class Externals(BundlePackage):
     depends_on("folly@2021.12.13.00 cxxstd=17", when=f"@dunedaq-v2.9.0")
     depends_on("folly@2021.05.24.00 cxxstd=17", when=f"@dunedaq-v2.8.2")
     depends_on("folly@2021.05.24.00 cxxstd=17", when=f"@develop")
+
+    depends_on("fftw@3.3.10~mpi", when="@develop")
+    depends_on("cli11@2.1.2", when="@develop")
