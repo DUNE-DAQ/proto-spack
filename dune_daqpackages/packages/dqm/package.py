@@ -45,6 +45,7 @@ class Dqm(CMakePackage):
     depends_on("librdkafka")
     depends_on("py-moo", type='build')
     depends_on("cyrus-sasl")
+    depends_on("fftw")
 
     # DBT_DEBUG is used by daq-cmake to set compiler options 
     def cmake_args(self): 
