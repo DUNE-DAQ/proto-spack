@@ -16,6 +16,7 @@ class Logging(CMakePackage):
     maintainers = ["jcfreeman2"]
 
     version("develop", branch="develop", git="https://github.com/DUNE-DAQ/logging")
+    version("for_clang", branch="for_clang", git="/home/spacknp/jcfree/repos/logging")
     version("1.0.5", sha256="c1eaa50cc0748ea318b69ebd01ff9d73e9e7c233e64143867e10718a6bac8f29", extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/logging/legacy.tar.gz/dunedaq-v2.9.0")
     version("1.0.3", sha256='fdf0e8a6ca4f223c584e18af25fad146401d1b6a2545cc62c6b1787e92d271f5', extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/logging/legacy.tar.gz/dunedaq-v2.8.0")
 

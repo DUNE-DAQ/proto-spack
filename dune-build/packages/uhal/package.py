@@ -8,6 +8,7 @@ class Uhal(Package):
     homepage = "https://github.com/ipbus/"
     url      = "https://codeload.github.com/ipbus/ipbus-software/tar.gz/refs/tags/v2.8.1"
 
+    version('for_clang', branch='for_clang', git='/home/spacknp/jcfree/repos/ipbus-software')
     version('2.8.1', sha256='73f26639a16ea65cecd367045ad0767a7eb4f5f8f488df1bbf121fc47aec3142', extension='tar.gz')
 
     #depends_on('boost@1.75.0+debug', type='build')
@@ -27,13 +28,14 @@ class Uhal(Package):
         def add_include_path(dep_name):
             include_path = spec[dep_name].prefix.include
             if not is_system_path(include_path):
+                print("Appending %s to SPACK_INCLUDE_DIRS" % (include_path))
                 env.append_path('SPACK_INCLUDE_DIRS', include_path)
 
         # With that done, let's go fixing those deps                                                                                                                                                                                                                    
         add_include_path('boost')
         add_include_path('pugixml')
 
-        env.set('EXTERN_BOOST_INCLUDE_PREFIX', spec['boost'].prefix.include.boost)
+        env.set('EXTERN_BOOST_INCLUDE_PREFIX', spec['boost'].prefix.include)
         env.set('EXTERN_BOOST_LIB_PREFIX', spec['boost'].prefix.lib)
         env.set('EXTERN_PUGIXML_INCLUDE_PREFIX', spec['pugixml'].prefix.include)
         env.set('EXTERN_PUGIXML_LIB_PREFIX', spec['pugixml'].prefix.lib64)

@@ -18,5 +18,5 @@ class Systems(BundlePackage):
 
     for ver in ["develop", "dunedaq-v2.8.2", "dunedaq-v2.9.0"]:
         depends_on("python@3.8.3", when=f"@{ver}")
-        depends_on("gcc@8.2.0 +binutils", when=f"@{ver}")
+        #depends_on("gcc@8.2.0 +binutils", when=f"@{ver}")
         

@@ -20,5 +20,5 @@ class Devtools(BundlePackage):
 
         depends_on("systems@dunedaq-v2.9.0", when=f"@{ver}")
         depends_on("cmake@3.20.5", when=f"@{ver}")  # Should be 3.17.2, but hep-concurrency needs a newer CMake version
-        depends_on("gdb@9.2~python", when=f"@{ver}")
-        depends_on("ninja@1.10.0", when=f"@{ver}")
+        #depends_on("gdb@9.2~python", when=f"@{ver}")
+        #depends_on("ninja@1.10.0", when=f"@{ver}")
