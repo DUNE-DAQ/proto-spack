@@ -25,7 +25,7 @@ class Timinglibs(CMakePackage):
     depends_on("ers")
     depends_on("timing")
     depends_on("dfmessages")
-    depends_on("uhal")
+    #depends_on("uhal")
     depends_on("logging")
     depends_on("appfwk")
     depends_on("rcif")
