@@ -37,7 +37,11 @@ class Trigger(CMakePackage):
     depends_on("dataformats", when="@1.1.2")
     depends_on("daqdataformats", when="@1.1.3:")
     depends_on("daqdataformats", when="@develop")
+    depends_on("detdataformats", when="@develop")
+    depends_on("hdf5libs", when="@develop")
+    depends_on("cli11", when="@develop")
 
+    
     depends_on('boost' )
     depends_on("py-moo", type='build')
 
