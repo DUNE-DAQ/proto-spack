@@ -9,8 +9,8 @@ class FelixSoftware(Package):
 
     git = "https://github.com/jcfreeman2/intentionallyempty.git"
 
+    version("dunedaq-v2.10.0")
     version("dunedaq-v2.8.0")
-
 
     depends_on('boost', type='build')
     depends_on('python', type='build')
@@ -27,24 +27,42 @@ class FelixSoftware(Package):
         if not "REGMAP_VERSION" in os.environ:
             env.set("REGMAP_VERSION", "0x0500")
 
-    def patch(self):
-        copy(join_path(os.path.dirname(__file__),
-             "felixConfig.cmake"), self.prefix + "/felixConfig.cmake")
-        copy(join_path(os.path.dirname(__file__),
-             "felixConfigVersion.cmake"), self.prefix + "/felixConfigVersion.cmake")
-        copy(join_path(os.path.dirname(__file__),
-             "felixTargets.cmake"), self.prefix + "/felixTargets.cmake")
-        copy(join_path(os.path.dirname(__file__), 
-            "CMakeLists_base_of_software_repo.txt"), "CMakeLists.txt")
-        copy(join_path(os.path.dirname(__file__), 
-                       "ftools_CMakeLists.txt"), "ftools_CMakeLists.txt")
-        copy(join_path(os.path.dirname(__file__), 
-                       "flxcard_py_CMakeLists.txt"), "flxcard_py_CMakeLists.txt")
-
 
     def install(self, spec, prefix):
 
+        hashes = {}
+        if self.spec.satisfies('@dunedaq-v2.10.0'):
+            hashes["cmake_tdaq"] = "d66ce21b"
+            hashes["drivers_rcc"] = "c5c21e00"
+            hashes["flxcard"] = "7614b8cc"
+            hashes["regmap"] = "f0fd698e"
+            hashes["packetformat"] = "a6933e36"
+            hashes["flxcard_py"] = "61001bd6"
+            hashes["ftools"] = "c326e788"
+            hashes["external-catch"] = "6a9aa08a"
+            
+            felix_version="dunedaq-v2.10.0"
+
+        elif self.spec.satisfies('@dunedaq-v2.8.0'):
+            hashes["cmake_tdaq"] = "d66ce21b"
+            hashes["drivers_rcc"] = "b37bd757"
+            hashes["flxcard"] = "683d9696"
+            hashes["regmap"] = "87ce47ba"
+            hashes["packetformat"] = "a84931eb"
+            hashes["flxcard_py"] = "61001bd6"
+            hashes["ftools"] = "1cfd1b56"
+            hashes["external-catch"] = "6a9aa08a"
+
+            felix_version="dunedaq-v2.8.0"
+
         copytree('.', prefix.software)
+
+        copy(join_path(os.path.dirname(__file__),
+                       f"felixConfig.cmake.{felix_version}"), self.prefix + "/felixConfig.cmake")
+        copy(join_path(os.path.dirname(__file__),
+                       f"felixConfigVersion.cmake.{felix_version}"), self.prefix + "/felixConfigVersion.cmake")
+        copy(join_path(os.path.dirname(__file__),
+                       f"felixTargets.cmake.{felix_version}"), self.prefix + "/felixTargets.cmake")
 
         def return_zero_or_exit(cmd):
             retval = os.system(cmd)
@@ -54,40 +72,41 @@ class FelixSoftware(Package):
 
         with working_dir(prefix.software):
 
-            os.chdir(prefix.software)
+            install(f"{os.path.dirname(__file__)}/CMakeLists_base_of_software_repo.txt", "CMakeLists.txt")
 
             print("About to clone https://gitlab.cern.ch/atlas-tdaq-felix/cmake_tdaq.git")
             return_zero_or_exit('git clone https://gitlab.cern.ch/atlas-tdaq-felix/cmake_tdaq.git')
-            return_zero_or_exit('pushd cmake_tdaq && git checkout d66ce21b && popd')
+            return_zero_or_exit('pushd cmake_tdaq && git checkout %s && popd' % (hashes["cmake_tdaq"]))
             return_zero_or_exit('sed -i \'2 i set(NOLCG TRUE)\' cmake_tdaq/cmake/modules/FELIX.cmake')
  
             print("About to clone https://gitlab.cern.ch/atlas-tdaq-felix/drivers_rcc.git")
             return_zero_or_exit('git clone https://gitlab.cern.ch/atlas-tdaq-felix/drivers_rcc.git')
-            return_zero_or_exit('pushd drivers_rcc && git checkout b37bd757 && popd')
+            return_zero_or_exit('pushd drivers_rcc && git checkout %s && popd' % (hashes["drivers_rcc"]))
+
             print("About to clone https://gitlab.cern.ch/atlas-tdaq-felix/flxcard.git")
             return_zero_or_exit('git clone https://gitlab.cern.ch/atlas-tdaq-felix/flxcard.git')
-            return_zero_or_exit('pushd flxcard && git checkout 683d9696 && popd')
+            return_zero_or_exit('pushd flxcard && git checkout %s && popd' % (hashes["flxcard"]))
 
             print("About to clone https://gitlab.cern.ch/atlas-tdaq-felix/regmap.git")
             return_zero_or_exit('git clone https://gitlab.cern.ch/atlas-tdaq-felix/regmap.git')
-            return_zero_or_exit('pushd regmap && git checkout 87ce47ba && popd')
+            return_zero_or_exit('pushd regmap && git checkout %s && popd' % (hashes["regmap"]))
 
             print("About to clone https://gitlab.cern.ch/atlas-tdaq-felix/packetformat.git")
             return_zero_or_exit('git clone https://gitlab.cern.ch/atlas-tdaq-felix/packetformat.git')
-            return_zero_or_exit('pushd packetformat && git checkout a84931eb && popd')
+            return_zero_or_exit('pushd packetformat && git checkout %s && popd' % (hashes["packetformat"]))
 
             print("About to clone https://gitlab.cern.ch/atlas-tdaq-felix/flxcard_py.git")
             return_zero_or_exit('git clone https://gitlab.cern.ch/atlas-tdaq-felix/flxcard_py.git')
-            return_zero_or_exit('pushd flxcard_py && git checkout 61001bd6 && popd')
-            install("flxcard_py_CMakeLists.txt", prefix+"/software/flxcard_py/CMakeLists.txt")
+            return_zero_or_exit('pushd flxcard_py && git checkout %s && popd' % (hashes["flxcard_py"]))
+            install(f"{os.path.dirname(__file__)}/flxcard_py_CMakeLists.txt.{felix_version}", prefix+"/software/flxcard_py/CMakeLists.txt")
 
             print("Aout to clone https://gitlab.cern.ch/atlas-tdaq-felix/ftools.git")
             return_zero_or_exit('git clone https://gitlab.cern.ch/atlas-tdaq-felix/ftools.git')
-            return_zero_or_exit('pushd ftools && git checkout 1cfd1b56 && popd')
-            install('ftools_CMakeLists.txt', prefix+"/software/ftools/CMakeLists.txt")
+            return_zero_or_exit('pushd ftools && git checkout %s && popd' % (hashes["ftools"]))
+            install(f"{os.path.dirname(__file__)}/ftools_CMakeLists.txt.{felix_version}", prefix+"/software/ftools/CMakeLists.txt")
 
             return_zero_or_exit('git clone https://gitlab.cern.ch/atlas-tdaq-felix/external-catch.git external/catch')
-            return_zero_or_exit('pushd external/catch && git checkout 6a9aa08a && popd')
+            return_zero_or_exit('pushd external/catch && git checkout %s && popd' % (hashes["external-catch"]))
 
             os.environ['PATH'] = prefix+"/software/cmake_tdaq/bin" + ":" + os.environ['PATH']
             return_zero_or_exit('cmake_config x86_64-centos7-gcc8-opt') 
