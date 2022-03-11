@@ -13,6 +13,7 @@ class DuneDaqpackages(BundlePackage):
     homepage = "https://dune-daq-sw.readthedocs.io/en/latest/"
 
     version("develop")
+    version("N22-02-20")
     version("dunedaq-v2.9.0")
     version("dunedaq-v2.8.2")
     version("dunedaq-v2.8.0")
@@ -25,6 +26,7 @@ class DuneDaqpackages(BundlePackage):
     depends_on("externals@dunedaq-v2.9.0", when="@dunedaq-v2.9.0")
     depends_on("externals@dunedaq-v2.8.2", when="@dunedaq-v2.8.2")
     depends_on("externals@develop", when="@develop")
+    depends_on("externals@develop", when="@N22-02-20")
 
     for build_type in ["Debug", "RelWithDebInfo", "Release"]:
 
@@ -32,6 +34,7 @@ class DuneDaqpackages(BundlePackage):
                      "appfwk", \
                      "cmdlib", \
                      "daq-cmake", \
+                     "daqconf", \
                      "daqdataformats", \
                      "detchannelmaps", \
                      "detdataformats", \
@@ -49,7 +52,6 @@ class DuneDaqpackages(BundlePackage):
                      "lbrulibs", \
                      "listrev", \
                      "logging", \
-                     "minidaqapp", \
                      "ndreadoutlibs", \
                      "networkmanager", \
                      "nwqueueadapters", \
@@ -69,6 +71,7 @@ class DuneDaqpackages(BundlePackage):
                      "wibmod" \
         ]:
             depends_on(f'{pkg}@develop build_type={build_type}', when=f'@develop build_type={build_type}')
+            depends_on(f'{pkg}@develop build_type={build_type}', when=f'@N22-02-20 build_type={build_type}')
 
 
         depends_on(f"daq-cmake@2.1.0 build_type={build_type}", when=f"@dunedaq-v2.9.0 build_type={build_type}")

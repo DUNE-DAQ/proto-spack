@@ -54,7 +54,7 @@ class Cetlib(CMakePackage):
     depends_on('intel-tbb@2020.2', when="@3.11.01", type=('build', 'link'))
     depends_on('sqlite@3.35.5', when="@3.13.04:", type=('build', 'link'))
     depends_on('sqlite@3.32.03', when="@3.11.01", type=('build', 'link'))
-    depends_on('openssl@1.1.1l')
+    depends_on('openssl')
     depends_on('perl@5.34.0')  # Module skeletons, etc.  
 
     for build_type in ["Debug", "Release", "RelWithDebInfo"]:
