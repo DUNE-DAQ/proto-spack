@@ -35,10 +35,10 @@ class Externals(BundlePackage):
         depends_on('librdkafka@1.7.0', when=f"@{ver}")
         depends_on('protobuf@3.14.0', when=f"@{ver}")
 
-    
+
+    depends_on("folly@2021.12.13.00 cxxstd=17", when=f"@develop")
     depends_on("folly@2021.12.13.00 cxxstd=17", when=f"@dunedaq-v2.9.0")
     depends_on("folly@2021.05.24.00 cxxstd=17", when=f"@dunedaq-v2.8.2")
-    depends_on("folly@2021.05.24.00 cxxstd=17", when=f"@develop")
 
     depends_on('felix-software@dunedaq-v2.10.0', when=f"@develop")
     depends_on('felix-software@dunedaq-v2.8.0', when=f"@dunedaq-v2.9.0")
