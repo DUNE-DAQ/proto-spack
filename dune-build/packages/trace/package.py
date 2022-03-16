@@ -11,8 +11,8 @@ from spack.util.environment import EnvironmentModifications
 class Trace(CMakePackage):
     """FIXME: Put a proper description of your package here."""
 
-    homepage = "https://gitlab.cern.ch/dune-daq/experimental/externals"
-    git      = "https://gitlab.cern.ch/dune-daq/experimental/externals/trace.git"
+    homepage = "https://github.com/art-daq/trace"
+    git      = "https://github.com/art-daq/trace.git"
 
     version('stable', branch='stable')
     version('master', branch='master')

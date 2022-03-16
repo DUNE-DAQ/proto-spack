@@ -31,9 +31,9 @@ def sanitize_environments(*args):
 class Cetlib(CMakePackage):
     """A utility library for the art suite."""
 
-    homepage = 'https://gitlab.cern.ch/dune-daq/experimental/externals/cetlib'
-    git_base = 'https://gitlab.cern.ch/dune-daq/experimental/externals/cetlib.git'
-    url = 'https://gitlab.cern.ch/dune-daq/experimental/externals/cetlib/-/archive/v3_13_04/cetlib-v3_13_04.tar.gz'
+    homepage = 'https://github.com/art-framework-suite/cetlib'
+    git_base = 'https://github.com/art-framework-suite/cetlib.git'
+    url = 'https://github.com/art-framework-suite/cetlib/archive/refs/tags/v3_13_04.tar.gz'
 
     version('3.13.04', tag='v3_13_04', git=git_base, get_full_repo=True)
     version('3.11.01', tag='v3_11_01', git=git_base, get_full_repo=True)
