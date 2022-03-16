@@ -26,9 +26,9 @@ def sanitize_environments(*args):
 class HepConcurrency(CMakePackage):
     """A concurrency library for the art suite."""
 
-    homepage = 'https://gitlab.cern.ch/dune-daq/experimental/externals/hep_concurrency'
-    git_base = 'https://gitlab.cern.ch/dune-daq/experimental/externals/hep_concurrency.git'
-    url = 'https://gitlab.cern.ch/dune-daq/experimental/externals/hep_concurrency/-/archive/v1_07_04/hep_concurrency-v1_07_04.tar.gz'
+    homepage = 'https://github.com/art-framework-suite/hep-concurrency'
+    git_base = 'https://github.com/art-framework-suite/hep-concurrency.git'
+    url = 'https://github.com/art-framework-suite/hep-concurrency/archive/refs/tags/v1_07_04.tar.gz'
 
     version('1.07.04', tag='v1_07_04', git=git_base, get_full_repo=True)  
     version('1.05.00', tag='v1_05_00', git=git_base, get_full_repo=True)  
