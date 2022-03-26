@@ -1,6 +1,0 @@
-config:
-  install_tree:
-    root: $spack/opt/spack
-    projections:
-      all: "${ARCHITECTURE}"
-  install_path_scheme: 'DUNE-1/x86_64-centos7-${COMPILERNAME}-${COMPILERVER}-dbg/${PACKAGE}/${VERSION}-${HASH}'
