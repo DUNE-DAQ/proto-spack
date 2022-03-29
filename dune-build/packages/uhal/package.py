@@ -8,7 +8,7 @@ class Uhal(Package):
     homepage = "https://github.com/ipbus/"
     url      = "https://codeload.github.com/ipbus/ipbus-software/tar.gz/refs/tags/v2.8.1"
 
-    version('for_clang', branch='for_clang', git='/home/spacknp/jcfree/repos/ipbus-software')
+    version('for_clang', branch='for_clang', git='https://github.com/jcfreeman2/ipbus-software')
     version('2.8.1', sha256='73f26639a16ea65cecd367045ad0767a7eb4f5f8f488df1bbf121fc47aec3142', extension='tar.gz')
 
     #depends_on('boost@1.75.0+debug', type='build')

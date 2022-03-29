@@ -16,6 +16,7 @@ class Fdreadoutlibs(CMakePackage):
     maintainers = ['jcfreeman2']
 
     version("develop", branch="develop", git="https://github.com/DUNE-DAQ/fdreadoutlibs")
+    version("for_clang", branch="johnfreeman/for_clang", git="https://github.com/DUNE-DAQ/fdreadoutlibs")
     version("1.0.0", sha256="329492adc40c334405b521e2b5aa0ba68c35da2e9703b63aee03621d9ff7010d", extension="tar.gz", url="https://codeload.github.com/DUNE-DAQ/fdreadoutlibs/legacy.tar.gz/dunedaq-v2.9.0")
 
     depends_on("ers")
