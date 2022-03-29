@@ -26,7 +26,7 @@ class DuneDaqpackages(BundlePackage):
     depends_on("externals@dunedaq-v2.8.2", when="@dunedaq-v2.8.2")
     depends_on("externals@develop", when="@develop")
 
-    for_clang_packages = ["logging"]
+    for_clang_packages = ["appfwk", "readoutlibs", "fdreadoutlibs"]
 
     for build_type in ["Debug", "RelWithDebInfo", "Release"]:
 
@@ -34,6 +34,7 @@ class DuneDaqpackages(BundlePackage):
                      "appfwk", \
                      "cmdlib", \
                      "daq-cmake", \
+                     "daqconf", \
                      "daqdataformats", \
                      "detchannelmaps", \
                      "detdataformats", \
@@ -43,7 +44,7 @@ class DuneDaqpackages(BundlePackage):
                      "ers", \
                      "erskafka", \
                      "fdreadoutlibs", \
-                     #"flxlibs", \
+                     "flxlibs", \
                      "hdf5libs", \
                      "influxopmon", \
                      "ipm", \
@@ -51,7 +52,6 @@ class DuneDaqpackages(BundlePackage):
                      "lbrulibs", \
                      "listrev", \
                      "logging", \
-                     "minidaqapp", \
                      "ndreadoutlibs", \
                      "networkmanager", \
                      "nwqueueadapters", \
@@ -62,11 +62,11 @@ class DuneDaqpackages(BundlePackage):
                      "restcmd", \
                      "serialization", \
                      "sspmodules", \
-#                     "timing", \
-#                     "timinglibs", \
+                     "timing", \
+                     "timinglibs", \
                      "trigemu", \
                      "trigger", \
-#                     "triggeralgs", \
+                     "triggeralgs", \
                      "utilities", \
                      "wibmod" \
         ]:
@@ -74,6 +74,7 @@ class DuneDaqpackages(BundlePackage):
                 depends_on(f'{pkg}@for_clang build_type={build_type}', when=f'@develop build_type={build_type}')
             else:
                 depends_on(f'{pkg}@develop build_type={build_type}', when=f'@develop build_type={build_type}')
+
 
 
         depends_on(f"daq-cmake@2.1.0 build_type={build_type}", when=f"@dunedaq-v2.9.0 build_type={build_type}")

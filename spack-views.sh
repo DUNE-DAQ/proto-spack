@@ -23,8 +23,6 @@ echo "copy of folly"
 spack view --verbose symlink $LOCATION folly@2021.05.24.00
 echo "copy of trace"
 spack view --verbose symlink $LOCATION trace
-echo "copy of cetpkgsupport"
-spack view --exclude openssl --verbose symlink  $LOCATION cetpkgsupport
 echo "copy of nlohmann-json"
 spack view --verbose symlink $LOCATION nlohmann-json@3.9.1
 echo "copy of pistache"

@@ -20,8 +20,7 @@ class Externals(BundlePackage):
         depends_on(f"devtools@{ver}", when=f"@{ver}")
 
         depends_on("boost@1.73.0 +context+container cxxstd=17", when=f"@{ver}")
-        #depends_on("cetlib@3.13.04", when=f"@{ver}")
-        depends_on("cetlib@for_clang", when=f"@{ver}")
+        depends_on("cetlib@3.13.04", when=f"@{ver}")
         #depends_on("trace@3.16.02", when=f"@{ver}")
         depends_on("trace@for_clang", when=f"@{ver}")
 
@@ -31,17 +30,21 @@ class Externals(BundlePackage):
         depends_on('libzmq@4.3.3', when=f"@{ver}")
         depends_on('cppzmq@4.3.0', when=f"@{ver}")
         depends_on('msgpack-c@3.3.0', when=f"@{ver}")
-        #depends_on('felix-software@dunedaq-v2.8.0', when=f"@{ver}") # Same version for 2.8.0, 2.8.2, 2.9.0...
         depends_on('py-pybind11@2.6.2', when=f"@{ver}")
         #depends_on('uhal@2.8.1', when=f"@{ver}")
+        depends_on('uhal@for_clang', when=f"@{ver}")
         depends_on('cpr@1.5.2', when=f"@{ver}")
         depends_on('librdkafka@1.7.0', when=f"@{ver}")
         depends_on('protobuf@3.14.0', when=f"@{ver}")
 
-    
+
+    depends_on("folly@2021.12.13.00 cxxstd=17", when=f"@develop")
     depends_on("folly@2021.12.13.00 cxxstd=17", when=f"@dunedaq-v2.9.0")
     depends_on("folly@2021.05.24.00 cxxstd=17", when=f"@dunedaq-v2.8.2")
-    depends_on("folly@2021.05.24.00 cxxstd=17", when=f"@develop")
+
+    depends_on('felix-software@dunedaq-v2.10.0', when=f"@develop")
+    depends_on('felix-software@dunedaq-v2.8.0', when=f"@dunedaq-v2.9.0")
+    depends_on('felix-software@dunedaq-v2.8.0', when=f"@dunedaq-v2.8.2")
 
     depends_on("fftw@3.3.10~mpi", when="@develop")
     depends_on("cli11@2.1.2", when="@develop")
