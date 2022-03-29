@@ -27,6 +27,9 @@ class FelixSoftware(Package):
         if not "REGMAP_VERSION" in os.environ:
             env.set("REGMAP_VERSION", "0x0500")
 
+    def cmake_args(self):
+        args = ['-DCMAKE_FC_COMPILER=/usr/bin/gfortran', '-DCMAKE_Fortran_COMPILER=/usr/bin/gfortran']
+        return args
 
     def install(self, spec, prefix):
 

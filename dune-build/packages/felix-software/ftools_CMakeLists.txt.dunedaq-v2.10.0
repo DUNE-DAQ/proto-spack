@@ -168,8 +168,8 @@ else (EXISTS ../../flxcard/src/FlxCard.cpp)
   tdaq_add_executable(fflash tools/fflash.cpp ../flxcard/src/FlxCard.cpp ../flxcard/src/FlxException.cpp ../regmap/src/regmap-symbol.c)
   target_include_directories(fflash PRIVATE flxcard drivers_rcc regmap ../flxcard ../drivers_rcc ../regmap)
 endif()
-target_compile_options( fflash PUBLIC -fabi-version=2 )
-target_link_libraries(fflash -static-libgcc -static-libstdc++)
+#target_compile_options( fflash PUBLIC -fabi-version=2 )
+#target_link_libraries(fflash -static-libgcc -static-libstdc++)
 
 # fec: Tool to compose and upload GBT-SCA frames to operate a certain GBT-SCA
 # channel to a particular e-link
