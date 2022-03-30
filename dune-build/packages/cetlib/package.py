@@ -35,6 +35,7 @@ class Cetlib(CMakePackage):
     git_base = 'https://github.com/art-framework-suite/cetlib.git'
     url = 'https://github.com/art-framework-suite/cetlib/archive/refs/tags/v3_13_04.tar.gz'
 
+    version('for_clang', branch='for_clang', git='https://github.com/jcfreeman2/cetlib')
     version('3.13.04', tag='v3_13_04', git=git_base, get_full_repo=True)
     version('3.11.01', tag='v3_11_01', git=git_base, get_full_repo=True)
 
@@ -49,15 +50,20 @@ class Cetlib(CMakePackage):
 
     depends_on('cmake', type='build')
     depends_on('cetmodules@2.25.05', when="@3.13.04:", type='build')
+    depends_on('cetmodules@2.25.05', when="@for_clang", type='build')
     depends_on('catch2@2.13.4:', when="@3.13.04:", type=('build', 'link'))
+    depends_on('catch2@2.13.4:', when="@for_clang", type=('build', 'link'))
     depends_on('intel-tbb@2020.3', when="@3.13.04:", type=('build', 'link'))
+    depends_on('intel-tbb@2020.3', when="@for_clang", type=('build', 'link'))
     depends_on('intel-tbb@2020.2', when="@3.11.01", type=('build', 'link'))
     depends_on('sqlite@3.35.5', when="@3.13.04:", type=('build', 'link'))
+    depends_on('sqlite@3.35.5', when="@for_clang", type=('build', 'link'))
     depends_on('sqlite@3.32.03', when="@3.11.01", type=('build', 'link'))
     depends_on('openssl')
     depends_on('perl@5.34.0')  # Module skeletons, etc.  
 
     for build_type in ["Debug", "Release", "RelWithDebInfo"]:
+        depends_on(f'cetlib-except@1.07.04 build_type={build_type}', when=f'@for_clang build_type={build_type}')
         depends_on(f'cetlib-except@1.07.04 build_type={build_type}', when=f'@3.13.04 build_type={build_type}')
         depends_on(f'cetlib-except@1.05.00 build_type={build_type}', when=f'@3.11.01 build_type={build_type}')
 

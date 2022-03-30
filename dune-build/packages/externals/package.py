@@ -20,7 +20,8 @@ class Externals(BundlePackage):
         depends_on(f"devtools@{ver}", when=f"@{ver}")
 
         depends_on("boost@1.73.0 +context+container cxxstd=17", when=f"@{ver}")
-        depends_on("cetlib@3.13.04", when=f"@{ver}")
+        #depends_on("cetlib@3.13.04", when=f"@{ver}")
+        depends_on("cetlib@for_clang", when=f"@{ver}")
         #depends_on("trace@3.16.02", when=f"@{ver}")
         depends_on("trace@for_clang", when=f"@{ver}")
 
